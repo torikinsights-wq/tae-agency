@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   FaBolt, FaRobot, FaCalendarAlt, FaCreditCard, 
@@ -7,6 +8,27 @@ import {
 } from "react-icons/fa";
 
 export default function ServicesPage() {
+  const [isBangla, setIsBangla] = useState(true);
+
+  // ওয়েবসাইটের গ্লোবাল ভাষা পরিবর্তনের সাথে সিঙ্ক করার জন্য লোকালস্টোরেজ বা ইভেন্ট চেক করা
+  useEffect(() => {
+    const checkLanguage = () => {
+      const savedLang = localStorage.getItem("language");
+      if (savedLang === "en") {
+        setIsBangla(false);
+      } else {
+        setIsBangla(true);
+      }
+    };
+
+    checkLanguage();
+    window.addEventListener("storage", checkLanguage);
+    
+    // ইন্টারভ্যাল দিয়ে ভাষা পরিবর্তন ট্র্যাক করা যায় যদি গ্লোবাল স্টেট লোকালস্টোরেজে থাকে
+    const interval = setInterval(checkLanguage, 500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -14,279 +36,97 @@ export default function ServicesPage() {
         {/* Header Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
-            TAE.Agency — <span className="text-cyan-400">আমাদের অটোমেশন সার্ভিসসমূহ</span>
+            {isBangla ? (
+              <>TAE.Agency — <span className="text-cyan-400">আমাদের অটোমেশন সার্ভিসসমূহ</span></>
+            ) : (
+              <>TAE.Agency — <span className="text-cyan-400">Our Automation Services</span></>
+            )}
           </h1>
           <p className="text-xl text-cyan-200 font-medium">
-            সম্পূর্ণ AI ও অটোমেশন সিস্টেম Auto Detailing Business-এর জন্য
+            {isBangla 
+              ? "সম্পূর্ণ AI ও অটোমেশন সিস্টেম Auto Detailing Business-এর জন্য" 
+              : "Complete AI & Automation Systems for Auto Detailing Businesses"}
           </p>
-          <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg">
-            আমরা আপনার ব্যবসার পুরো Customer Journey অটোমেট করি—Lead Capture থেকে শুরু করে দ্রুত Customer Response, Appointment Booking, Payment, Review এবং Repeat Customer পর্যন্ত।
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            {isBangla
+              ? "আমরা আপনার ব্যবসার পুরো Customer Journey অটোমেট করি—Lead Capture থেকে শুরু করে দ্রুত Customer Response, Appointment Booking, Payment, Review এবং Repeat Customer পর্যন্ত।"
+              : "We automate your entire business customer journey—from Lead Capture to fast Customer Response, Appointment Booking, Payment, Review, and Repeat Customer."}
           </p>
-          
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 max-w-4xl mx-auto mt-8 shadow-xl">
-            <h3 className="text-xl font-bold text-cyan-400 mb-2">আমাদের লক্ষ্য</h3>
-            <p className="text-slate-300 text-lg">
-              কম Manual কাজ। দ্রুত Response। বেশি Booking। বেশি Repeat Customer।
-            </p>
-          </div>
+        </div>
+
+        {/* Goal Box */}
+        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-xl">
+          <h3 className="text-xl font-bold text-cyan-400">
+            {isBangla ? "আমাদের লক্ষ্য" : "Our Goal"}
+          </h3>
+          <p className="text-slate-300 text-lg">
+            {isBangla 
+              ? "কম Manual কাজ। দ্রুত Response। বেশি Booking। বেশি Repeat Customer।" 
+              : "Less Manual Work. Fast Response. More Bookings. More Repeat Customers."}
+          </p>
         </div>
 
         {/* Core Services Grid */}
         <div className="space-y-12">
           <h2 className="text-3xl font-bold text-center text-white border-b border-slate-800 pb-4">
-            আমাদের মূল অটোমেশন সার্ভিসসমূহ
+            {isBangla ? "আমাদের মূল অটোমেশন সার্ভিসসমূহ" : "Our Core Automation Services"}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {/* Service 1 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaBolt /></div>
-                <h3 className="text-xl font-bold text-white mb-3">১. Lead & Sales Automation</h3>
-                <p className="text-slate-400 text-sm mb-4">প্রতিটি Lead দ্রুত Capture করুন এবং আরও বেশি Prospect-কে Customer-এ পরিণত করুন।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Facebook / Google Ads / Website Lead → CRM</li>
-                  <li>• Instant SMS, Email & WhatsApp Response</li>
-                  <li>• AI Sales Assistant & Automated Follow-up</li>
-                  <li>• Missed Call & Quote Automation</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Lead → Instant Response → AI Follow-up → Booking
-              </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaRobot /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "১. AI রিসিভশন ও ইনস্ট্যান্ট চ্যাটবট" : "1. AI Reception & Instant Chatbot"}
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "Facebook, Instagram ও WhatsApp-এ ২৪/৭ ইনস্ট্যান্ট রিপ্লাই" : "24/7 Instant Reply on FB, IG & WhatsApp"}</li>
+                <li>• {isBangla ? "গাড়ির মডেল, সার্ভিস ও প্রাইসিং নিয়ে কাস্টমারের প্রশ্নের স্মার্ট উত্তর" : "Smart answers about car models, services & pricing"}</li>
+                <li>• {isBangla ? "লিড কোয়ালিফিকেশন ও সরাসরি অ্যাপয়েন্টমেন্ট বুকিং" : "Lead qualification & direct appointment booking"}</li>
+              </ul>
             </div>
 
             {/* Service 2 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaRobot /></div>
-                <h3 className="text-xl font-bold text-white mb-3">২. AI Customer Support</h3>
-                <p className="text-slate-400 text-sm mb-4">আপনার Customer-কে দিন-রাত ২৪ ঘণ্টা দ্রুত এবং বুদ্ধিমান Support দিন।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• AI Chatbot & AI Phone Receptionist</li>
-                  <li>• ২৪/৭ Customer Support & FAQ Automation</li>
-                  <li>• Appointment & Price Information Assistance</li>
-                  <li>• Human Call Transfer & WhatsApp Automation</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Message/Call → AI Response → Info Collection → Booking
-              </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaCogs /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "২. মিসড কল অটো-টেক্সট ব্যাক ও লিড রেসকিউ" : "2. Missed Call Auto-Text & Lead Rescue"}
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "কাস্টমার ফোন করলে রিসিভ না হলে তাৎক্ষণিক SMS/WhatsApp পাঠানো" : "Instant SMS/WhatsApp if a customer call is missed"}</li>
+                <li>• {isBangla ? "'কোন সার্ভিস চাচ্ছেন?' জিজ্ঞেস করে স্বয়ংক্রিয় কনভার্সেশন শুরু" : "Automated conversation starter asking service needs"}</li>
+                <li>• {isBangla ? "একটি লিডও যেন হাতছাড়া না হয় তা নিশ্চিত করা" : "Ensuring zero lost leads"}</li>
+              </ul>
             </div>
 
             {/* Service 3 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaCalendarAlt /></div>
-                <h3 className="text-xl font-bold text-white mb-3">३. Booking & Operations</h3>
-                <p className="text-slate-400 text-sm mb-4">Appointment এবং দৈনন্দিন Business Operations সহজ ও স্বয়ংক্রিয় করুন।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Online Booking & Service/Vehicle Selection</li>
-                  <li>• Google Calendar Integration</li>
-                  <li>• SMS/Email Booking Confirmations & Reminders</li>
-                  <li>• CRM Pipeline & Technician Job Assignment</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Booking → Calendar → Reminder → Technician → Service
-              </div>
-            </div>
-
-            {/* Service 4 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaCreditCard /></div>
-                <h3 className="text-xl font-bold text-white mb-3">৪. Payments & Membership</h3>
-                <p className="text-slate-400 text-sm mb-4">Invoice, Payment এবং Membership Management অটোমেট করুন।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Automatic Invoice Creation & Delivery</li>
-                  <li>• Secure Payment Links</li>
-                  <li>• Payment Reminder Automation</li>
-                  <li>• Membership Renewal & Recurring Payments</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Service Completed → Invoice → Payment Link → Paid
-              </div>
-            </div>
-
-            {/* Service 5 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaStar /></div>
-                <h3 className="text-xl font-bold text-white mb-3">৫. Retention & Reputation</h3>
-                <p className="text-slate-400 text-sm mb-4">একবারের Customer-কে দীর্ঘমেয়াদি Repeat Customer-এ পরিণত করুন।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Automated Google Review Requests (SMS/Email/WhatsApp)</li>
-                  <li>• Upsell & Special Offer Campaigns</li>
-                  <li>• Customer Reactivation & Repeat Campaigns</li>
-                  <li>• Service Follow-ups</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Service → Follow-up → Review → Upsell → Repeat
-              </div>
-            </div>
-
-            {/* Service 6 */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-lg">
-              <div>
-                <div className="text-cyan-400 text-3xl mb-4"><FaShareAlt /></div>
-                <h3 className="text-xl font-bold text-white mb-3">৬. Marketing & Social Media</h3>
-                <p className="text-slate-400 text-sm mb-4">আপনি Business পরিচালনা করবেন, আর Automation আপনার Marketing চালিয়ে যাবে।</p>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Google Ads Lead Automation</li>
-                  <li>• Social Media Auto Posting (FB, Insta)</li>
-                  <li>• AI Caption Generation & Content Assistance</li>
-                  <li>• Content Calendar & Performance Tracking</li>
-                </ul>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-cyan-400 font-mono">
-                Flow: Content → AI Caption → Schedule → Auto Post
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Complete Customer Journey Section */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-6">
-            🔄 সম্পূর্ণ Customer Journey Automation
-          </h2>
-          <p className="text-center text-slate-400 mb-8">প্রথম Lead থেকে Loyal Customer পর্যন্ত পুরো Journey অটোমেট করুন।</p>
-          
-          <div className="flex flex-wrap justify-center items-center gap-3 max-w-4xl mx-auto text-center">
-            {[
-              "Facebook / Google Ads / Website",
-              "Lead Capture",
-              "CRM",
-              "Instant SMS/Email/WhatsApp",
-              "AI Sales Follow-up",
-              "Appointment Booking",
-              "Google Calendar",
-              "Reminder",
-              "Service Completed",
-              "Invoice + Payment",
-              "Review Request",
-              "Upsell Campaign",
-              "Repeat Customer"
-            ].map((step, index, arr) => (
-              <React.Fragment key={index}>
-                <div className="bg-slate-800 border border-cyan-500/30 text-cyan-300 px-4 py-2 rounded-lg text-sm font-medium shadow">
-                  {step}
-                </div>
-                {index < arr.length - 1 && (
-                  <span className="text-cyan-400 font-bold">↓</span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
-        {/* Featured AI Systems */}
-        <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-center text-white">
-            🤖 আমাদের Featured AI Automation Systems
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-cyan-400 mb-3 flex items-center gap-2">
-                <FaComments /> AI Chatbot
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaCalendarAlt /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "৩. স্মার্ট বুকিং ও ক্যালেন্ডার অটোমেশন" : "3. Smart Booking & Calendar Automation"}
               </h3>
-              <p className="text-slate-300 text-sm mb-4">Customer-এর Message-এর উত্তর ২৪ ঘণ্টা দিতে পারে। এটি:</p>
-              <ul className="space-y-2 text-slate-400 text-sm">
-                <li>• Customer-এর প্রশ্নের উত্তর দেয়</li>
-                <li>• Service সম্পর্কে তথ্য দেয়</li>
-                <li>• Customer Information সংগ্রহ করে</li>
-                <li>• Appointment Booking-এ সাহায্য করে</li>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "অনলাইন বুকিং ও ভেহিক্যাল সিলেকশন" : "Online Booking & Vehicle Selection"}</li>
+                <li>• {isBangla ? "Google Calendar ইন্টিগ্রেশন" : "Google Calendar Integration"}</li>
+                <li>• {isBangla ? "রিমাইন্ডার ও টেকনিশিয়ান জব অ্যাসাইনমেন্ট" : "Reminders & Technician Job Assignment"}</li>
               </ul>
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-cyan-400 mb-3 flex items-center gap-2">
-                <FaPhoneAlt /> AI Phone Receptionist
-              </h3>
-              <p className="text-slate-300 text-sm mb-4">Business-এর জন্য একটি Virtual AI Receptionist। এটি:</p>
-              <ul className="space-y-2 text-slate-400 text-sm">
-                <li>• Automatically Phone Call Receive করে</li>
-                <li>• FAQ Answer করে</li>
-                <li>• Appointment Book করতে সাহায্য করে</li>
-                <li>• প্রয়োজন হলে Human Team-এর কাছে Call Transfer করে</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-cyan-400 mb-3 flex items-center gap-2">
-                <FaShareAlt /> Social Media Auto Posting
-              </h3>
-              <p className="text-slate-300 text-sm mb-4">Business-এর Social Media সবসময় Active রাখুন। Automation করতে পারে:</p>
-              <ul className="space-y-2 text-slate-400 text-sm">
-                <li>• Content Schedule & AI Caption তৈরি</li>
-                <li>• Image & Video Content Publish</li>
-                <li>• Facebook & Instagram Auto Posting</li>
-                <li>• Content Calendar Management</li>
-              </ul>
-            </div>
           </div>
         </div>
 
-        {/* How We Work Section */}
-        <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-center text-white">
-            ⚙️ আমরা কীভাবে আপনার Automation System তৈরি করি?
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-              <span className="text-cyan-400 font-extrabold text-2xl">০১</span>
-              <h3 className="text-lg font-bold text-white mt-2 mb-2">Business Automation Audit</h3>
-              <p className="text-slate-400 text-sm">আমরা আপনার বর্তমান Business Process বিশ্লেষণ করে Automation-এর সুযোগগুলো খুঁজে বের করি।</p>
-            </div>
-
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-              <span className="text-cyan-400 font-extrabold text-2xl">০২</span>
-              <h3 className="text-lg font-bold text-white mt-2 mb-2">Automation Strategy</h3>
-              <p className="text-slate-400 text-sm">আপনার Business-এর জন্য একটি Custom Automation Strategy তৈরি করি।</p>
-            </div>
-
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-              <span className="text-cyan-400 font-extrabold text-2xl">০৩</span>
-              <h3 className="text-lg font-bold text-white mt-2 mb-2">System Development</h3>
-              <p className="text-slate-400 text-sm">AI, CRM, Booking System এবং Automation Platforms একসাথে সংযুক্ত করে আপনার System তৈরি করি।</p>
-            </div>
-
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-              <span className="text-cyan-400 font-extrabold text-2xl">০৪</span>
-              <h3 className="text-lg font-bold text-white mt-2 mb-2">Launch & Optimization</h3>
-              <p className="text-slate-400 text-sm">System Test করার পর Launch করা হয় এবং Performance অনুযায়ী ধীরে ধীরে উন্নত করা হয়।</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            🚀 আপনার Auto Detailing Business অটোমেট করতে প্রস্তুত?
-          </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            Lead হারানো, Manual কাজ এবং Customer Follow-up-এর ঝামেলা কমান। AI এবং Automation-কে আপনার Business-এর জন্য ২৪/৭ কাজ করতে দিন।
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <Link 
-              href="/contact" 
-              className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg transition duration-300 text-center"
+        {/* Call to Action */}
+        <div className="text-center pt-8 border-t border-slate-800 space-y-6">
+          <h3 className="text-2xl font-bold text-white">
+            {isBangla ? "আপনার অটো ডিটেইলিং ব্যবসাকে পরবর্তী স্তরে নিতে চান?" : "Want to take your Auto Detailing business to the next level?"}
+          </h3>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/contact"
+              className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-8 py-3 rounded-xl transition-all shadow-lg"
             >
-              Free Automation Audit বুক করুন
-            </Link>
-            <Link 
-              href="/contact" 
-              className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-lg transition duration-300 text-center"
-            >
-              আমাদের একজন Expert-এর সাথে কথা বলুন
+              {isBangla ? "Free Automation Audit বুক করুন" : "Book Free Automation Audit"}
             </Link>
           </div>
         </div>
