@@ -10,7 +10,6 @@ import {
 export default function ServicesPage() {
   const [isBangla, setIsBangla] = useState(true);
 
-  // ওয়েবসাইটের গ্লোবাল ভাষা পরিবর্তনের সাথে সিঙ্ক করার জন্য লোকালস্টোরেজ বা ইভেন্ট চেক করা
   useEffect(() => {
     const checkLanguage = () => {
       const savedLang = localStorage.getItem("language");
@@ -22,9 +21,6 @@ export default function ServicesPage() {
     };
 
     checkLanguage();
-    window.addEventListener("storage", checkLanguage);
-    
-    // ইন্টারভ্যাল দিয়ে ভাষা পরিবর্তন ট্র্যাক করা যায় যদি গ্লোবাল স্টেট লোকালস্টোরেজে থাকে
     const interval = setInterval(checkLanguage, 500);
     return () => clearInterval(interval);
   }, []);
@@ -50,7 +46,7 @@ export default function ServicesPage() {
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
             {isBangla
               ? "আমরা আপনার ব্যবসার পুরো Customer Journey অটোমেট করি—Lead Capture থেকে শুরু করে দ্রুত Customer Response, Appointment Booking, Payment, Review এবং Repeat Customer পর্যন্ত।"
-              : "We automate your entire business customer journey—from Lead Capture to fast Customer Response, Appointment Booking, Payment, Review, and Repeat Customer."}
+              : "আমরা আপনার ব্যবসার পুরো Customer Journey অটোমেট করি—Lead Capture থেকে শুরু করে দ্রুত Customer Response, Appointment Booking, Payment, Review এবং Repeat Customer পর্যন্ত। (Complete end-to-end customer journey automation for your detailing business)"}
           </p>
         </div>
 
@@ -113,7 +109,56 @@ export default function ServicesPage() {
               </ul>
             </div>
 
+            {/* Service 4 */}
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaCreditCard /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "৪. পেমেন্ট, ইনভয়েসিং ও ডিপোজিট অটোমেশন" : "4. Payment, Invoicing & Deposit Automation"}
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "বুকিং কনফার্ম করার জন্য সিকিউর ডিপোজিট লিংক পাঠানো" : "Secure deposit link for booking confirmation"}</li>
+                <li>• {isBangla ? "অটোমেটিক ইনভয়েস জেনারেট ও পেমেন্ট রিমাইন্ডার" : "Automated invoice generation & payment reminders"}</li>
+                <li>• {isBangla ? "নো-শো (No-show) কমানোর জন্য অ্যাডভান্সড পেমেন্ট সিস্টেম" : "Advanced payment system to reduce no-shows"}</li>
+              </ul>
+            </div>
+
+            {/* Service 5 */}
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaStar /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "৫. অটোমেটিক রিভিউ রিকোয়েস্ট ও রেপুটেশন গ্রোথ" : "5. Auto Review Requests & Reputation Growth"}
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "গাড়ি ডেলিভারির পর স্বয়ংক্রিয়ভাবে Google/Facebook রিভিউ চাওয়া" : "Automated Google/Facebook review requests after delivery"}</li>
+                <li>• {isBangla ? "নেগেটিভ ফিডব্যাক প্রাইভেটে ফিল্টার করে পজিটিভ রিভিউ অনলাইনে বাড়ানো" : "Filtering negative feedback privately to boost positive reviews"}</li>
+              </ul>
+            </div>
+
+            {/* Service 6 */}
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500 transition-all duration-300 space-y-4 shadow-lg">
+              <div className="text-cyan-400 text-3xl mb-3"><FaShareAlt /></div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া অটোমেশন" : "6. Local Marketing & Social Media Automation"}
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li>• {isBangla ? "Google Ads Lead Automation" : "Google Ads Lead Automation"}</li>
+                <li>• {isBangla ? "Social Media Auto Posting (FB, Insta)" : "Social Media Auto Posting (FB, Insta)"}</li>
+                <li>• {isBangla ? "AI Caption Generation & Content Assistance" : "AI Caption Generation & Content Assistance"}</li>
+                <li>• {isBangla ? "Content Calendar & Performance Tracking" : "Content Calendar & Performance Tracking"}</li>
+              </ul>
+            </div>
+
           </div>
+        </div>
+
+        {/* Workflow Section */}
+        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
+          <h3 className="text-2xl font-bold text-cyan-400">
+            {isBangla ? "আমাদের ওয়ার্কফ্লো প্রসেস" : "Our Workflow Process"}
+          </h3>
+          <p className="text-slate-300 text-lg">
+            Flow: Service $\rightarrow$ Follow-up $\rightarrow$ Review $\rightarrow$ Upsell $\rightarrow$ Repeat
+          </p>
         </div>
 
         {/* Call to Action */}
