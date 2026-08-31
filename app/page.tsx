@@ -47,41 +47,43 @@ export default function HomePage() {
               ফ্রি অটোমেশন অডিট বুক করুন
             </Link>
           </div>
+        </div>
 
-          {/* লক্ষ্য সেকশনটি Hero-র ঠিক নিচেই সুন্দরভাবে সেট করা হলো */}
-          <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto mt-10 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
-              <FaBullseye />
-            </div>
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm mb-2">
+        {/* নতুন সেকশন: আমাদের মূল লক্ষ্য (আমাদের সম্পর্কে ঘরের ঠিক উপরে) */}
+        <div className="bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
+            <FaBullseye />
+          </div>
+          <div className="max-w-4xl space-y-4">
+            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
               <FaBullseye /> আমাদের মূল লক্ষ্য
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-              ব্যবসার প্রবৃদ্ধি ও সর্বোচ্চ কার্যকারিতা নিশ্চিতকরণ
-            </h3>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              ব্যবসায় জিরো ম্যানুয়াল ঝামেলা এবং সর্বোচ্চ প্রফিট নিশ্চিত করা
+            </h2>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
+              আমাদের প্রধান লক্ষ্য হলো প্রতিটি বিজনেস ওনারের সময় বাঁচানো এবং আধুনিক <span className="text-cyan-400 font-semibold">AI ও অটোমেশন</span> প্রযুক্তির মাধ্যমে লিড কনভার্শন রেট বহুগুণ বাড়িয়ে দেওয়া। কম সময়ে দ্রুত রেসপন্স, শতভাগ নির্ভুল ফলো-আপ এবং স্থায়ী কাস্টমার বেস তৈরি করে আপনার ব্যবসাকে একটি স্বয়ংক্রিয় প্রফিট মেশিনে রূপান্তর করাই আমাদের মূল অঙ্গীকার।
             </p>
           </div>
         </div>
 
-        {/* আমাদের সম্পর্কে সেকশন (বিজনেস ওনারদের আকর্ষণ করার মতো শক্তিশালী কপি দিয়ে আপডেট করা) */}
+        {/* আমাদের সম্পর্কে সেকশন (বড়, কালারফুল এবং আকর্ষণীয় করা হয়েছে) */}
         <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-3xl text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm">
+            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
               <FaInfoCircle /> আমাদের সম্পর্কে জানুন
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              টিএই এজেন্সি কীভাবে আপনার ব্যবসাকে বদলে দিচ্ছে?
+              টিএই এজেন্সি (TAE.Agency) — আপনার ডিজিটাল গ্রোথ পার্টনার
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+              প্রতিটি সম্ভাবনাময় লিড হাতছাড়া হওয়া মানেই আপনার মূল্যবান ব্যবসার বড় ক্ষতি। আমরা দীর্ঘদিনের অভিজ্ঞতা এবং আধুনিক <span className="text-cyan-400 font-semibold">টেকনিক্যাল সলিউশনের</span> মাধ্যমে আপনার ব্যবসার সেলস ও অপারেশনাল প্রসেসকে সম্পূর্ণ অটোমেটেড করি। আমাদের লক্ষ্য কেবল সেবা দেওয়া নয়, বরং আপনার ব্যবসাকে একটি স্মার্ট ও যুগোপযোগী ব্র্যান্ডে পরিণত করা। আমাদের টিম, ভিশন এবং কাজের ধরণ সম্পর্কে বিস্তারিত জানতে নিচের বাটনে ক্লিক করে আমাদের এবাউট পেজটি ভিজিট করুন।
             </p>
           </div>
           <div className="shrink-0">
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 font-bold px-6 py-4 rounded-xl border border-cyan-500/40 transition-all shadow-lg whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-cyan-500/20 whitespace-nowrap"
             >
               <span>আমাদের সম্পর্কে বিস্তারিত</span>
               <FaArrowRight className="text-sm" />
