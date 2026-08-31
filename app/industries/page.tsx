@@ -4,19 +4,6 @@ import Link from "next/link";
 import { 
   FaBuilding, FaHome, FaCar, FaTools, FaWrench, 
   FaCheckCircle, FaBullseye, FaArrowRight, FaShieldAlt, FaKey, FaHandshake 
-} from "fa-types"; // Note: Using standard react-icons below
-
-import { 
-  FaBuilding as FaBuildingIcon, 
-  FaHome as FaHomeIcon, 
-  FaCar as FaCarIcon, 
-  FaTools as FaToolsIcon, 
-  FaWrench as FaWrenchIcon, 
-  FaCheckCircle as FaCheckCircleIcon, 
-  FaBullseye as FaBullseyeIcon, 
-  FaShieldAlt as FaShieldAltIcon, 
-  FaKey as FaKeyIcon, 
-  FaHandshake as FaHandshakeIcon 
 } from "react-icons/fa";
 
 export default function IndustriesPage() {
@@ -72,11 +59,11 @@ export default function IndustriesPage() {
         {/* Focus Box */}
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
-            <FaBullseyeIcon />
+            <FaBullseye />
           </div>
           <div className="max-w-4xl space-y-3">
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
-              <FaBullseyeIcon /> {isBangla ? "আমাদের ফোকাস" : "Our Main Focus"}
+              <FaBullseye /> {isBangla ? "আমাদের ফোকাস" : "Our Main Focus"}
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white">
               {isBangla ? "সার্ভিস ও রিয়েল এস্টেট বিজনেসের জন্য বিশেষায়িত অটোমেশন" : "Specialized Automation for Service & Real Estate"}
@@ -111,7 +98,7 @@ export default function IndustriesPage() {
             {/* Industry 1: Real Estate */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
-                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaHomeIcon /></div>
+                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaHome /></div>
                 <h3 className="text-xl font-bold text-white mb-2">
                   {isBangla ? "১. রিয়েল এস্টেট ও প্রপার্টি ফার্ম" : "1. Real Estate & Property Firms"}
                 </h3>
@@ -119,9 +106,9 @@ export default function IndustriesPage() {
                   {isBangla ? "প্রপার্টি ইনকোয়ারি, প্রোপেক্ট ফিল্টারিং এবং সাইট ভিজিট বুকিং অটোমেশন।" : "Automated property inquiries, prospect filtering, and site visit bookings."}
                 </p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "ইনস্ট্যান্ট প্রপার্টি ডিটেইলস ও প্রাইসিং শেয়ার" : "Instant property details & pricing share"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "অটোমেটেড সাইট ভিজিট শিডিউলিং" : "Automated site visit scheduling"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "লং-টার্ম বায়ার ফলো-আপ সিকোয়েন্স" : "Long-term buyer follow-up sequence"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "ইনস্ট্যান্ট প্রপার্টি ডিটেইলস ও প্রাইসিং শেয়ার" : "Instant property details & pricing share"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "অটোমেটেড সাইট ভিজিট শিডিউলিং" : "Automated site visit scheduling"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "লং-টার্ম বায়ার ফলো-আপ সিকোয়েন্স" : "Long-term buyer follow-up sequence"}</li>
                 </ul>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-cyan-400 font-mono">
@@ -132,7 +119,7 @@ export default function IndustriesPage() {
             {/* Industry 2: Auto Detailing & Car Care */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
-                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCarIcon /></div>
+                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCar /></div>
                 <h3 className="text-xl font-bold text-white mb-2">
                   {isBangla ? "২. অটো ডিটেইলিং ও কার কেয়ার" : "2. Auto Detailing & Car Care"}
                 </h3>
@@ -140,9 +127,9 @@ export default function IndustriesPage() {
                   {isBangla ? "গাড়ির সার্ভিস বুকিং, মিসড কল রিকভারি এবং কাস্টমার রিভিউ কালেকশন।" : "Car service booking, missed call recovery, and customer review collection."}
                 </p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "২৪/৭ এআই চ্যাটবট দিয়ে বুকিং" : "24/7 AI Chatbot booking"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "মিসড কল অটো-টেক্সট ব্যাক" : "Missed call auto-text back"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "অটোমেটিক রিভিউ ও রিমাইন্ডার" : "Automated reviews & reminders"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "২৪/৭ এআই চ্যাটবট দিয়ে বুকিং" : "24/7 AI Chatbot booking"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "মিসড কল অটো-টেক্সট ব্যাক" : "Missed call auto-text back"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "অটোমেটিক রিভিউ ও রিমাইন্ডার" : "Automated reviews & reminders"}</li>
                 </ul>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-cyan-400 font-mono">
@@ -153,7 +140,7 @@ export default function IndustriesPage() {
             {/* Industry 3: Home Services & Contracting */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
-                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaWrenchIcon /></div>
+                <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaWrench /></div>
                 <h3 className="text-xl font-bold text-white mb-2">
                   {isBangla ? "৩. হোম সার্ভিস ও রেনোভেশন বিজনেস" : "3. Home Services & Renovation"}
                 </h3>
@@ -161,9 +148,9 @@ export default function IndustriesPage() {
                   {isBangla ? "কন্ট্রাক্টর, রেনোভেশন ও মেইনটেন্যান্স সার্ভিসের জন্য লিড ম্যানেজমেন্ট।" : "Lead management for contractors, renovation, and maintenance services."}
                 </p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "ইনস্ট্যান্ট কোটেশন রিকোয়েস্ট প্রসেস" : "Instant quotation request process"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "টেকনিশিয়ান জব অ্যাসাইনমেন্ট" : "Technician job assignment"}</li>
-                  <li className="flex items-center gap-2"><FaCheckCircleIcon className="text-cyan-400 shrink-0" /> {isBangla ? "ইনভয়েস ও ডিপোজিট অটোমেশন" : "Invoice & deposit automation"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "ইনস্ট্যান্ট কোটেশন রিকোয়েস্ট প্রসেস" : "Instant quotation request process"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "টেকনিশিয়ান জব অ্যাসাইনমেন্ট" : "Technician job assignment"}</li>
+                  <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "ইনভয়েস ও ডিপোজিট অটোমেশন" : "Invoice & deposit automation"}</li>
                 </ul>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-cyan-400 font-mono">
@@ -232,4 +219,3 @@ export default function IndustriesPage() {
     </div>
   );
 }
-
