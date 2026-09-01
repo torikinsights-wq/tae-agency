@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
-  FaRocket, FaBullseye, FaHandshake, FaCheckCircle, 
-  FaRobot, FaChartLine, FaShieldAlt, FaBolt, FaPhoneSlash, FaComments 
+  FaRocket, FaBullseye, FaCheckCircle, 
+  FaRobot, FaPhoneSlash, FaCalendarAlt, FaCreditCard, FaStar, FaShareAlt 
 } from "react-icons/fa";
 
 export default function AboutPage() {
@@ -37,7 +37,7 @@ export default function AboutPage() {
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
             {isBangla ? (
-              <>বিজনেস অটোমেশন ও এআই সলিউশনে আপনার <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">বিশ্বস্ত পার্টনার</span></>
+              <>বিজনেস অটোমেশন ও এআই সলিউশনে আপনার <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">বিশ্বস্ত পার트নার</span></>
             ) : (
               <>Your Trusted Partner in <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Business Automation & AI</span></>
             )}
@@ -87,41 +87,115 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* What We Automate (Core Focus) */}
+        {/* What We Automate (6 Core Services matching Service Page) */}
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 space-y-8 shadow-xl">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
               {isBangla ? "আমরা ঠিক কী ধরনের অটোমেশন নিয়ে কাজ করি?" : "What Systems Do We Automate?"}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base">
-              {isBangla ? "আপনার ব্যবসার সেলস ফানেলকে ১০০% অটোমেটেড করতে আমাদের রয়েছে নির্দিষ্ট সলিউশন।" : "Specialized systems to make your sales funnel 100% automated."}
+              {isBangla ? "আপনার ব্যবসার সম্পূর্ণ অপারেশন ও সেলস ফানেল অটোমেটেড করতে আমাদের ৬টি কোর সার্ভিস।" : "Our 6 core services to fully automate your business operations and sales funnel."}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaPhoneSlash /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "মিসড কল অটো-টেক্সট ব্যাক" : "Missed Call Text-Back"}</h4>
-              <p className="text-slate-300 text-sm">
-                {isBangla ? "গ্রাহকের ফোন ধরতে না পারলেও সেকেন্ডের মধ্যে স্বয়ংক্রিয় টেক্সট চলে যাবে, ফলে লিড আর হাতছাড়া হবে না।" : "Instantly text back missed callers within seconds so you never lose a lead."}
-              </p>
+            
+            {/* Service 1 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaRobot /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "১. এআই রিসিপশন ও ইনস্ট্যান্ট চ্যাটবট" : "1. AI Reception & Instant Chatbot"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "গ্রাহকদের দিন-রাত ২৪ ঘণ্টা দ্রুত এবং বুদ্ধিমান অটোমেটেড সাপোর্ট প্রদান।" : "Provide fast and smart automated support to customers 24/7."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Message → AI Response → Booking
+              </div>
             </div>
 
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaRobot /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "২৪/৭ এআই চ্যাটবট ও বুকিং" : "24/7 AI Chatbot & Booking"}</h4>
-              <p className="text-slate-300 text-sm">
-                {isBangla ? "ডে-নাইট যেকোনো সময় কাস্টমারদের প্রশ্নের উত্তর দিয়ে স্বয়ংক্রিয়ভাবে অ্যাপয়েন্টমেন্ট বুক করে নেয়।" : "Engage customers 24/7, answer queries, and book appointments automatically."}
-              </p>
+            {/* Service 2 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaPhoneSlash /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "২. মিসড কল অটো-টেক্সট ব্যাক ও লিড রেসকিউ" : "2. Missed Call Text-Back & Lead Rescue"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "একটি লিডও যেন হাতছাড়া না হয় তা নিশ্চিত করতে তাত্ক্ষণিক টেক্সট ব্যাক।" : "Instant text back to ensure not a single lead is ever lost."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Missed Call → Instant SMS → Booking
+              </div>
             </div>
 
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaBolt /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "ইনস্ট্যান্ট লিড ফলো-আপ" : "Instant Lead Follow-Up"}</h4>
-              <p className="text-slate-300 text-sm">
-                {isBangla ? "ফর্ম সাবমিট বা ইনকোয়ারি আসার সাথে সাথে এআই ইনস্ট্যান্ট ফলো-আপ শুরু করে দেয়।" : "Trigger instant personalized follow-ups the moment a lead inquires."}
-              </p>
+            {/* Service 3 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCalendarAlt /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "৩. স্মার্ট বুকিং ও ক্যালেন্ডার অটোমেশন" : "3. Smart Booking & Calendar Automation"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "অ্যাপয়েন্টমেন্ট বুকিং এবং দৈনন্দিন অপারেশনাল কার্যক্রিম সম্পূর্ণ সহজ করুন।" : "Make appointment booking and daily operations effortless."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Booking → Calendar → Reminder
+              </div>
             </div>
+
+            {/* Service 4 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "৪. পেমেন্ট, ইনভয়েসিং ও ডিপোজিট" : "4. Payment, Invoicing & Deposit"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং নো-শো কমানোর সুব্যবস্থা।" : "Easily create invoices, collect payments, and reduce no-shows."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Service → Invoice → Payment Link
+              </div>
+            </div>
+
+            {/* Service 5 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "৫. অটোমেটিক রিভিউ রিকোয়েস্ট" : "5. Automated Review Request"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।" : "Turn one-time buyers into loyal customers and boost reviews."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Service → Follow-up → Review
+              </div>
+            </div>
+
+            {/* Service 6 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaShareAlt /></div>
+                <h4 className="text-lg font-bold text-white mb-1">
+                  {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া" : "6. Local Marketing & Social Media"}
+                </h4>
+                <p className="text-slate-300 text-sm">
+                  {isBangla ? "আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং সচল রাখবে।" : "Run your core business while automation keeps marketing active."}
+                </p>
+              </div>
+              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
+                Flow: Content → AI Caption → Schedule
+              </div>
+            </div>
+
           </div>
         </div>
 
