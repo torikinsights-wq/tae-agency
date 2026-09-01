@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   FaRocket, FaBullseye, FaCheckCircle, 
-  FaRobot, FaPhoneSlash, FaCalendarAlt, FaCreditCard, FaStar, FaShareAlt, FaUserTie, FaUsers
+  FaRobot, FaPhoneSlash, FaCalendarAlt, FaCreditCard, FaStar, FaShareAlt, FaUserTie, FaUsers 
 } from "react-icons/fa";
 
 export default function AboutPage() {
@@ -51,94 +51,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* --- ABOUT ME SECTION --- */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* My Photo / Avatar Box */}
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950 flex items-center justify-center">
-                {/* যদি public ফোল্ডারে my-photo.jpg নামে ছবি রাখেন তবে নিচের কমেন্টটি সরাতে পারেন */}
-                {/* <Image src="/my-photo.jpg" alt="Torikul Islam" fill className="object-cover" /> */}
-                <div className="text-center p-4">
-                  <FaUserTie className="text-cyan-400 text-6xl mx-auto mb-2" />
-                  <span className="text-xs text-slate-400">{isBangla ? "আপনার ছবি এখানে থাকবে" : "Your Photo Here"}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* My Bio / Details */}
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                <FaUserTie /> {isBangla ? "আমার সম্পর্কে (About Me)" : "About Me"}
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                {isBangla ? "তরিকুল ইসলাম — ফাউন্ডার ও অটোমেশন এক্সপার্ট" : "Torikul Islam — Founder & Automation Expert"}
-              </h3>
-              <p className="text-slate-300 text-base leading-relaxed">
-                {isBangla 
-                  ? "আসসালামু আলাইকুম! আমি Torik Automation Engineering (TAE.Agency)-এর প্রতিষ্ঠাতা। দীর্ঘ সময় ধরে আমি লোকাল ব্যবসা এবং সার্ভিস প্রোভাইডারদের জন্য এআই ও আধুনিক টেকনোলজি ব্যবহার করে সেলস ফানেল এবং লিড জেনারেশন অটোমেট করে আসছি।" 
-                  : "Assalamu Alaikum! I am the founder of Torik Automation Engineering (TAE.Agency). I have been helping local businesses and service providers automate sales funnels and lead generation using AI and modern technology."}
-              </p>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {isBangla
-                  ? "আমার লক্ষ্য হলো টেকনিক্যাল জটিলতা দূর করে প্রতিটি ব্যবসায়ীর হাতে এমন একটি সিস্টেম তুলে দেওয়া, যা তাদের অনুপস্থিতিতেও ২৪ ঘণ্টা কাস্টমার হ্যান্ডেল করতে পারে।"
-                  : "My goal is to eliminate technical complexities and provide every business owner with a system that can handle customers 24/7 even in their absence."}
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* --- ABOUT OUR TEAM SECTION --- */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-              <FaUsers /> {isBangla ? "আমাদের টিম" : "Our Team"}
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              {isBangla ? "যে এক্সপার্ট টিম আপনার প্রজেক্ট নিয়ে কাজ করে" : "The Expert Team Behind Your Project"}
-            </h3>
-            <p className="text-slate-400 text-sm max-w-xl mx-auto">
-              {isBangla ? "আমাদের ডেডিকেটেড টিম মেম্বারগণ আপনার অটোমেশন ও মার্কেটিং সফল করতে সবসময় প্রস্তুত।" : "Our dedicated team members are always ready to make your automation and marketing successful."}
-            </p>
-          </div>
-
-          {/* Team Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-            
-            {/* Team Member 1 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
-                <FaUserTie className="text-cyan-400 text-3xl" />
-              </div>
-              <div className="space-y-1">
-                <h4 className="text-lg font-bold text-white">Md. Team Member</h4>
-                <p className="text-cyan-400 text-xs font-semibold">AI Workflow Developer</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-1">
-                  {isBangla ? "চ্যাটবট এবং এআই ইন্টিগ্রেশন ফ্লো ডিজাইন ও সেটআপে পারদর্শী।" : "Expert in chatbot and AI integration flow design & setup."}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
-                <FaUserTie className="text-cyan-400 text-3xl" />
-              </div>
-              <div className="space-y-1">
-                <h4 className="text-lg font-bold text-white">Marketing Specialist</h4>
-                <p className="text-cyan-400 text-xs font-semibold">Google Ads & Lead Gen Expert</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-1">
-                  {isBangla ? "টারগেটেড পিপিসি ক্যাম্পেইন ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজি নিয়ে কাজ করেন।" : "Handles targeted PPC campaigns and client growth strategies."}
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Mission & Vision Section */}
+        {/* 1. Mission & Vision Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-4 shadow-xl">
             <div className="text-cyan-400 text-3xl p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20">
@@ -169,7 +82,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* What We Automate (6 Core Services) */}
+        {/* 2. What We Provide (6 Core Services) */}
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 space-y-8 shadow-xl">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
@@ -281,7 +194,37 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Call to Action Section */}
+        {/* 3. Why Choose Us */}
+        <div className="space-y-8">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-bold text-white">
+              {isBangla ? "কেন অন্য এজেন্সি বাদ দিয়ে আমাদের বেছে নেবেন?" : "Why Choose TAE.Agency Over Others?"}
+            </h2>
+            <p className="text-slate-400 text-sm">
+              {isBangla ? "আমাদের এআই-ड्रাইভেন টেকনিক্যাল এক্সপারিটজই আমাদের অনন্য করে তোলে।" : "Our AI-driven technical expertise sets us apart."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
+              <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
+              <div>
+                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "১০০% কাস্টমাইজড অটোমেশন ফ্লো" : "100% Customized Automation Flow"}</h4>
+                <p className="text-slate-300 text-sm">{isBangla ? "আপনার ব্যবসার ধরন (রিয়েল এস্টেট বা সার্ভিস) অনুযায়ী নিখুঁতভাবে অটোমেশন সেটআপ করা হয়।" : "Tailored specifically to your real estate or service-oriented business model."}</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
+              <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
+              <div>
+                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "সময় সাশ্রয় ও সর্বোচ্চ কনভার্শন" : "Time Savings & Maximum Conversion"}</h4>
+                <p className="text-slate-300 text-sm">{isBangla ? "ম্যানুয়াল কাজের পেছনের সময় বাঁচিয়ে সরাসরি ক্লোজড ডিলে ফোকাস করতে সাহায্য করি।" : "Eliminate manual tasks so you can focus entirely on closing deals."}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Call to Action Section */}
         <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
             {isBangla ? "আপনার ব্যবসাকে পুরোপুরি অটোমেটেড করতে চান?" : "Want to Fully Automate Your Business?"}
@@ -299,6 +242,93 @@ export default function AboutPage() {
             >
               {isBangla ? "Free Automation Audit বুক করুন" : "Book Free Automation Audit"}
             </Link>
+          </div>
+        </div>
+
+        {/* 5. ABOUT ME SECTION (Using your torik.png image) */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* My Photo */}
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950">
+                <Image 
+                  src="/torik.png" 
+                  alt="Torikul Islam" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+
+            {/* My Bio / Details */}
+            <div className="lg:col-span-8 space-y-4">
+              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                <FaUserTie /> {isBangla ? "আমার সম্পর্কে (About Me)" : "About Me"}
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                {isBangla ? "তরিকুল ইসলাম — ফাউন্ডার ও অটোমেশন এক্সপার্ট" : "Torikul Islam — Founder & Automation Expert"}
+              </h3>
+              <p className="text-slate-300 text-base leading-relaxed">
+                {isBangla 
+                  ? "আসসালামু আলাইকুম! আমি Torik Automation Engineering (TAE.Agency)-এর প্রতিষ্ঠাতা। দীর্ঘ সময় ধরে আমি লোকাল ব্যবসা এবং সার্ভিস প্রোভাইডারদের জন্য এআই ও আধুনিক টেকনোলজি ব্যবহার করে সেলস ফানেল এবং লিড জেনারেশন অটোমেট করে আসছি।" 
+                  : "Assalamu Alaikum! I am the founder of Torik Automation Engineering (TAE.Agency). I have been helping local businesses and service providers automate sales funnels and lead generation using AI and modern technology."}
+              </p>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {isBangla
+                  ? "আমার লক্ষ্য হলো টেকনিক্যাল জটিলতা দূর করে প্রতিটি ব্যবসায়ীর হাতে এমন একটি সিস্টেম তুলে দেওয়া, যা তাদের অনুপস্থিতিতেও ২৪ ঘণ্টা কাস্টমার হ্যান্ডেল করতে পারে।"
+                  : "My goal is to eliminate technical complexities and provide every business owner with a system that can handle customers 24/7 even in their absence."}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* 6. ABOUT OUR TEAM SECTION */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+              <FaUsers /> {isBangla ? "আমাদের টিম" : "Our Team"}
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+              {isBangla ? "যে এক্সপার্ট টিম আপনার প্রজেক্ট নিয়ে কাজ করে" : "The Expert Team Behind Your Project"}
+            </h3>
+            <p className="text-slate-400 text-sm max-w-xl mx-auto">
+              {isBangla ? "আমাদের ডেডিকেটেড টিম মেম্বারগণ আপনার অটোমেশন ও মার্কেটিং সফল করতে সবসময় প্রস্তুত।" : "Our dedicated team members are always ready to make your automation and marketing successful."}
+            </p>
+          </div>
+
+          {/* Team Members Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+            
+            {/* Team Member 1 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
+                <FaUserTie className="text-cyan-400 text-3xl" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-lg font-bold text-white">Md. Team Member</h4>
+                <p className="text-cyan-400 text-xs font-semibold">AI Workflow Developer</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-1">
+                  {isBangla ? "চ্যাটবট এবং এআই ইন্টিগ্রেশন ফ্লো ডিজাইন ও সেটআপে পারদর্শী।" : "Expert in chatbot and AI integration flow design & setup."}
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 2 */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
+                <FaUserTie className="text-cyan-400 text-3xl" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-lg font-bold text-white">Marketing Specialist</h4>
+                <p className="text-cyan-400 text-xs font-semibold">Google Ads & Lead Gen Expert</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-1">
+                  {isBangla ? "টারগেটেড পিপিসি ক্যাম্পেইন ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজি নিয়ে কাজ করেন।" : "Handles targeted PPC campaigns and client growth strategies."}
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
