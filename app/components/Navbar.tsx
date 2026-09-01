@@ -2,23 +2,32 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-[#040711]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-[#040711]/90 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 h-20 flex items-center justify-between">
         
         {/* Logo & Tagline */}
         <div className="flex items-center gap-3">
-          <Link href="/" className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-1.5">
-            TAE<span className="text-cyan-400">.</span>Agency
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative h-10 w-32 sm:w-36 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/Logo.png"
+                alt="Torik Automation Engineering Logo"
+                fill
+                priority
+                className="object-contain object-left"
+              />
+            </div>
           </Link>
           <span className="hidden xl:inline-block text-[11px] text-slate-400 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">
-            {t("Torik Automation Engineering", "তরিক অটোমেশন ইঞ্জিনিয়ারিং")}
+            {t("Torik Automation Engineering", "তরিক অটোমেশন ইঞ্জিনিয়ারিং")}
           </span>
         </div>
 
@@ -49,7 +58,7 @@ export default function Navbar() {
 
         {/* Right Actions (Language Toggle & CTA Button) */}
         <div className="hidden lg:flex items-center gap-4">
-          {/* Language Switch Button: বাংলা বা English দেখাবে */}
+          {/* Language Switch Button */}
           <button
             onClick={() => setLang(lang === "en" ? "bn" : "en")}
             className="px-3.5 py-1.5 rounded-lg bg-slate-900 text-cyan-400 border border-cyan-500/30 text-xs font-bold transition-all hover:bg-cyan-500/20"
