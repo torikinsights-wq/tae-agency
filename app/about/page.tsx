@@ -46,7 +46,7 @@ export default function AboutPage() {
 
           <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
             {isBangla 
-              ? "আমরা সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেটের জন্য ম্যানুয়াল প্রসেস বাদ দিয়ে এআই-চালিত অটোমেশন সিস্টেম তৈরি করি।" 
+              ? "আমরা সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেটের জন্য ম্যানুয়াল প্রসেস বাদ দিয়ে এআই-চালিত অটোমেশন সিস্টেম তৈরি করি।" 
               : "We build AI-powered automation systems replacing manual processes for service-oriented businesses and real estate."}
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function AboutPage() {
             </h3>
             <p className="text-slate-300 leading-relaxed text-base">
               {isBangla 
-                ? "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা।" 
+                ? "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা।" 
                 : "To free businesses from manual follow-up hassles. Converting every lead instantly through automated text-backs, AI chatbots, and smart pipelines."}
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function AboutPage() {
             </h3>
             <p className="text-slate-300 leading-relaxed text-base">
               {isBangla 
-                ? "একটি স্বয়ংক্রিয় ডিজিটাল ইকোসিস্টেম তৈরি করা, যেখানে এআই প্রযুক্তির সাহায্যে ছোট-বড় প্রতিটি লোকাল বিজনেস তাদের সেলস ও গ্রোথ বহুগুণ বাড়িয়ে নিতে পারে।" 
+                ? "একটি স্বয়ংক্রিয় ডিজিটাল ইকোসিস্টেম তৈরি করা, যেখানে এআই প্রযুক্তির সাহায্যে ছোট-বড় প্রতিটি লোকাল বিজনেস তাদের সেলস ও গ্রোথ বহুগুণ বাড়িয়ে নিতে পারে।" 
                 : "Creating an automated digital ecosystem where every local business can exponentially scale sales and growth using cutting-edge AI technology."}
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 space-y-8 shadow-xl">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
-              {isBangla ? "আমরা ঠিক কী ধরনের অটোমেশন নিয়ে কাজ করি?" : "What Systems Do We Automate?"}
+              {isBangla ? "আমরা ঠিক কী ধরনের অটোমেশন নিয়ে কাজ করি?" : "What Systems Do We Automate?"}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base">
               {isBangla ? "আপনার ব্যবসার সম্পূর্ণ অপারেশন ও সেলস ফানেল অটোমেটেড করতে আমাদের ৬টি কোর সার্ভিস।" : "Our 6 core services to fully automate your business operations and sales funnel."}
@@ -119,7 +119,7 @@ export default function AboutPage() {
                   {isBangla ? "২. মিসড কল অটো-টেক্সট ব্যাক ও লিড রেসকিউ" : "2. Missed Call Text-Back & Lead Rescue"}
                 </h4>
                 <p className="text-slate-300 text-sm">
-                  {isBangla ? "একটি লিডও যেন হাতছাড়া না হয় তা নিশ্চিত করতে তাত্ক্ষণিক টেক্সট ব্যাক।" : "Instant text back to ensure not a single lead is ever lost."}
+                  {isBangla ? "একটি লিডও যেন হাতছাড়া না হয় তা নিশ্চিত করতে তাত্ক্ষণিক টেক্সট ব্যাক।" : "Instant text back to ensure not a single lead is ever lost."}
                 </p>
               </div>
               <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
@@ -148,10 +148,10 @@ export default function AboutPage() {
               <div>
                 <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
                 <h4 className="text-lg font-bold text-white mb-1">
-                  {isBangla ? "৪. পেমেন্ট, ইনভয়েসিং ও ডিপোজিট" : "4. Payment, Invoicing & Deposit"}
+                  {isBangla ? "৪. পেমেন্ট, ইনভয়েসিং ও ডিপোজিট" : "4. Payment, Invoicing & Deposit"}
                 </h4>
                 <p className="text-slate-300 text-sm">
-                  {isBangla ? "ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং নো-শো কমানোর সুব্যবস্থা।" : "Easily create invoices, collect payments, and reduce no-shows."}
+                  {isBangla ? "ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং নো-শো কমানোর সুব্যবস্থা।" : "Easily create invoices, collect payments, and reduce no-shows."}
                 </p>
               </div>
               <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
@@ -164,10 +164,10 @@ export default function AboutPage() {
               <div>
                 <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
                 <h4 className="text-lg font-bold text-white mb-1">
-                  {isBangla ? "৫. অটোমেটিক রিভিউ রিকোয়েস্ট" : "5. Automated Review Request"}
+                  {isBangla ? "৫. অটোমেটিক রিভিউ রিকোয়েস্ট" : "5. Automated Review Request"}
                 </h4>
                 <p className="text-slate-300 text-sm">
-                  {isBangla ? "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।" : "Turn one-time buyers into loyal customers and boost reviews."}
+                  {isBangla ? "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।" : "Turn one-time buyers into loyal customers and boost reviews."}
                 </p>
               </div>
               <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
@@ -180,7 +180,7 @@ export default function AboutPage() {
               <div>
                 <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaShareAlt /></div>
                 <h4 className="text-lg font-bold text-white mb-1">
-                  {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া" : "6. Local Marketing & Social Media"}
+                  {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া" : "6. Local Marketing & Social Media"}
                 </h4>
                 <p className="text-slate-300 text-sm">
                   {isBangla ? "আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং সচল রাখবে।" : "Run your core business while automation keeps marketing active."}
@@ -198,7 +198,7 @@ export default function AboutPage() {
         <div className="space-y-8">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
-              {isBangla ? "কেন অন্য এজেন্সি বাদ দিয়ে আমাদের বেছে নেবেন?" : "Why Choose TAE.Agency Over Others?"}
+              {isBangla ? "কেন অন্য এজেন্সি বাদ দিয়ে আমাদের বেছে নেবেন?" : "Why Choose TAE.Agency Over Others?"}
             </h2>
             <p className="text-slate-400 text-sm">
               {isBangla ? "আমাদের এআই-ड्रাইভেন টেকনিক্যাল এক্সপারিটজই আমাদের অনন্য করে তোলে।" : "Our AI-driven technical expertise sets us apart."}
@@ -210,7 +210,7 @@ export default function AboutPage() {
               <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
               <div>
                 <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "১০০% কাস্টমাইজড অটোমেশন ফ্লো" : "100% Customized Automation Flow"}</h4>
-                <p className="text-slate-300 text-sm">{isBangla ? "আপনার ব্যবসার ধরন (রিয়েল এস্টেট বা সার্ভিস) অনুযায়ী নিখুঁতভাবে অটোমেশন সেটআপ করা হয়।" : "Tailored specifically to your real estate or service-oriented business model."}</p>
+                <p className="text-slate-300 text-sm">{isBangla ? "আপনার ব্যবসার ধরন (রিয়েল এস্টেট বা সার্ভিস) অনুযায়ী নিখুঁতভাবে অটোমেশন সেটআপ করা হয়।" : "Tailored specifically to your real estate or service-oriented business model."}</p>
               </div>
             </div>
 
@@ -218,7 +218,7 @@ export default function AboutPage() {
               <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
               <div>
                 <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "সময় সাশ্রয় ও সর্বোচ্চ কনভার্শন" : "Time Savings & Maximum Conversion"}</h4>
-                <p className="text-slate-300 text-sm">{isBangla ? "ম্যানুয়াল কাজের পেছনের সময় বাঁচিয়ে সরাসরি ক্লোজড ডিলে ফোকাস করতে সাহায্য করি।" : "Eliminate manual tasks so you can focus entirely on closing deals."}</p>
+                <p className="text-slate-300 text-sm">{isBangla ? "ম্যানুয়াল কাজের পেছনের সময় বাঁচিয়ে সরাসরি ক্লোজড ডিলে ফোকাস করতে সাহায্য করি।" : "Eliminate manual tasks so you can focus entirely on closing deals."}</p>
               </div>
             </div>
           </div>
@@ -278,12 +278,12 @@ export default function AboutPage() {
               <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
                 <p>
                   {isBangla 
-                    ? "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।" 
+                    ? "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।" 
                     : "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial."}
                 </p>
                 <p>
                   {isBangla 
-                    ? "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও রিয়েল এস্টেট উদ্যোক্তাদের দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।" 
+                    ? "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও রিয়েল এস্টেট উদ্যোক্তাদের দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।" 
                     : "My core mission is to free local business and real estate entrepreneurs from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost."}
                 </p>
               </div>
@@ -292,26 +292,26 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* 6. ABOUT OUR TEAM SECTION (With Farjana, Sagor, Sakib, Rashed) */}
+        {/* 6. ABOUT OUR TEAM SECTION (6 Members: 3 per row, 2 rows total, larger photos) */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
               <FaUsers /> {isBangla ? "আমাদের টিম" : "Our Team"}
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              {isBangla ? "যে এক্সপার্ট টিম আপনার প্রজেক্ট নিয়ে কাজ করে" : "The Expert Team Behind Your Project"}
+              {isBangla ? "যে এক্সপার্ট টিম আপনার প্রজেক্ট নিয়ে কাজ করে" : "The Expert Team Behind Your Project"}
             </h3>
             <p className="text-slate-400 text-sm max-w-xl mx-auto">
-              {isBangla ? "আমাদের ডেডিকেটেড টিম মেম্বারগণ আপনার অটোমেশন ও মার্কেটিং সফল করতে সবসময় প্রস্তুত।" : "Our dedicated team members are always ready to make your automation and marketing successful."}
+              {isBangla ? "আমাদের ডেডিকেটেড টিম মেম্বারগণ আপনার অটোমেশন ও মার্কেটিং সফল করতে সবসময় প্রস্তুত।" : "Our dedicated team members are always ready to make your automation and marketing successful."}
             </p>
           </div>
 
-          {/* Team Members Grid (4 Members) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+          {/* Team Members Grid: 3 columns per row (lg:grid-cols-3) -> 6 members total will form 2 rows */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
             
             {/* Team Member 1: Farjana */}
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
                 <Image src="/Farjana.png" alt="Farjana" fill className="object-cover" />
               </div>
               <div>
@@ -325,7 +325,7 @@ export default function AboutPage() {
 
             {/* Team Member 2: Sagor */}
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
                 <Image src="/Sagor.png" alt="Sagor" fill className="object-cover" />
               </div>
               <div>
@@ -339,7 +339,7 @@ export default function AboutPage() {
 
             {/* Team Member 3: Sakib */}
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
                 <Image src="/Sakib.png" alt="Sakib" fill className="object-cover" />
               </div>
               <div>
@@ -353,14 +353,42 @@ export default function AboutPage() {
 
             {/* Team Member 4: Rashed */}
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
                 <Image src="/Rashed.jpg" alt="Rashed" fill className="object-cover" />
               </div>
               <div>
                 <h4 className="text-lg font-bold text-white">Rashed</h4>
                 <p className="text-cyan-400 text-xs font-semibold pt-1">Marketing Strategist</p>
                 <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {isBangla ? "ডিজিটাল মার্কেটিং ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজিস্ট।" : "Digital marketing & client growth strategist."}
+                  {isBangla ? "ডিজিটাল মার্কেটিং ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজিস্ট।" : "Digital marketing & client growth strategist."}
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 5: Ramich */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
+                <Image src="/Ramich.jpg" alt="Ramich" fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Ramich</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">Tech Integration Expert</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "সিস্টেম ইন্টিগ্রেশন ও টেকনিক্যাল সাপোর্ট।" : "System integration & technical support."}
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 6: Rimu */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
+                <Image src="/Rimu.jpg" alt="Rimu" fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Rimu</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">Operations & Support</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "অপারেশনস এবং ক্লায়েন্ট সাকসেস ম্যানেজমেন্ট।" : "Operations and client success management."}
                 </p>
               </div>
             </div>
