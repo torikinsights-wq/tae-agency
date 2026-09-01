@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { 
   FaBolt, FaRobot, FaCalendarAlt, FaCreditCard, 
-  FaStar, FaShareAlt, FaArrowRight, FaCheckCircle, FaInfoCircle, FaBullseye, FaSyncAlt, FaShieldAlt 
+  FaStar, FaShareAlt, FaArrowRight, FaCheckCircle, FaInfoCircle, FaBullseye, FaNetworkWired, FaServer 
 } from "react-icons/fa";
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-20">
         
-        {/* Hero Section with Visual Workflow Automation Preview on the Right */}
+        {/* Hero Section with Tech Integration Ecosystem Graphic on the Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
           
           {/* Left Text Content */}
@@ -52,89 +52,88 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Visual Automation Workflow Card (Placed in your requested red box area) */}
+          {/* Right Visual Tech Integration Ecosystem Graphic (Inspired by your reference screenshot) */}
           <div className="lg:col-span-5">
-            <div className="relative bg-gradient-to-b from-slate-900/90 to-slate-950 border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl overflow-hidden group">
+            <div className="relative bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl overflow-hidden group">
               
-              {/* Background Glow Effect */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+              {/* Glowing Ambient Backgrounds */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-              <div className="flex items-center justify-between mb-6 border-b border-slate-800 pb-4">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
-                  <span className="text-xs font-mono text-slate-400 ml-2">TAE_Live_Workflow.ai</span>
+              {/* Header inside the Box */}
+              <div className="flex items-center justify-between mb-6 border-b border-slate-800/80 pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                    <FaNetworkWired className="text-sm" />
+                  </div>
+                  <div>
+                    <span className="text-white text-xs font-bold block">TAE Ecosystem & APIs</span>
+                    <span className="text-[10px] text-cyan-400 font-mono">Zapier / Make / n8n Powered</span>
+                  </div>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20 animate-pulse">
-                  <FaSyncAlt className="text-[10px] animate-spin" /> Live System
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold animate-pulse flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Connected
                 </span>
               </div>
 
-              {/* Visual Interactive Flow Steps */}
-              <div className="space-y-3.5 relative z-10">
+              {/* Central Core Hub & Orbiting Tool Nodes */}
+              <div className="relative py-6 flex flex-col items-center justify-center">
                 
-                {/* Step 1 */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
-                      01
-                    </div>
-                    <div>
-                      <div className="text-white text-sm font-semibold">Lead Captured</div>
-                      <div className="text-slate-400 text-xs">Facebook Ads & Website Form</div>
-                    </div>
+                {/* Central Hub Icon */}
+                <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-xl shadow-cyan-500/30 animate-pulse">
+                  <div className="w-full h-full bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-cyan-400">
+                    <FaServer className="text-2xl mb-0.5" />
+                    <span className="text-[10px] font-bold tracking-wider">CORE AI</span>
                   </div>
-                  <span className="text-xs text-cyan-400 font-mono bg-cyan-500/10 px-2 py-1 rounded">Instant</span>
                 </div>
 
-                {/* Connecting Arrow */}
-                <div className="flex justify-center my-[-4px]">
-                  <div className="w-0.5 h-4 bg-cyan-500/40"></div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-sm">
-                      02
-                    </div>
-                    <div>
-                      <div className="text-white text-sm font-semibold">AI Instant Response</div>
-                      <div className="text-slate-400 text-xs">Automated SMS & Email Sent</div>
-                    </div>
+                {/* Floating Integration Badges Grid */}
+                <div className="grid grid-cols-3 gap-3 w-full mt-6">
+                  
+                  {/* Node 1 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-cyan-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">🤖</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">OpenAI / AI</span>
                   </div>
-                  <span className="text-xs text-blue-400 font-mono bg-blue-500/10 px-2 py-1 rounded">&lt; 2 Sec</span>
-                </div>
 
-                {/* Connecting Arrow */}
-                <div className="flex justify-center my-[-4px]">
-                  <div className="w-0.5 h-4 bg-blue-500/40"></div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-sm">
-                      03
-                    </div>
-                    <div>
-                      <div className="text-white text-sm font-semibold">Smart Booking & CRM</div>
-                      <div className="text-slate-400 text-xs">Calendar Sync & Deal Closed</div>
-                    </div>
+                  {/* Node 2 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-blue-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">⚡</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">n8n / Make</span>
                   </div>
-                  <span className="text-xs text-indigo-400 font-mono bg-indigo-500/10 px-2 py-1 rounded">Automated</span>
+
+                  {/* Node 3 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-emerald-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📊</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">HubSpot CRM</span>
+                  </div>
+
+                  {/* Node 4 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-yellow-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">💬</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">Slack / Chat</span>
+                  </div>
+
+                  {/* Node 5 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-red-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📧</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">Gmail & APIs</span>
+                  </div>
+
+                  {/* Node 6 */}
+                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
+                    <div className="text-purple-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📅</div>
+                    <span className="text-[11px] text-slate-300 font-medium block">Calendar</span>
+                  </div>
+
                 </div>
 
               </div>
 
-              {/* Bottom Card Summary */}
-              <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
-                  <FaShieldAlt /> 100% Zero Manual Effort
-                </span>
-                <span className="text-cyan-400 font-bold">TAE Engine v2.4</span>
+              {/* Bottom Footer Info */}
+              <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-400 text-[11px]">Seamless API Automation</span>
+                <span className="text-cyan-400 font-bold text-[11px]">TAE.Agency v3.0</span>
               </div>
 
             </div>
