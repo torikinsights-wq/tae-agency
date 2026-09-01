@@ -245,40 +245,48 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* 5. ABOUT ME SECTION (Using your torik.png image) */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* 5. ABOUT ME SECTION (Larger Image & Unique Content) */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* My Photo */}
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950">
+            {/* Larger Image Box (As requested) */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-[340px] h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950">
                 <Image 
                   src="/torik.png" 
-                  alt="Torikul Islam" 
+                  alt="Mohammad Torikul Islam Ohi" 
                   fill 
                   className="object-cover" 
                 />
               </div>
             </div>
 
-            {/* My Bio / Details */}
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+            {/* Unique Bio / Details */}
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
                 <FaUserTie /> {isBangla ? "আমার সম্পর্কে (About Me)" : "About Me"}
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                {isBangla ? "তরিকুল ইসলাম — ফাউন্ডার ও অটোমেশন এক্সপার্ট" : "Torikul Islam — Founder & Automation Expert"}
+              
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                {isBangla ? "মোহাম্মদ তরিকুল ইসলাম অভি" : "Mohammad Torikul Islam Ohi"}
               </h3>
-              <p className="text-slate-300 text-base leading-relaxed">
-                {isBangla 
-                  ? "আসসালামু আলাইকুম! আমি Torik Automation Engineering (TAE.Agency)-এর প্রতিষ্ঠাতা। দীর্ঘ সময় ধরে আমি লোকাল ব্যবসা এবং সার্ভিস প্রোভাইডারদের জন্য এআই ও আধুনিক টেকনোলজি ব্যবহার করে সেলস ফানেল এবং লিড জেনারেশন অটোমেট করে আসছি।" 
-                  : "Assalamu Alaikum! I am the founder of Torik Automation Engineering (TAE.Agency). I have been helping local businesses and service providers automate sales funnels and lead generation using AI and modern technology."}
+              
+              <p className="text-cyan-400 font-semibold text-base">
+                {isBangla ? "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — টি এ ই ডট এজেন্সি" : "Automation Engineer & Founder — TAE.Agency"}
               </p>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {isBangla
-                  ? "আমার লক্ষ্য হলো টেকনিক্যাল জটিলতা দূর করে প্রতিটি ব্যবসায়ীর হাতে এমন একটি সিস্টেম তুলে দেওয়া, যা তাদের অনুপস্থিতিতেও ২৪ ঘণ্টা কাস্টমার হ্যান্ডেল করতে পারে।"
-                  : "My goal is to eliminate technical complexities and provide every business owner with a system that can handle customers 24/7 even in their absence."}
-              </p>
+
+              <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
+                <p>
+                  {isBangla 
+                    ? "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।" 
+                    : "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial."}
+                </p>
+                <p>
+                  {isBangla 
+                    ? "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও রিয়েল এস্টেট উদ্যোক্তাদের দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।" 
+                    : "My core mission is to free local business and real estate entrepreneurs from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost."}
+                </p>
+              </div>
             </div>
 
           </div>
