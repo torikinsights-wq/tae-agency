@@ -1,187 +1,99 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { 
-  FaBolt, FaRobot, FaCalendarAlt, FaCreditCard, 
-  FaStar, FaShareAlt, FaArrowRight, FaCheckCircle, FaInfoCircle, FaBullseye, FaNetworkWired, FaServer 
+import {
+  FaBolt, FaRobot, FaCalendarAlt, FaCreditCard,
+  FaStar, FaShareAlt, FaArrowRight, FaCheckCircle, FaInfoCircle, FaBullseye
 } from "react-icons/fa";
+
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-20">
-        
-        {/* Hero Section with Tech Integration Ecosystem Graphic on the Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
-          
-          {/* Left Text Content */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              এআই-চালিত বিজনেস অটোমেশন এজেন্সি
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              আপনার ব্যবসা অটোমেট করুন, <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                সময় বাঁচান ও আয় দ্বিগুণ করুন
-              </span>
-            </h1>
-
-            <p className="text-xl text-cyan-200 font-medium max-w-2xl mx-auto lg:mx-0">
-              সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।
-            </p>
-            
-            <p className="max-w-2xl mx-auto lg:mx-0 text-slate-300 text-base sm:text-lg leading-relaxed">
-              আমরা আপনার ব্যবসার পুরো প্রক্রিয়াটি অটোমেট করি—লিড ক্যাপচার থেকে শুরু করে তাৎক্ষণিক রেসপন্স, এআই ফলো-আপ, অ্যাপয়েন্টমেন্ট বুকিং, পেমেন্ট এবং রিপিট কাস্টমার তৈরি করা পর্যন্ত।
-            </p>
-            
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-              <Link
-                href="/services"
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20"
-              >
-                আমাদের সার্ভিসসমূহ দেখুন
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-xl border border-slate-700 transition-all shadow-lg"
-              >
-                ফ্রি অটোমেশন অডিট বুক করুন
-              </Link>
-            </div>
+      <div className="max-w-7xl mx-auto space-y-16">
+       
+        {/* Hero Section */}
+        <div className="text-center space-y-6 pt-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            এআই-চালিত বিজনেস অটোমেশন এজেন্সি
           </div>
 
-          {/* Right Visual Tech Integration Ecosystem Graphic (Inspired by your reference screenshot) */}
-          <div className="lg:col-span-5">
-            <div className="relative bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl overflow-hidden group">
-              
-              {/* Glowing Ambient Backgrounds */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-              {/* Header inside the Box */}
-              <div className="flex items-center justify-between mb-6 border-b border-slate-800/80 pb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                    <FaNetworkWired className="text-sm" />
-                  </div>
-                  <div>
-                    <span className="text-white text-xs font-bold block">TAE Ecosystem & APIs</span>
-                    <span className="text-[10px] text-cyan-400 font-mono">Zapier / Make / n8n Powered</span>
-                  </div>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold animate-pulse flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Connected
-                </span>
-              </div>
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            আপনার ব্যবসা অটোমেট করুন, <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              সময় বাঁচান ও আয় দ্বিগুণ করুন
+            </span>
+          </h1>
 
-              {/* Central Core Hub & Orbiting Tool Nodes */}
-              <div className="relative py-6 flex flex-col items-center justify-center">
-                
-                {/* Central Hub Icon */}
-                <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-xl shadow-cyan-500/30 animate-pulse">
-                  <div className="w-full h-full bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-cyan-400">
-                    <FaServer className="text-2xl mb-0.5" />
-                    <span className="text-[10px] font-bold tracking-wider">CORE AI</span>
-                  </div>
-                </div>
 
-                {/* Floating Integration Badges Grid */}
-                <div className="grid grid-cols-3 gap-3 w-full mt-6">
-                  
-                  {/* Node 1 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-cyan-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">🤖</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">OpenAI / AI</span>
-                  </div>
+          <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
+            সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।
+          </p>
+         
+          <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg leading-relaxed">
+            আমরা আপনার ব্যবসার পুরো প্রক্রিয়াটি অটোমেট করি—লিড ক্যাপচার থেকে শুরু করে তাৎক্ষণিক রেসপন্স, এআই ফলো-আপ, অ্যাপয়েন্টমেন্ট বুকিং, পেমেন্ট এবং রিপিট কাস্টমার তৈরি করা পর্যন্ত।
+          </p>
+         
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <Link
+              href="/services"
+              className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20"
+            >
+              আমাদের সার্ভিসসমূহ দেখুন
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-xl border border-slate-700 transition-all shadow-lg"
+            >
+              ফ্রি অটোমেশন অডিট বুক করুন
+            </Link>
+          </div>
 
-                  {/* Node 2 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-blue-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">⚡</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">n8n / Make</span>
-                  </div>
 
-                  {/* Node 3 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-emerald-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📊</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">HubSpot CRM</span>
-                  </div>
-
-                  {/* Node 4 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-yellow-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">💬</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">Slack / Chat</span>
-                  </div>
-
-                  {/* Node 5 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-red-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📧</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">Gmail & APIs</span>
-                  </div>
-
-                  {/* Node 6 */}
-                  <div className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 p-2.5 rounded-xl text-center transition-all shadow-md group/card">
-                    <div className="text-purple-400 text-sm font-bold mb-1 group-hover/card:scale-110 transition-transform">📅</div>
-                    <span className="text-[11px] text-slate-300 font-medium block">Calendar</span>
-                  </div>
-
-                </div>
-
-              </div>
-
-              {/* Bottom Footer Info */}
-              <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-400 text-[11px]">Seamless API Automation</span>
-                <span className="text-cyan-400 font-bold text-[11px]">TAE.Agency v3.0</span>
-              </div>
-
+          {/* লক্ষ্য সেকশনটি Hero-র ঠিক নিচেই সুন্দরভাবে সেট করা হলো */}
+          <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto mt-10 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
+              <FaBullseye />
             </div>
-          </div>
-
-        </div>
-
-        {/* নতুন সেকশন: আমাদের মূল লক্ষ্য (আমাদের সম্পর্কে ঘরের ঠিক উপরে) */}
-        <div className="bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
-            <FaBullseye />
-          </div>
-          <div className="max-w-4xl space-y-4">
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
+            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm mb-2">
               <FaBullseye /> আমাদের মূল লক্ষ্য
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              ব্যবসায় জিরো ম্যানুয়াল ঝামেলা এবং সর্বোচ্চ প্রফিট নিশ্চিত করা
-            </h2>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+              ব্যবসার প্রবৃদ্ধি ও সর্বোচ্চ কার্যকারিতা নিশ্চিতকরণ
+            </h3>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              আমাদের প্রধান লক্ষ্য হলো প্রতিটি বিজনেস ওনারের সময় বাঁচানো এবং আধুনিক <span className="text-cyan-400 font-semibold">AI ও অটোমেশন</span> প্রযুক্তির মাধ্যমে লিড কনভার্শন রেট বহুগুণ বাড়িয়ে দেওয়া। কম সময়ে দ্রুত রেসপন্স, শতভাগ নির্ভুল ফলো-আপ এবং স্থায়ী কাস্টমার বেস তৈরি করে আপনার ব্যবসাকে একটি স্বয়ংক্রিয় প্রফিট মেশিনে রূপান্তর করাই আমাদের মূল অঙ্গীকার।
+              <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
             </p>
           </div>
         </div>
 
-        {/* আমাদের সম্পর্কে সেকশন (বড়, কালারফুল এবং আকর্ষণীয় করা হয়েছে) */}
+
+        {/* আমাদের সম্পর্কে সেকশন (বিজনেস ওনারদের আকর্ষণ করার মতো শক্তিশালী কপি দিয়ে আপডেট করা) */}
         <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-3xl text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
+            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm">
               <FaInfoCircle /> আমাদের সম্পর্কে জানুন
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              টিএই এজেন্সি (TAE.Agency) — আপনার ডিজিটাল গ্রোথ পার্টনার
+              টিএই এজেন্সি কীভাবে আপনার ব্যবসাকে বদলে দিচ্ছে?
             </h2>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              প্রতিটি সম্ভাবনাময় লিড হাতছাড়া হওয়া মানেই আপনার মূল্যবান ব্যবসার বড় ক্ষতি। আমরা দীর্ঘদিনের অভিজ্ঞতা এবং আধুনিক <span className="text-cyan-400 font-semibold">টেকনিক্যাল সলিউশনের</span> মাধ্যমে আপনার ব্যবসার সেলস ও অপারেশনাল প্রসেসকে সম্পূর্ণ অটোমেটেড করি। আমাদের লক্ষ্য কেবল সেবা দেওয়া নয়, বরং আপনার ব্যবসাকে একটি স্মার্ট ও যুগোপযোগী ব্র্যান্ডে পরিণত করা। আমাদের টিম, ভিশন এবং কাজের ধরণ সম্পর্কে বিস্তারিত জানতে নিচের বাটনে ক্লিক করে আমাদের এবাউট পেজটি ভিজিট করুন।
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।
             </p>
           </div>
           <div className="shrink-0">
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-cyan-500/20 whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 font-bold px-6 py-4 rounded-xl border border-cyan-500/40 transition-all shadow-lg whitespace-nowrap"
             >
               <span>আমাদের সম্পর্কে বিস্তারিত</span>
               <FaArrowRight className="text-sm" />
             </Link>
           </div>
         </div>
+
 
         {/* Core Services Grid - ৬টি সার্ভিস নিখুঁতভাবে সাজানো */}
         <div className="space-y-8 pt-4">
@@ -190,12 +102,13 @@ export default function HomePage() {
               আমাদের মূল অটোমেশন সার্ভিসসমূহ
             </h2>
             <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-              আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।
+              আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।
             </p>
           </div>
 
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
-            
+           
             {/* Service 1 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
@@ -212,6 +125,7 @@ export default function HomePage() {
                 Flow: Lead → Response → Follow-up → Booking
               </div>
             </div>
+
 
             {/* Service 2 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
@@ -230,6 +144,7 @@ export default function HomePage() {
               </div>
             </div>
 
+
             {/* Service 3 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
@@ -247,12 +162,13 @@ export default function HomePage() {
               </div>
             </div>
 
+
             {/* Service 4 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
                 <h3 className="text-xl font-bold text-white mb-2">৪. Payments & Membership</h3>
-                <p className="text-slate-400 text-sm mb-4">ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।</p>
+                <p className="text-slate-400 text-sm mb-4">ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Auto Invoice Creation</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Secure Payment Links</li>
@@ -264,12 +180,13 @@ export default function HomePage() {
               </div>
             </div>
 
+
             {/* Service 5 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
                 <h3 className="text-xl font-bold text-white mb-2">৫. Retention & Reputation</h3>
-                <p className="text-slate-400 text-sm mb-4">একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।</p>
+                <p className="text-slate-400 text-sm mb-4">একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Automated Review Requests</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Special Offer Campaigns</li>
@@ -280,6 +197,7 @@ export default function HomePage() {
                 Flow: Service → Follow-up → Review → Repeat
               </div>
             </div>
+
 
             {/* Service 6 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
@@ -298,8 +216,10 @@ export default function HomePage() {
               </div>
             </div>
 
+
           </div>
         </div>
+
 
         {/* Complete Customer Journey Section */}
         <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-8 shadow-xl">
@@ -307,7 +227,7 @@ export default function HomePage() {
             🔄 সম্পূর্ণ Customer Journey Automation
           </h2>
           <p className="text-center text-slate-400 mb-8 text-sm sm:text-base">প্রথম লিড থেকে শুরু করে লয়েল কাস্টমার পর্যন্ত পুরো প্রক্রিয়াটি দেখুন।</p>
-          
+         
           <div className="flex flex-wrap justify-center items-center gap-2.5 max-w-4xl mx-auto text-center">
             {[
               "Ads / Website",
@@ -335,6 +255,7 @@ export default function HomePage() {
           </div>
         </div>
 
+
         {/* Call to Action Section */}
         <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
@@ -344,15 +265,16 @@ export default function HomePage() {
             লিড হারানো এবং ম্যানুয়াল কাজের ঝামেলা চিরতরে দূর করুন। AI এবং অটোমেশনকে আপনার ব্যবসার পেছনে ২৪/৭ কাজ করতে দিন।
           </p>
 
+
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg transition duration-300 text-center"
             >
               ফ্রি অটোমেশন অডিট বুক করুন
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-lg transition duration-300 text-center"
             >
               আমাদের একজন এক্সপার্টের সাথে কথা বলুন
@@ -360,7 +282,9 @@ export default function HomePage() {
           </div>
         </div>
 
+
       </div>
     </div>
   );
 }
+
