@@ -245,30 +245,30 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* 5. ABOUT ME SECTION (Larger Image & Unique Content) */}
+        {/* 5. ABOUT ME SECTION (Using /Md Torikul Islam Ovi.png with large size) */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Larger Image Box (As requested) */}
+            {/* Larger Image Box */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full max-w-[340px] h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950">
                 <Image 
-                  src="/torik.png" 
-                  alt="Mohammad Torikul Islam Ohi" 
+                  src="/Md Torikul Islam Ovi.png" 
+                  alt="Md Torikul Islam Ovi" 
                   fill 
                   className="object-cover" 
                 />
               </div>
             </div>
 
-            {/* Unique Bio / Details */}
+            {/* Bio / Details with exact name spelling */}
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
                 <FaUserTie /> {isBangla ? "আমার সম্পর্কে (About Me)" : "About Me"}
               </div>
               
               <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
-                {isBangla ? "মোহাম্মদ তরিকুল ইসলাম অভি" : "Mohammad Torikul Islam Ohi"}
+                Md Torikul Islam Ovi
               </h3>
               
               <p className="text-cyan-400 font-semibold text-base">
@@ -292,7 +292,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* 6. ABOUT OUR TEAM SECTION */}
+        {/* 6. ABOUT OUR TEAM SECTION (With Farjana, Sagor, Sakib, Rashed) */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
@@ -306,33 +306,61 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Team Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          {/* Team Members Grid (4 Members) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
             
-            {/* Team Member 1 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
-                <FaUserTie className="text-cyan-400 text-3xl" />
+            {/* Team Member 1: Farjana */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+                <Image src="/Farjana.png" alt="Farjana" fill className="object-cover" />
               </div>
-              <div className="space-y-1">
-                <h4 className="text-lg font-bold text-white">Md. Team Member</h4>
-                <p className="text-cyan-400 text-xs font-semibold">AI Workflow Developer</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-1">
-                  {isBangla ? "চ্যাটবট এবং এআই ইন্টিগ্রেশন ফ্লো ডিজাইন ও সেটআপে পারদর্শী।" : "Expert in chatbot and AI integration flow design & setup."}
+              <div>
+                <h4 className="text-lg font-bold text-white">Farjana</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">Automation Specialist</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "ওয়ার্কফ্লো ডিজাইন ও ডেটা ম্যানেজমেন্ট এক্সপার্ট।" : "Workflow design & data management expert."}
                 </p>
               </div>
             </div>
 
-            {/* Team Member 2 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex items-center gap-6">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shrink-0 flex items-center justify-center">
-                <FaUserTie className="text-cyan-400 text-3xl" />
+            {/* Team Member 2: Sagor */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+                <Image src="/Sagor.png" alt="Sagor" fill className="object-cover" />
               </div>
-              <div className="space-y-1">
-                <h4 className="text-lg font-bold text-white">Marketing Specialist</h4>
-                <p className="text-cyan-400 text-xs font-semibold">Google Ads & Lead Gen Expert</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-1">
-                  {isBangla ? "টারগেটেড পিপিসি ক্যাম্পেইন ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজি নিয়ে কাজ করেন।" : "Handles targeted PPC campaigns and client growth strategies."}
+              <div>
+                <h4 className="text-lg font-bold text-white">Sagor</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">AI Chatbot Developer</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "এআই চ্যাটবট ও ইনস্ট্যান্ট রেসপন্স সেটআপে দক্ষ।" : "Skilled in AI chatbot & instant response setup."}
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 3: Sakib */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+                <Image src="/Sakib.png" alt="Sakib" fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Sakib</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">Lead Gen Specialist</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "লিড জেনারেশন ও পাইপলাইন অপ্টিমাইজেশন।" : "Lead generation & pipeline optimization."}
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 4: Rashed */}
+            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
+              <div className="relative w-28 h-28 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900">
+                <Image src="/Rashed.jpg" alt="Rashed" fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Rashed</h4>
+                <p className="text-cyan-400 text-xs font-semibold pt-1">Marketing Strategist</p>
+                <p className="text-slate-400 text-xs leading-relaxed pt-2">
+                  {isBangla ? "ডিজিটাল মার্কেটিং ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজিস্ট।" : "Digital marketing & client growth strategist."}
                 </p>
               </div>
             </div>
