@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   FaRocket, FaBullseye, FaHandshake, FaCheckCircle, 
-  FaLightbulb, FaChartLine, FaShieldAlt, FaUsers 
+  FaRobot, FaChartLine, FaShieldAlt, FaBolt, FaPhoneSlash, FaComments 
 } from "react-icons/fa";
 
 export default function AboutPage() {
@@ -32,21 +32,27 @@ export default function AboutPage() {
         <div className="text-center space-y-6 pt-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            {isBangla ? "আমাদের সম্পর্কে জানুন" : "About TAE.Agency"}
+            {isBangla ? "TAE.Agency সম্পর্কে" : "About TAE.Agency"}
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
             {isBangla ? (
-              <>ব্যবসার বৃদ্ধিতে আমরা আপনার <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">বিশ্বস্ত অংশীদার</span></>
+              <>বিজনেস অটোমেশন ও এআই সলিউশনে আপনার <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">বিশ্বস্ত পার্টনার</span></>
             ) : (
-              <>Your Trusted Partner in <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Business Growth</span></>
+              <>Your Trusted Partner in <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Business Automation & AI</span></>
             )}
           </h1>
 
           <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
             {isBangla 
-              ? "TAE.Agency হলো একটি আধুনিক ডিজিটাল মার্কেটিং ও এআই অটোমেশন এজেন্সি, যা স্থানীয় ব্যবসা ও সার্ভিস প্রোভাইডারদের লিড জেনারেশন এবং সেলস বৃদ্ধিতে সহায়তা করে।" 
-              : "TAE.Agency is a modern digital marketing and AI automation agency helping local businesses and service providers scale lead generation and sales."}
+              ? "আমরা সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেটের জন্য ম্যানুয়াল প্রসেস বাদ দিয়ে এআই-চালিত অটোমেশন সিস্টেম তৈরি করি।" 
+              : "We build AI-powered automation systems replacing manual processes for service-oriented businesses and real estate."}
+          </p>
+          
+          <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg leading-relaxed">
+            {isBangla
+              ? "বর্তমানে একটি মিসড কল বা ধীরগতির রেসপন্স মানেই শত শত ডলারের লিড হাতছাড়া হওয়া। TAE.Agency কাজ করছে যেন আপনার কোনো লিড কখনো মিস না হয় এবং ২৪/৭ কাস্টমার এনগেজমেন্ট নিশ্চিত থাকে।"
+              : "In today's market, a missed call or slow response means losing hundreds in revenue. TAE.Agency ensures zero missed leads and 24/7 customer engagement."}
           </p>
         </div>
 
@@ -57,12 +63,12 @@ export default function AboutPage() {
               <FaBullseye />
             </div>
             <h3 className="text-2xl font-bold text-white">
-              {isBangla ? "আমাদের মিশন" : "Our Mission"}
+              {isBangla ? "আমাদের লক্ষ্য বা মিশন" : "Our Mission"}
             </h3>
             <p className="text-slate-300 leading-relaxed text-base">
               {isBangla 
-                ? "অটোমেশন ও ডেটা-ড্রাইভেন মার্কেটিং স্ট্র্যাটেজির মাধ্যমে ব্যবসাগুলোর ম্যানুয়াল কাজের ঝামেলা দূর করা এবং প্রতিটি লিডকে সঠিকভাবে কনভার্ট করে সর্বোচ্চ রিটার্ন (ROI) নিশ্চিত করা।" 
-                : "To eliminate manual hurdles for businesses through automation and data-driven marketing strategies, ensuring maximum ROI by effectively converting every lead."}
+                ? "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা।" 
+                : "To free businesses from manual follow-up hassles. Converting every lead instantly through automated text-backs, AI chatbots, and smart pipelines."}
             </p>
           </div>
 
@@ -75,58 +81,58 @@ export default function AboutPage() {
             </h3>
             <p className="text-slate-300 leading-relaxed text-base">
               {isBangla 
-                ? "ভবিষ্যতের ব্যবসাগুলো যেন প্রযুক্তির ছোঁয়ায় আরও স্মার্ট ও দক্ষ হয়ে উঠতে পারে—সেই লক্ষ্য নিয়ে এআই চ্যাটবট, ইনস্ট্যান্ট ফলো-আপ এবং গুগল অ্যাডসের সেরা সলিউশন পৌঁছে দেওয়া।" 
-                : "To empower future businesses to be smarter and more efficient through cutting-edge AI chatbots, instant follow-ups, and top-tier Google Ads solutions."}
+                ? "একটি স্বয়ংক্রিয় ডিজিটাল ইকোসিস্টেম তৈরি করা, যেখানে এআই প্রযুক্তির সাহায্যে ছোট-বড় প্রতিটি লোকাল বিজনেস তাদের সেলস ও গ্রোথ বহুগুণ বাড়িয়ে নিতে পারে।" 
+                : "Creating an automated digital ecosystem where every local business can exponentially scale sales and growth using cutting-edge AI technology."}
             </p>
           </div>
         </div>
 
-        {/* What We Do Section */}
+        {/* What We Automate (Core Focus) */}
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 space-y-8 shadow-xl">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
-              {isBangla ? "আমরা যেভাবে সাহায্য করি" : "How We Help Your Business"}
+              {isBangla ? "আমরা ঠিক কী ধরনের অটোমেশন নিয়ে কাজ করি?" : "What Systems Do We Automate?"}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base">
-              {isBangla ? "আপনার ব্যবসার গ্রোথ নিশ্চিত করতে আমাদের রয়েছে বিশেষায়িত সার্ভিসসমূহ।" : "Specialized services to ensure your business growth."}
+              {isBangla ? "আপনার ব্যবসার সেলস ফানেলকে ১০০% অটোমেটেড করতে আমাদের রয়েছে নির্দিষ্ট সলিউশন।" : "Specialized systems to make your sales funnel 100% automated."}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaChartLine /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "গুগল অ্যাডস ম্যানেজমেন্ট" : "Google Ads Management"}</h4>
+              <div className="text-cyan-400 text-2xl"><FaPhoneSlash /></div>
+              <h4 className="text-lg font-bold text-white">{isBangla ? "মিসড কল অটো-টেক্সট ব্যাক" : "Missed Call Text-Back"}</h4>
               <p className="text-slate-300 text-sm">
-                {isBangla ? "টারগেটেড কাস্টমারদের কাছে পৌঁছাতে নিখুঁত পিপিসি ক্যাম্পেইন পরিচালনা।" : "Running precise PPC campaigns to reach target customers effectively."}
+                {isBangla ? "গ্রাহকের ফোন ধরতে না পারলেও সেকেন্ডের মধ্যে স্বয়ংক্রিয় টেক্সট চলে যাবে, ফলে লিড আর হাতছাড়া হবে না।" : "Instantly text back missed callers within seconds so you never lose a lead."}
               </p>
             </div>
 
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaLightbulb /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "লিড জেনারেশন ও অটোমেশন" : "Lead Gen & Automation"}</h4>
+              <div className="text-cyan-400 text-2xl"><FaRobot /></div>
+              <h4 className="text-lg font-bold text-white">{isBangla ? "২৪/৭ এআই চ্যাটবট ও বুকিং" : "24/7 AI Chatbot & Booking"}</h4>
               <p className="text-slate-300 text-sm">
-                {isBangla ? "ইনস্ট্যান্ট ফলো-আপ এবং মিসড কল রিকভারির মাধ্যমে একটি লিডও হাতছাড়া হতে না দেওয়া।" : "Ensuring zero missed leads through instant follow-ups and missed call recovery."}
+                {isBangla ? "ডে-নাইট যেকোনো সময় কাস্টমারদের প্রশ্নের উত্তর দিয়ে স্বয়ংক্রিয়ভাবে অ্যাপয়েন্টমেন্ট বুক করে নেয়।" : "Engage customers 24/7, answer queries, and book appointments automatically."}
               </p>
             </div>
 
             <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3">
-              <div className="text-cyan-400 text-2xl"><FaUsers /></div>
-              <h4 className="text-lg font-bold text-white">{isBangla ? "इंडस्ट्री কাস্টমাইজড সলিউশন" : "Industry Solutions"}</h4>
+              <div className="text-cyan-400 text-2xl"><FaBolt /></div>
+              <h4 className="text-lg font-bold text-white">{isBangla ? "ইনস্ট্যান্ট লিড ফলো-আপ" : "Instant Lead Follow-Up"}</h4>
               <p className="text-slate-300 text-sm">
-                {isBangla ? "রিয়েল এস্টেট, অটো ডিটেইলিং ও হোম সার্ভিসের জন্য বিশেষায়িত ডিজিটাল স্ট্র্যাটেজি।" : "Tailored digital strategies for real estate, auto detailing, and home services."}
+                {isBangla ? "ফর্ম সাবমিট বা ইনকোয়ারি আসার সাথে সাথে এআই ইনস্ট্যান্ট ফলো-আপ শুরু করে দেয়।" : "Trigger instant personalized follow-ups the moment a lead inquires."}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Why Choose Us */}
+        {/* Why TAE.Agency */}
         <div className="space-y-8">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-white">
-              {isBangla ? "কেন TAE.Agency বেছে নেবেন?" : "Why Choose TAE.Agency?"}
+              {isBangla ? "কেন অন্য এজেন্সি বাদ দিয়ে আমাদের বেছে নেবেন?" : "Why Choose TAE.Agency Over Others?"}
             </h2>
             <p className="text-slate-400 text-sm">
-              {isBangla ? "আমাদের কাজের মান এবং প্রফেশনালিজমই আমাদের আলাদা করে তোলে।" : "What sets us apart in the digital landscape."}
+              {isBangla ? "আমাদের এআই-ड्रাইভেন টেকনিক্যাল এক্সপারিটজই আমাদের অনন্য করে তোলে।" : "Our AI-driven technical expertise sets us apart."}
             </p>
           </div>
 
@@ -134,16 +140,16 @@ export default function AboutPage() {
             <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
               <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
               <div>
-                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "রেজাল্ট-অরিয়েন্টেড অ্যাপ্রোচ" : "Result-Oriented Approach"}</h4>
-                <p className="text-slate-300 text-sm">{isBangla ? "আমরা শুধু ট্রাফিক আনি না, বরং প্রকৃত সেলস ও ক্লায়েন্ট কনভারশনে ফোকাস করি।" : "We focus on actual sales and client conversion, not just traffic."}</p>
+                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "১০০% কাস্টমাইজড অটোমেশন ফ্লো" : "100% Customized Automation Flow"}</h4>
+                <p className="text-slate-300 text-sm">{isBangla ? "আপনার ব্যবসার ধরন (রিয়েল এস্টেট বা সার্ভিস) অনুযায়ী নিখুঁতভাবে অটোমেশন সেটআপ করা হয়।" : "Tailored specifically to your real estate or service-oriented business model."}</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
               <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
               <div>
-                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "আধুনিক এআই প্রযুক্তি" : "Modern AI Technology"}</h4>
-                <p className="text-slate-300 text-sm">{isBangla ? "সর্বাধুনিক অটোমেশন টুলস ও এআই ব্যবহার করে আপনার ব্যবসাকে সর্বদা এক ধাপ এগিয়ে রাখি।" : "Keeping your business ahead using cutting-edge automation tools and AI."}</p>
+                <h4 className="text-lg font-bold text-white mb-1">{isBangla ? "সময় সাশ্রয় ও সর্বোচ্চ কনভার্শন" : "Time Savings & Maximum Conversion"}</h4>
+                <p className="text-slate-300 text-sm">{isBangla ? "ম্যানুয়াল কাজের পেছনের সময় বাঁচিয়ে সরাসরি ক্লোজড ডিলে ফোকাস করতে সাহায্য করি।" : "Eliminate manual tasks so you can focus entirely on closing deals."}</p>
               </div>
             </div>
           </div>
@@ -152,12 +158,12 @@ export default function AboutPage() {
         {/* Call to Action Section */}
         <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            {isBangla ? "আপনার ব্যবসাকে পরবর্তী স্তরে নিয়ে যেতে প্রস্তুত?" : "Ready to take your business to the next level?"}
+            {isBangla ? "আপনার ব্যবসাকে পুরোপুরি অটোমেটেড করতে চান?" : "Want to Fully Automate Your Business?"}
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
             {isBangla 
-              ? "আজই আমাদের সাথে যোগাযোগ করুন এবং আপনার প্রজেক্ট নিয়ে আলোচনা করুন।" 
-              : "Contact us today and let's discuss your project."}
+              ? "আজই আমাদের সাথে কথা বলুন এবং আপনার বিজনেসের জন্য ফ্রি অটোমেশন অডিট বুক করুন।" 
+              : "Talk to us today and book a free automation audit for your business."}
           </p>
 
           <div className="flex justify-center pt-4">
@@ -165,7 +171,7 @@ export default function AboutPage() {
               href="/contact"
               className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/20 transition duration-300 text-center"
             >
-              {isBangla ? "যোগাযোগ করুন" : "Get in Touch"}
+              {isBangla ? "Free Automation Audit বুক করুন" : "Book Free Automation Audit"}
             </Link>
           </div>
         </div>
