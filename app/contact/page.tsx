@@ -43,11 +43,12 @@ export default function ContactPage() {
           access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719",
           subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
-          "পূর্ণ নাম": formData.fullName,
-          "সার্ভিসের ধরণ": finalBusinessType,
-          "যোগাযোগের মাধ্যম": formData.contactMethod.toUpperCase(),
-          "যোগাযোগের তথ্য": formData.contactValue,
-          "মেসেজ": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
+          // এখানে শুধু কাস্টম নামগুলো পাঠানো হচ্ছে যাতে ডিফল্ট Name/Email কলাম ফালতু খালি না থাকে
+          "Client Name": formData.fullName,
+          "Service Type": finalBusinessType,
+          "Contact Method": formData.contactMethod.toUpperCase(),
+          "Contact Info": formData.contactValue,
+          "Project Details": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
         }),
       });
 
@@ -129,7 +130,7 @@ export default function ContactPage() {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="আপনার পুরো নাম লিখুন"
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:invalid:border-rose-500 focus:outline-none transition-colors invalid:border-rose-500/80"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -141,7 +142,7 @@ export default function ContactPage() {
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors invalid:border-rose-500/80"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                   >
                     <option value="" disabled>আপনার ব্যবসার ধরণ সিলেক্ট করুন</option>
                     <option value="রিয়েল এস্টেট 🏠">১. রিয়েল এস্টেট 🏠</option>
@@ -209,7 +210,7 @@ export default function ContactPage() {
                     value={formData.contactValue}
                     onChange={handleChange}
                     placeholder={formData.contactMethod === 'email' ? 'torikinsights@gmail.com' : '+880 1724-132820'}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2 invalid:border-rose-500/80"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
                   />
                 </div>
 
@@ -251,7 +252,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Right: Direct Contact Cards (WhatsApp, Email, Instagram, Facebook, Call) */}
+          {/* Right: Direct Contact Cards */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
