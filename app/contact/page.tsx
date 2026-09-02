@@ -78,7 +78,7 @@ export default function ContactPage() {
             আপনার ব্যবসা অটোমেট করতে <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">কথা বলুন আজই</span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg">
-            নিচের ফর্মটি পূরণ করুন অথবা সরাসরি আমাদের WhatsApp, ইমেইল বা সোশ্যাল মিডিয়ায় যোগাযোগ করুন।
+            নিচের ফর্মটি পূরণ করুন অথবা সরাসরি আমাদের WhatsApp, ফেসবুক, ইনস্টাগ্রাম বা ইমেইলে যোগাযোগ করুন।
           </p>
         </div>
 
@@ -129,40 +129,41 @@ export default function ContactPage() {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="আপনার পুরো নাম লিখুন"
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:invalid:border-rose-500 focus:outline-none transition-colors invalid:border-rose-500/80"
                   />
                 </div>
 
-                {/* Service / Business Type */}
+                {/* Business / Service Type */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">কোন সার্ভিসটি আপনার প্রয়োজন? (Service Type) *</label>
+                  <label className="block text-sm font-medium text-slate-300">আপনার ব্যবসার ধরণ বা ক্যাটাগরি *</label>
                   <select
                     name="businessType"
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors invalid:border-rose-500/80"
                   >
-                    <option value="" disabled>আপনার প্রয়োজনীয় সার্ভিস সিলেক্ট করুন</option>
-                    <option value="AI & Workflow Automation">এআই এবং ওয়ার্কফ্লো অটোমেশন (AI & Workflow Automation)</option>
-                    <option value="Lead Generation & Funnel">লিড জেনারেশন ও সেলস ফানেল (Lead Generation & Funnel)</option>
-                    <option value="Google Ads & PPC">গুগল এডস ও পিপিসি ম্যানেজমেন্ট (Google Ads & PPC)</option>
-                    <option value="Custom App & Firebase">কাস্টম অ্যাপ ডেভেলপমেন্ট ও ফায়ারবেস (Custom App & Firebase)</option>
-                    <option value="Other">অন্যান্য সার্ভিস (Other)</option>
+                    <option value="" disabled>আপনার ব্যবসার ধরণ সিলেক্ট করুন</option>
+                    <option value="রিয়েল এস্টেট 🏠">১. রিয়েল এস্টেট 🏠</option>
+                    <option value="অটো ডিটেইলিং 🚗">২. অটো ডিটেইলিং 🚗</option>
+                    <option value="বাড়ি সংস্কার ও নবায়ন 🏗️">৩. বাড়ি সংস্কার ও নবায়ন 🏗️</option>
+                    <option value="ডেন্টাল / মেডিকেল ক্লিনিক 🦷">৪. ডেন্টাল / মেডিকেল ক্লিনিক 🦷</option>
+                    <option value="হোম সার্ভিস ব্যবসা 🔧">৫. হোম সার্ভিস ব্যবসা 🔧</option>
+                    <option value="Other">অন্যান্য (Other)</option>
                   </select>
                 </div>
 
-                {/* Conditional Custom Service Field */}
+                {/* Conditional Custom Business Field */}
                 {formData.businessType === "Other" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <label className="block text-sm font-medium text-cyan-300">আপনার সার্ভিস বা প্রজেক্টের বিবরণ দিন *</label>
+                    <label className="block text-sm font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
                     <input
                       type="text"
                       name="customBusinessType"
                       required
                       value={formData.customBusinessType}
                       onChange={handleChange}
-                      placeholder="যেমন: ই-কমার্স অটোমেশন, চ্যাটবট ইত্যাদি"
+                      placeholder="যেমন: ই-কমার্স, ল’ ফার্ম ইত্যাদি"
                       className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
                     />
                   </div>
@@ -207,8 +208,8 @@ export default function ContactPage() {
                     required
                     value={formData.contactValue}
                     onChange={handleChange}
-                    placeholder={formData.contactMethod === 'email' ? 'your-email@gmail.com' : '+880 1724-132820'}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
+                    placeholder={formData.contactMethod === 'email' ? 'torikinsights@gmail.com' : '+880 1724-132820'}
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2 invalid:border-rose-500/80"
                   />
                 </div>
 
@@ -229,7 +230,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -250,7 +251,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Right: Direct Contact Cards with your provided numbers/links */}
+          {/* Right: Direct Contact Cards (WhatsApp, Email, Instagram, Facebook, Call) */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
@@ -301,6 +302,22 @@ export default function ContactPage() {
                   <div>
                     <div className="text-xs text-slate-400 font-medium">ইনস্টাগ্রাম</div>
                     <div className="text-white font-bold text-sm sm:text-base">@tae.agency</div>
+                  </div>
+                </a>
+
+                {/* Facebook Messenger */}
+                <a 
+                  href="https://m.me/your-facebook-page" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                    <FaFacebookMessenger />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400 font-medium">ফেসবুক মেসেঞ্জার</div>
+                    <div className="text-white font-bold text-sm sm:text-base">TAE.Agency Official</div>
                   </div>
                 </a>
 
