@@ -1,30 +1,67 @@
 "use client";
 import React, { useState } from "react";
 import { 
-  FaEnvelope, FaWhatsapp, FaFacebookMessenger, FaMapMarkerAlt, 
-  FaPhoneAlt, FaPaperPlane, FaCheckCircle, FaShieldAlt 
+  FaEnvelope, FaWhatsapp, FaFacebookMessenger, 
+  FaPhoneAlt, FaPaperPlane, FaCheckCircle, FaShieldAlt, FaSpinner 
 } from "react-icons/fa";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     businessType: "",
-    customBusinessType: "", // 'Other' সিলেক্ট করলে ব্যবসার নাম লেখার জন্য
-    contactMethod: "email", // 'email' অথবা 'whatsapp' সিলেক্ট করার জন্য
-    contactValue: "",     // ইমেইল বা হোয়াটসঅ্যাপ নম্বর ইনপুট নেওয়ার জন্য
+    customBusinessType: "",
+    contactMethod: "email",
+    contactValue: "",
     message: ""
   });
 
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    const finalBusinessType = formData.businessType === "Other" 
+      ? `Other: ${formData.customBusinessType}` 
+      : formData.businessType;
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719", // আপনার আসল এক্সেস কি বসানো হয়েছে
+          subject: `নতুন লিড: ${formData.fullName} (${finalBusinessType})`,
+          from_name: "TAE Agency Contact Form",
+          "পূর্ণ নাম": formData.fullName,
+          "ব্যবসার ধরণ": finalBusinessType,
+          "যোগাযোগের মাধ্যম": formData.contactMethod.toUpperCase(),
+          "যোগাযোগের তথ্য": formData.contactValue,
+          "মেসেজ": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.message || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+      }
+    } catch (error) {
+      setErrorMessage("সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,10 +95,13 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
                 <p className="text-slate-300 max-w-md mx-auto">
-                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আমাদের একজন অটোমেশন এক্সপার্ট আপনার দেওয়া মাধ্যমে যোগাযোগ করবেন।
+                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আমাদের একজন এক্সপার্ট আপনার দেওয়া মাধ্যমে যোগাযোগ করবেন।
                 </p>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({ fullName: "", businessType: "", customBusinessType: "", contactMethod: "email", contactValue: "", message: "" });
+                  }}
                   className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg"
                 >
                   আরেকটি মেসেজ পাঠান
@@ -72,6 +112,12 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-4 flex items-center gap-2">
                   <FaPaperPlane className="text-cyan-400 text-lg" /> ফ্রি অটোমেশন অডিট ফর্ম
                 </h3>
+
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
 
                 {/* Full Name */}
                 <div className="space-y-2">
@@ -87,7 +133,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Business Type (Updated with 5 specific service-oriented businesses + Other) */}
+                {/* Business Type */}
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-slate-300">ব্যবসার টাইপ (Business Type) *</label>
                   <select
@@ -107,7 +153,7 @@ export default function ContactPage() {
                   </select>
                 </div>
 
-                {/* Conditional Custom Business Type Field (Appears only if 'Other' is selected) */}
+                {/* Conditional Custom Business Type Field */}
                 {formData.businessType === "Other" && (
                   <div className="space-y-2 animate-fadeIn">
                     <label className="block text-sm font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
@@ -155,7 +201,7 @@ export default function ContactPage() {
                     </label>
                   </div>
 
-                  {/* Dynamic Input Field based on selection */}
+                  {/* Dynamic Input Field */}
                   <input
                     type={formData.contactMethod === 'email' ? 'email' : 'text'}
                     name="contactValue"
@@ -183,9 +229,18 @@ export default function ContactPage() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  <FaPaperPlane /> রিকোয়েস্ট সাবমিট করুন
+                  {loading ? (
+                    <>
+                      <FaSpinner className="animate-spin text-lg" /> পাঠানো হচ্ছে...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane /> রিকোয়েস্ট সাবমিট করুন
+                    </>
+                  )}
                 </button>
 
                 <p className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5 pt-2">
@@ -196,7 +251,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Right: Direct Contact Cards (Email, WhatsApp, Facebook, Office) */}
+          {/* Right: Direct Contact Cards */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
@@ -204,8 +259,6 @@ export default function ContactPage() {
               <p className="text-slate-400 text-sm">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
 
               <div className="space-y-4 pt-2">
-                
-                {/* WhatsApp Direct */}
                 <a 
                   href="https://wa.me/8801XXXXXXXXX" 
                   target="_blank" 
@@ -221,7 +274,6 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                {/* Email Direct */}
                 <a 
                   href="mailto:support@tae.agency" 
                   className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
@@ -235,7 +287,6 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                {/* Facebook Messenger Direct */}
                 <a 
                   href="https://m.me/your-facebook-page" 
                   target="_blank" 
@@ -251,7 +302,6 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                {/* Phone / Hotline */}
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
                   <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl">
                     <FaPhoneAlt />
@@ -261,11 +311,9 @@ export default function ContactPage() {
                     <div className="text-white font-bold text-sm sm:text-base">+880 96XX XXXXXX</div>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            {/* Response Time Badge */}
             <div className="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-2xl p-5 text-center text-sm text-cyan-300">
               ⚡ সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।
             </div>
