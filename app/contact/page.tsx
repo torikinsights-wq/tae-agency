@@ -40,11 +40,11 @@ export default function ContactPage() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719",
+          access_key: "195853f8-c1a8-415e-8cce-b8dd5212d790",
           subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
           
-          // নতুন ফরমের জন্য ফিল্ডগুলোর সঠিক সিরিয়াল ও ম্যাপিং
+          // নতুন ফরমের জন্য ফিল্ডগুলোর সঠিক সিরিয়াল ও ম্যাপিং
           "Client Name": formData.fullName,
           "Service Type": finalBusinessType,
           "Contact Method": formData.contactMethod.toUpperCase(),
@@ -57,10 +57,10 @@ export default function ContactPage() {
       if (result.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(result.message || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+        setErrorMessage(result.message || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
       }
     } catch (error) {
-      setErrorMessage("সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।");
+      setErrorMessage("সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।");
     } finally {
       setLoading(false);
     }
@@ -95,9 +95,9 @@ export default function ContactPage() {
                 <div className="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl animate-bounce">
                   <FaCheckCircle />
                 </div>
-                <h3 className="text-2xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
+                <h3 className="text-2xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
                 <p className="text-slate-300 max-w-md mx-auto">
-                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আপনার দেওয়া মাধ্যমে যোগাযোগ করা হবে।
+                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আপনার দেওয়া মাধ্যমে যোগাযোগ করা হবে।
                 </p>
                 <button
                   onClick={() => {
@@ -340,7 +340,7 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-2xl p-5 text-center text-sm text-cyan-300">
-              ⚡ সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।
+              ⚡ সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।
             </div>
 
           </div>
