@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     businessType: "",
+    customBusinessType: "", // 'Other' সিলেক্ট করলে ব্যবসার নাম লেখার জন্য
     contactMethod: "email", // 'email' অথবা 'whatsapp' সিলেক্ট করার জন্য
     contactValue: "",     // ইমেইল বা হোয়াটসঅ্যাপ নম্বর ইনপুট নেওয়ার জন্য
     message: ""
@@ -22,7 +23,6 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // এখানে আপনি ব্যাকএন্ড বা API-এর মাধ্যমে ডাটা পাঠানোর লজিক যুক্ত করতে পারেন
     console.log("Form Submitted:", formData);
     setSubmitted(true);
   };
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Business Type */}
+                {/* Business Type (Updated with 5 specific service-oriented businesses + Other) */}
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-slate-300">ব্যবসার টাইপ (Business Type) *</label>
                   <select
@@ -97,15 +97,31 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                   >
-                    <option value="" disabled>আপনার ব্যবসার ধরণ সিলেক্ট করুন</option>
-                    <option value="E-commerce">ই-কমার্স (E-commerce / Online Shop)</option>
+                    <option value="" disabled>আপনার সার্ভিস-ভিত্তিক ব্যবসার ধরণ সিলেক্ট করুন</option>
                     <option value="Real Estate">রিয়েল এস্টেট (Real Estate)</option>
-                    <option value="Agency / Service">সার্ভিস এজেন্সি / এজেন্সি (Agency / Service)</option>
-                    <option value="Coach / Consultant">কোচিং / কনসালটেন্সি (Coach / Consultant)</option>
-                    <option value="Healthcare / Clinic">হেলথকেয়ার / ক্লিনিক (Healthcare / Clinic)</option>
-                    <option value="Others">অন্যান্য (Others)</option>
+                    <option value="Home Remodeling">হোম রিমডেলিং ও রেনোভেশন (Home Remodeling)</option>
+                    <option value="Automotive Detailing">অটোমোবাইল ডিটেইলিং ও কার কেয়ার (Automotive Detailing)</option>
+                    <option value="Agency / Service">ডিজিটাল ও সার্ভিস এজেন্সি (Agency / Service)</option>
+                    <option value="Coach / Consultant">কোচিং ও কনসালটেন্সি (Coach / Consultant)</option>
+                    <option value="Other">অন্যান্য (Other)</option>
                   </select>
                 </div>
+
+                {/* Conditional Custom Business Type Field (Appears only if 'Other' is selected) */}
+                {formData.businessType === "Other" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <label className="block text-sm font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
+                    <input
+                      type="text"
+                      name="customBusinessType"
+                      required
+                      value={formData.customBusinessType}
+                      onChange={handleChange}
+                      placeholder="যেমন: ই-কমার্স, ল’ ফার্ম, ক্লিনিক ইত্যাদি"
+                      className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                    />
+                  </div>
+                )}
 
                 {/* Contact Choice: Email or WhatsApp */}
                 <div className="space-y-3">
