@@ -43,7 +43,8 @@ export default function ContactPage() {
           access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719",
           subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
-          // এখানে শুধু কাস্টম নামগুলো পাঠানো হচ্ছে যাতে ডিফল্ট Name/Email কলাম ফালতু খালি না থাকে
+          
+          // নতুন ফরমের জন্য ফিল্ডগুলোর সঠিক সিরিয়াল ও ম্যাপিং
           "Client Name": formData.fullName,
           "Service Type": finalBusinessType,
           "Contact Method": formData.contactMethod.toUpperCase(),
@@ -216,13 +217,13 @@ export default function ContactPage() {
 
                 {/* Additional Message */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">আপনার প্রজেক্ট বা রিকোয়ারমেন্ট সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
+                  <label className="block text-sm font-medium text-slate-300">আপনার প্রজেক্ট বা রিকোয়েস্টার সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
                   <textarea
                     name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="আপনার বর্তমান প্রজেক্ট আইডিয়া বা সমস্যা বিস্তারিত লিখুন..."
+                    placeholder="আপনার বর্তমান প্রজেক্ট আইডিয়া বা সমস্যা বিস্তারিত লিখুন..."
                     className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                   ></textarea>
                 </div>
@@ -245,7 +246,7 @@ export default function ContactPage() {
                 </button>
 
                 <p className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5 pt-2">
-                  <FaShieldAlt className="text-cyan-400" /> আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপনীয় রাখা হবে।
+                  <FaShieldAlt className="text-cyan-400" /> আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপনীয় রাখা হবে।
                 </p>
               </form>
             )}
@@ -257,7 +258,7 @@ export default function ContactPage() {
             
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
               <h3 className="text-2xl font-bold text-white mb-2">সরাসরি যোগাযোগের মাধ্যম</h3>
-              <p className="text-slate-400 text-sm">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
+              <p className="text-slate-400 text-sm">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
 
               <div className="space-y-4 pt-2">
                 {/* WhatsApp */}
