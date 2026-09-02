@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { 
-  FaEnvelope, FaWhatsapp, FaFacebookMessenger, 
+  FaEnvelope, FaWhatsapp, FaFacebookMessenger, FaInstagram,
   FaPhoneAlt, FaPaperPlane, FaCheckCircle, FaShieldAlt, FaSpinner 
 } from "react-icons/fa";
 
@@ -40,11 +40,11 @@ export default function ContactPage() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719", // আপনার আসল এক্সেস কি বসানো হয়েছে
-          subject: `নতুন লিড: ${formData.fullName} (${finalBusinessType})`,
+          access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719",
+          subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
           "পূর্ণ নাম": formData.fullName,
-          "ব্যবসার ধরণ": finalBusinessType,
+          "সার্ভিসের ধরণ": finalBusinessType,
           "যোগাযোগের মাধ্যম": formData.contactMethod.toUpperCase(),
           "যোগাযোগের তথ্য": formData.contactValue,
           "মেসেজ": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
@@ -78,11 +78,11 @@ export default function ContactPage() {
             আপনার ব্যবসা অটোমেট করতে <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">কথা বলুন আজই</span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg">
-            নিচের ফর্মটি পূরণ করুন অথবা সরাসরি আমাদের সোশ্যাল মিডিয়া ও WhatsApp-এ যোগাযোগ করুন। আমাদের টিম দ্রুত আপনার সাথে যোগাযোগ করবে।
+            নিচের ফর্মটি পূরণ করুন অথবা সরাসরি আমাদের WhatsApp, ইমেইল বা সোশ্যাল মিডিয়ায় যোগাযোগ করুন।
           </p>
         </div>
 
-        {/* Main Content Grid: Form & Direct Contact Info */}
+        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left: Interactive Contact Form */}
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
                 <p className="text-slate-300 max-w-md mx-auto">
-                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আমাদের একজন এক্সপার্ট আপনার দেওয়া মাধ্যমে যোগাযোগ করবেন।
+                  আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আপনার দেওয়া মাধ্যমে যোগাযোগ করা হবে।
                 </p>
                 <button
                   onClick={() => {
@@ -110,7 +110,7 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <h3 className="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-4 flex items-center gap-2">
-                  <FaPaperPlane className="text-cyan-400 text-lg" /> ফ্রি অটোমেশন অডিট ফর্ম
+                  <FaPaperPlane className="text-cyan-400 text-lg" /> প্রজেক্ট ডিসকাশন ফর্ম
                 </h3>
 
                 {errorMessage && (
@@ -133,9 +133,9 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Business Type */}
+                {/* Service / Business Type */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">ব্যবসার টাইপ (Business Type) *</label>
+                  <label className="block text-sm font-medium text-slate-300">কোন সার্ভিসটি আপনার প্রয়োজন? (Service Type) *</label>
                   <select
                     name="businessType"
                     required
@@ -143,27 +143,26 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                   >
-                    <option value="" disabled>আপনার সার্ভিস-ভিত্তিক ব্যবসার ধরণ সিলেক্ট করুন</option>
-                    <option value="Real Estate">রিয়েল এস্টেট (Real Estate)</option>
-                    <option value="Home Remodeling">হোম রিমডেলিং ও রেনোভেশন (Home Remodeling)</option>
-                    <option value="Automotive Detailing">অটোমোবাইল ডিটেইলিং ও কার কেয়ার (Automotive Detailing)</option>
-                    <option value="Agency / Service">ডিজিটাল ও সার্ভিস এজেন্সি (Agency / Service)</option>
-                    <option value="Coach / Consultant">কোচিং ও কনসালটেন্সি (Coach / Consultant)</option>
-                    <option value="Other">অন্যান্য (Other)</option>
+                    <option value="" disabled>আপনার প্রয়োজনীয় সার্ভিস সিলেক্ট করুন</option>
+                    <option value="AI & Workflow Automation">এআই এবং ওয়ার্কফ্লো অটোমেশন (AI & Workflow Automation)</option>
+                    <option value="Lead Generation & Funnel">লিড জেনারেশন ও সেলস ফানেল (Lead Generation & Funnel)</option>
+                    <option value="Google Ads & PPC">গুগল এডস ও পিপিসি ম্যানেজমেন্ট (Google Ads & PPC)</option>
+                    <option value="Custom App & Firebase">কাস্টম অ্যাপ ডেভেলপমেন্ট ও ফায়ারবেস (Custom App & Firebase)</option>
+                    <option value="Other">অন্যান্য সার্ভিস (Other)</option>
                   </select>
                 </div>
 
-                {/* Conditional Custom Business Type Field */}
+                {/* Conditional Custom Service Field */}
                 {formData.businessType === "Other" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <label className="block text-sm font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
+                    <label className="block text-sm font-medium text-cyan-300">আপনার সার্ভিস বা প্রজেক্টের বিবরণ দিন *</label>
                     <input
                       type="text"
                       name="customBusinessType"
                       required
                       value={formData.customBusinessType}
                       onChange={handleChange}
-                      placeholder="যেমন: ই-কমার্স, ল’ ফার্ম, ক্লিনিক ইত্যাদি"
+                      placeholder="যেমন: ই-কমার্স অটোমেশন, চ্যাটবট ইত্যাদি"
                       className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
                     />
                   </div>
@@ -172,7 +171,7 @@ export default function ContactPage() {
                 {/* Contact Choice: Email or WhatsApp */}
                 <div className="space-y-3">
                   <label className="block text-sm font-medium text-slate-300">
-                    যোগাযোগের মাধ্যম (ইমেইল অথবা WhatsApp যেকোনো একটি সিলেক্ট করুন) *
+                    যোগাযোগের মাধ্যম (ইমেইল অথবা WhatsApp সিলেক্ট করুন) *
                   </label>
                   
                   <div className="grid grid-cols-2 gap-4">
@@ -208,20 +207,20 @@ export default function ContactPage() {
                     required
                     value={formData.contactValue}
                     onChange={handleChange}
-                    placeholder={formData.contactMethod === 'email' ? 'your-email@gmail.com' : '+880 1XXXXXXXXX'}
+                    placeholder={formData.contactMethod === 'email' ? 'your-email@gmail.com' : '+880 1724-132820'}
                     className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
                   />
                 </div>
 
                 {/* Additional Message */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">আপনার প্রজেক্ট বা সমস্যা সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
+                  <label className="block text-sm font-medium text-slate-300">আপনার প্রজেক্ট বা রিকোয়ারমেন্ট সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
                   <textarea
                     name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="আপনার বর্তমান সমস্যা বা অটোমেশন নিয়ে যা জানতে চান..."
+                    placeholder="আপনার বর্তমান প্রজেক্ট আইডিয়া বা সমস্যা বিস্তারিত লিখুন..."
                     className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                   ></textarea>
                 </div>
@@ -251,7 +250,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Right: Direct Contact Cards */}
+          {/* Right: Direct Contact Cards with your provided numbers/links */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
@@ -259,8 +258,9 @@ export default function ContactPage() {
               <p className="text-slate-400 text-sm">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
 
               <div className="space-y-4 pt-2">
+                {/* WhatsApp */}
                 <a 
-                  href="https://wa.me/8801XXXXXXXXX" 
+                  href="https://wa.me/8801724132820" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 transition-all group"
@@ -270,12 +270,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 font-medium">WhatsApp চ্যাট</div>
-                    <div className="text-white font-bold text-sm sm:text-base">+880 1X XXXX XXXX</div>
+                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
                   </div>
                 </a>
 
+                {/* Email */}
                 <a 
-                  href="mailto:support@tae.agency" 
+                  href="mailto:torikinsights@gmail.com" 
                   className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:scale-110 transition-transform">
@@ -283,34 +284,39 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 font-medium">ইমেইল সাপোর্ট</div>
-                    <div className="text-white font-bold text-sm sm:text-base">support@tae.agency</div>
+                    <div className="text-white font-bold text-sm sm:text-base">torikinsights@gmail.com</div>
                   </div>
                 </a>
 
+                {/* Instagram */}
                 <a 
-                  href="https://m.me/your-facebook-page" 
+                  href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-pink-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
-                    <FaFacebookMessenger />
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl group-hover:scale-110 transition-transform">
+                    <FaInstagram />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">ফেসবুক মেসেঞ্জার</div>
-                    <div className="text-white font-bold text-sm sm:text-base">TAE.Agency Official</div>
+                    <div className="text-xs text-slate-400 font-medium">ইনস্টাগ্রাম</div>
+                    <div className="text-white font-bold text-sm sm:text-base">@tae.agency</div>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl">
+                {/* Direct Phone Call */}
+                <a 
+                  href="tel:+8801724132820" 
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-indigo-500/50 transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl group-hover:scale-110 transition-transform">
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">হটলাইন নম্বর</div>
-                    <div className="text-white font-bold text-sm sm:text-base">+880 96XX XXXXXX</div>
+                    <div className="text-xs text-slate-400 font-medium">সরাসরি কল করুন</div>
+                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
