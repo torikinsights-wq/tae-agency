@@ -43,13 +43,12 @@ export default function ContactPage() {
           access_key: "cb23b2d1-9378-458a-be82-3ea0c2ce8719",
           subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
-          
-          // সিরিয়াল ঠিক করার জন্য প্রপার্টিগুলো ক্রমানুসারে রাখা হলো:
-          "01_পূর্ণ_নাম": formData.fullName,
-          "02_ব্যবসার_ধরণ": finalBusinessType,
-          "03_যোগাযোগের_মাধ্যম": formData.contactMethod.toUpperCase(),
-          "04_যোগাযোগের_তথ্য": formData.contactValue,
-          "05_মেসেজ": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
+          // এখানে শুধু কাস্টম নামগুলো পাঠানো হচ্ছে যাতে ডিফল্ট Name/Email কলাম ফালতু খালি না থাকে
+          "Client Name": formData.fullName,
+          "Service Type": finalBusinessType,
+          "Contact Method": formData.contactMethod.toUpperCase(),
+          "Contact Info": formData.contactValue,
+          "Project Details": formData.message || "কোনো অতিরিক্ত মেসেজ নেই",
         }),
       });
 
