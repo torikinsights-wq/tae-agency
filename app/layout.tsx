@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "TAE.Agency - AI-Powered Business Automation",
   description: "Torik Automation Engineering",
   icons: {
-    icon: "/favicon.ico", // এটি যুক্ত করতে হবে
+    icon: "/favicon.ico",
   },
 };
 
