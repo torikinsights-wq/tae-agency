@@ -3,14 +3,96 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { FaWhatsapp, FaEnvelope, FaInstagram, FaFacebookMessenger, FaPhoneAlt } from "react-icons/fa";
 
 export default function Footer() {
   const { t } = useLanguage();
 
   return (
     <footer className="bg-[#02040a] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 space-y-12">
         
+        {/* Direct Contact Links Bar (সকল পেজের ফুটারে যুক্ত হলো) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pb-12 border-b border-slate-800/60">
+          
+          {/* WhatsApp */}
+          <a 
+            href="https://wa.me/8801724132820" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <FaWhatsapp className="text-lg" />
+            </div>
+            <div className="overflow-hidden">
+              <div className="text-[11px] text-slate-400 font-medium">WhatsApp</div>
+              <div className="text-white font-bold text-xs truncate">+880 1724-132820</div>
+            </div>
+          </a>
+
+          {/* Email */}
+          <a 
+            href="mailto:torikinsights@gmail.com" 
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <FaEnvelope className="text-lg" />
+            </div>
+            <div className="overflow-hidden">
+              <div className="text-[11px] text-slate-400 font-medium">{t("Email Support", "ইমেইল সাপোর্ট")}</div>
+              <div className="text-white font-bold text-xs truncate">torikinsights@gmail.com</div>
+            </div>
+          </a>
+
+          {/* Instagram */}
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <FaInstagram className="text-lg" />
+            </div>
+            <div className="overflow-hidden">
+              <div className="text-[11px] text-slate-400 font-medium">{t("Instagram", "ইনস্টাগ্রাম")}</div>
+              <div className="text-white font-bold text-xs truncate">@tae.agency</div>
+            </div>
+          </a>
+
+          {/* Messenger */}
+          <a 
+            href="https://m.me/your-facebook-page" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <FaFacebookMessenger className="text-lg" />
+            </div>
+            <div className="overflow-hidden">
+              <div className="text-[11px] text-slate-400 font-medium">{t("Messenger", "মেসেঞ্জার")}</div>
+              <div className="text-white font-bold text-xs truncate">TAE.Agency Official</div>
+            </div>
+          </a>
+
+          {/* Phone Call */}
+          <a 
+            href="tel:+8801724132820" 
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <FaPhoneAlt className="text-base" />
+            </div>
+            <div className="overflow-hidden">
+              <div className="text-[11px] text-slate-400 font-medium">{t("Direct Call", "সরাসরি কল")}</div>
+              <div className="text-white font-bold text-xs truncate">+880 1724-132820</div>
+            </div>
+          </a>
+
+        </div>
+
         {/* Top Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/60">
           
@@ -41,7 +123,7 @@ export default function Footer() {
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm mt-2">
               {t(
                 "Empowering service-oriented businesses and real estate with AI-driven automation systems, lead generation, and custom workflows.",
-                "এআই-চালিত অটোমেশন সিস্টেম, লিড জেনারেশন এবং কাস্টম ওয়ার্কফ্লো দিয়ে সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেট ব্যবসার বৃদ্ধি ত্বরান্বিত করছি।"
+                "এআই-চালিত অটোমেশন সিস্টেম, লিড জেনারেশন এবং কাস্টম ওয়ার্কফ্লো দিয়ে সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেট ব্যবসার বৃদ্ধি ত্বরান্বিত করছি।"
               )}
             </p>
           </div>
