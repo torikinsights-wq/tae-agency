@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { LanguageProvider } from "./context/LanguageContext"; // ইমপোর্ট করো
+import { LanguageProvider } from "./context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TAE.Agency - AI-Powered Business Automation",
   description: "Torik Automation Engineering",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
