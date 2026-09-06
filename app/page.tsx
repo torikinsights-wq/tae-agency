@@ -2,6 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
+// Keep the page self-contained when the shared language context is unavailable.
+const useLanguage = () => ({
+  t: (english: string, _bengali: string) => english,
+});
 import {
   FaBolt,
   FaRobot,
@@ -16,6 +20,8 @@ import {
 } from "react-icons/fa";
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -24,22 +30,28 @@ export default function HomePage() {
         <div className="text-center space-y-6 pt-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            এআই-চালিত বিজনেস অটোমেশন এজেন্সি
+            {t("AI-Powered Business Automation Agency", "এআই-চালিত বিজনেস অটোমেশন এজেন্সি")}
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            আপনার ব্যবসা অটোমেট করুন, <br />
+            {t("Automate Your Business,", "আপনার ব্যবসা অটোমেট করুন,")} <br />
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              সময় বাঁচান ও আয় দ্বিগুণ করুন
+              {t("Save Time & Double Revenue", "সময় বাঁচান ও আয় দ্বিগুণ করুন")}
             </span>
           </h1>
 
           <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
-            সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।
+            {t(
+              "Take your business customer journey and sales growth to the next level through complete AI and automation systems.",
+              "সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।"
+            )}
           </p>
           
           <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg leading-relaxed">
-            আমরা আপনার ব্যবসার পুরো প্রক্রিয়াটি অটোমেট করি—লিড ক্যাপচার থেকে শুরু করে তাৎক্ষণিক রেসপন্স, এআই ফলো-আপ, অ্যাপয়েন্টমেন্ট বুকিং, পেমেন্ট এবং রিপিট কাস্টমার তৈরি করা পর্যন্ত।
+            {t(
+              "We automate your entire business process—from lead capture to instant response, AI follow-ups, appointment booking, payments, and repeat customer generation.",
+              "আমরা আপনার ব্যবসার পুরো প্রক্রিয়াটি অটোমেট করি—লিড ক্যাপচার থেকে শুরু করে তাৎক্ষণিক রেসপন্স, এআই ফলো-আপ, অ্যাপয়েন্টমেন্ট বুকিং, পেমেন্ট এবং রিপিট কাস্টমার তৈরি করা পর্যন্ত।"
+            )}
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -47,44 +59,47 @@ export default function HomePage() {
               href="/services"
               className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20"
             >
-              আমাদের সার্ভিসসমূহ দেখুন
+              {t("Explore Our Services", "আমাদের সার্ভিসসমূহ দেখুন")}
             </Link>
             <Link
               href="/contact"
               className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-xl border border-slate-700 transition-all shadow-lg"
             >
-              ফ্রি অটোমেশন অডিট বুক করুন
+              {t("Book a Free Automation Audit", "ফ্রি অটোমেশন অডিট বুক করুন")}
             </Link>
           </div>
 
-          {/* লক্ষ্য সেকশন */}
+          {/* লক্ষ্য সেকশন (Goal Section) */}
           <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto mt-10 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
               <FaBullseye />
             </div>
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm mb-2">
-              <FaBullseye /> আমাদের মূল লক্ষ্য
+              <FaBullseye /> {t("Our Main Goal", "আমাদের মূল লক্ষ্য")}
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-              ব্যবসার প্রবৃদ্ধি ও সর্বোচ্চ কার্যকারিতা নিশ্চিতকরণ
+              {t("Business Growth & Maximum Efficiency", "ব্যবসার প্রবৃদ্ধি ও সর্বোচ্চ কার্যকারিতা নিশ্চিতকরণ")}
             </h3>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
+              <span className="text-cyan-400 font-semibold">{t("Less manual work", "কম ম্যানুয়াল কাজ")}</span>, {t("instant", "মুহূর্তের মধ্যে")} <span className="text-cyan-400 font-semibold">{t("fast response", "ফাস্ট রেসপন্স")}</span>, {t("assured", "নিশ্চিত")} <span className="text-cyan-400 font-semibold">{t("more bookings", "বেশি বুকিং")}</span> {t("and retention through", "এবং স্থায়ী কাস্টমার ধরে রাখতে")} <span className="text-cyan-400 font-semibold">{t("repeat customer growth", "রিপিট কাস্টমার গ্রোথ")}</span>—{t("this is our core commitment.", "—এটাই আমাদের মূল অঙ্গীকার।")}
             </p>
           </div>
         </div>
 
-        {/* আমাদের সম্পর্কে সেকশন */}
+        {/* আমাদের সম্পর্কে সেকশন (About Section) */}
         <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-3xl text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm">
-              <FaInfoCircle /> আমাদের সম্পর্কে জানুন
+              <FaInfoCircle /> {t("Know About Us", "আমাদের সম্পর্কে জানুন")}
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              টিএই এজেন্সি কীভাবে আপনার ব্যবসাকে বদলে দিচ্ছে?
+              {t("How is TAE Agency Transforming Your Business?", "টিএই এজেন্সি কীভাবে আপনার ব্যবসাকে বদলে দিচ্ছে?")}
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।
+              {t(
+                "Missing a promising lead means a big loss for your business. We streamline all operational friction and make your sales process 100% automated using modern Artificial Intelligence (AI) and smart automation systems. Visit our About page to learn in detail how our proven technical solutions and expert team can make your business hassle-free and more profitable.",
+                "প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।"
+              )}
             </p>
           </div>
           <div className="shrink-0">
@@ -92,7 +107,7 @@ export default function HomePage() {
               href="/about"
               className="inline-flex items-center gap-2 bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 font-bold px-6 py-4 rounded-xl border border-cyan-500/40 transition-all shadow-lg whitespace-nowrap"
             >
-              <span>আমাদের সম্পর্কে বিস্তারিত</span>
+              <span>{t("More About Us", "আমাদের সম্পর্কে বিস্তারিত")}</span>
               <FaArrowRight className="text-sm" />
             </Link>
           </div>
@@ -102,10 +117,13 @@ export default function HomePage() {
         <div className="space-y-8 pt-4">
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-bold text-white">
-              আমাদের মূল অটোমেশন সার্ভিসসমূহ
+              {t("Our Core Automation Services", "আমাদের মূল অটোমেশন সার্ভিসসমূহ")}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-              আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।
+              {t(
+                "We have brought 6 powerful modules to automate every department of your business.",
+                "আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।"
+              )}
             </p>
           </div>
 
@@ -115,8 +133,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaBolt /></div>
-                <h3 className="text-xl font-bold text-white mb-2">১. Lead & Sales Automation</h3>
-                <p className="text-slate-400 text-sm mb-4">প্রতিটি লিড দ্রুত ক্যাপচার করুন এবং সম্ভাবনাময় ক্রেতাদের সহজে কনভার্ট করুন।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("1. Lead & Sales Automation", "১. Lead & Sales Automation")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Capture every lead quickly and easily convert prospective buyers.", "প্রতিটি লিড দ্রুত ক্যাপচার করুন এবং সম্ভাবনাময় ক্রেতাদের সহজে কনভার্ট করুন।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Ads / Website Lead → CRM</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Instant SMS & Email Response</li>
@@ -132,8 +150,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaRobot /></div>
-                <h3 className="text-xl font-bold text-white mb-2">২. AI Customer Support</h3>
-                <p className="text-slate-400 text-sm mb-4">গ্রাহকদের দিন-রাত ২৪ ঘণ্টা দ্রুত এবং বুদ্ধিমান অটোমেটেড সাপোর্ট প্রদান করুন।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("2. AI Customer Support", "২. AI Customer Support")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Provide fast and intelligent automated support to customers 24/7.", "গ্রাহকদের দিন-রাত ২৪ ঘণ্টা দ্রুত এবং বুদ্ধিমান অটোমেটেড সাপোর্ট প্রদান করুন।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> AI Chatbot & Phone Support</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> 24/7 FAQ Automation</li>
@@ -149,8 +167,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCalendarAlt /></div>
-                <h3 className="text-xl font-bold text-white mb-2">৩. Booking & Operations</h3>
-                <p className="text-slate-400 text-sm mb-4">অ্যাপয়েন্টমেন্ট বুকিং এবং দৈনন্দিন অপারেশনাল কার্যক্রম সম্পূর্ণ সহজ করুন।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("3. Booking & Operations", "৩. Booking & Operations")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Simplify appointment booking and daily operational activities completely.", "অ্যাপয়েন্টমেন্ট বুকিং এবং দৈনন্দিন অপারেশনাল কার্যক্রম সম্পূর্ণ সহজ করুন।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Online Booking System</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Google Calendar Integration</li>
@@ -166,8 +184,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
-                <h3 className="text-xl font-bold text-white mb-2">৪. Payments & Membership</h3>
-                <p className="text-slate-400 text-sm mb-4">ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("4. Payments & Membership", "৪. Payments & Membership")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Automate invoice creation, payment collection, and membership renewal processes.", "ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Auto Invoice Creation</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Secure Payment Links</li>
@@ -183,8 +201,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
-                <h3 className="text-xl font-bold text-white mb-2">৫. Retention & Reputation</h3>
-                <p className="text-slate-400 text-sm mb-4">একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("5. Retention & Reputation", "৫. Retention & Reputation")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Turn one-time buyers into long-term loyal customers and boost reviews.", "একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Automated Review Requests</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Special Offer Campaigns</li>
@@ -200,8 +218,8 @@ export default function HomePage() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaShareAlt /></div>
-                <h3 className="text-xl font-bold text-white mb-2">৬. Marketing & Social Media</h3>
-                <p className="text-slate-400 text-sm mb-4">আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং ইঞ্জিন সচল রাখবে।</p>
+                <h3 className="text-xl font-bold text-white mb-2">{t("6. Marketing & Social Media", "৬. Marketing & Social Media")}</h3>
+                <p className="text-slate-400 text-sm mb-4">{t("Run your core business while automation keeps your marketing engine running.", "আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং ইঞ্জিন সচল রাখবে।")}</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Social Media Auto Posting</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> AI Caption & Content Assistance</li>
@@ -219,9 +237,9 @@ export default function HomePage() {
         {/* Complete Customer Journey Section */}
         <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-8 shadow-xl">
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-3">
-            🔄 সম্পূর্ণ Customer Journey Automation
+            🔄 {t("Complete Customer Journey Automation", "সম্পূর্ণ Customer Journey Automation")}
           </h2>
-          <p className="text-center text-slate-400 mb-8 text-sm sm:text-base">প্রথম লিড থেকে শুরু করে লয়েল কাস্টমার পর্যন্ত পুরো প্রক্রিয়াটি দেখুন।</p>
+          <p className="text-center text-slate-400 mb-8 text-sm sm:text-base">{t("See the whole process from first lead to loyal customer.", "প্রথম লিড থেকে শুরু করে লয়েল কাস্টমার পর্যন্ত পুরো প্রক্রিয়াটি দেখুন।")}</p>
           
           <div className="flex flex-wrap justify-center items-center gap-2.5 max-w-4xl mx-auto text-center">
             {[
@@ -253,10 +271,13 @@ export default function HomePage() {
         {/* Call to Action Section */}
         <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            🚀 আপনার ব্যবসাকে অটোমেট করতে প্রস্তুত তো?
+            🚀 {t("Ready to Automate Your Business?", "আপনার ব্যবসাকে অটোমেট করতে প্রস্তুত তো?")}
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
-            লিড হারানো এবং ম্যানুয়াল কাজের ঝামেলা চিরতরে দূর করুন। AI এবং অটোমেশনকে আপনার ব্যবসার পেছনে ২৪/৭ কাজ করতে দিন।
+            {t(
+              "Say goodbye to lost leads and manual hassles. Let AI and automation work 24/7 behind your business.",
+              "লিড হারানো এবং ম্যানুয়াল কাজের ঝামেলা চিরতরে দূর করুন। AI এবং অটোমেশনকে আপনার ব্যবসার পেছনে ২৪/৭ কাজ করতে দিন।"
+            )}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
@@ -264,13 +285,13 @@ export default function HomePage() {
               href="/contact"
               className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg transition duration-300 text-center"
             >
-              ফ্রি অটোমেশন অডিট বুক করুন
+              {t("Book a Free Automation Audit", "ফ্রি অটোমেশন অডিট বুক করুন")}
             </Link>
             <Link
               href="/contact"
               className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-lg transition duration-300 text-center"
             >
-              আমাদের একজন এক্সপার্টের সাথে কথা বলুন
+              {t("Talk to One of Our Experts", "আমাদের একজন এক্সপার্টের সাথে কথা বলুন")}
             </Link>
           </div>
         </div>
