@@ -1,17 +1,25 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
 import {
-  FaBolt, FaRobot, FaCalendarAlt, FaCreditCard,
-  FaStar, FaShareAlt, FaArrowRight, FaCheckCircle, FaInfoCircle, FaBullseye
+  FaBolt,
+  FaRobot,
+  FaCalendarAlt,
+  FaCreditCard,
+  FaStar,
+  FaShareAlt,
+  FaArrowRight,
+  FaCheckCircle,
+  FaInfoCircle,
+  FaBullseye,
 } from "react-icons/fa";
-
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
-       
+        
         {/* Hero Section */}
         <div className="text-center space-y-6 pt-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
@@ -19,23 +27,21 @@ export default function HomePage() {
             এআই-চালিত বিজনেস অটোমেশন এজেন্সি
           </div>
 
-
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
             আপনার ব্যবসা অটোমেট করুন, <br />
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              সময় বাঁচান ও আয় দ্বিগুণ করুন
+              সময় বাঁচান ও আয় দ্বিগুণ করুন
             </span>
           </h1>
 
-
           <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
-            সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।
+            সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।
           </p>
-         
+          
           <p className="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg leading-relaxed">
             আমরা আপনার ব্যবসার পুরো প্রক্রিয়াটি অটোমেট করি—লিড ক্যাপচার থেকে শুরু করে তাৎক্ষণিক রেসপন্স, এআই ফলো-আপ, অ্যাপয়েন্টমেন্ট বুকিং, পেমেন্ট এবং রিপিট কাস্টমার তৈরি করা পর্যন্ত।
           </p>
-         
+          
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <Link
               href="/services"
@@ -51,8 +57,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-
-          {/* লক্ষ্য সেকশনটি Hero-র ঠিক নিচেই সুন্দরভাবে সেট করা হলো */}
+          {/* লক্ষ্য সেকশন */}
           <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto mt-10 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
               <FaBullseye />
@@ -64,13 +69,12 @@ export default function HomePage() {
               ব্যবসার প্রবৃদ্ধি ও সর্বোচ্চ কার্যকারিতা নিশ্চিতকরণ
             </h3>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
+              <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
             </p>
           </div>
         </div>
 
-
-        {/* আমাদের সম্পর্কে সেকশন (বিজনেস ওনারদের আকর্ষণ করার মতো শক্তিশালী কপি দিয়ে আপডেট করা) */}
+        {/* আমাদের সম্পর্কে সেকশন */}
         <div className="bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-3xl text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-sm">
@@ -80,7 +84,7 @@ export default function HomePage() {
               টিএই এজেন্সি কীভাবে আপনার ব্যবসাকে বদলে দিচ্ছে?
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।
+              প্রতিটি প্রমিজিং লিড হাতছাড়া হওয়া মানেই আপনার ব্যবসায় বড় ক্ষতি। আমরা আধুনিক কৃত্রিম বুদ্ধিমত্তা (AI) এবং স্মার্ট অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার সমস্ত অপারেশনাল জট কমিয়ে সেলস প্রসেসকে করি শতভাগ স্বয়ংক্রিয়। আমাদের প্রমাণিত টেকনিক্যাল সলিউশন এবং এক্সপার্ট টিম কীভাবে আপনার ব্যবসাকে ঝঞ্ঝাটহীন ও অধিক লাভজনক করে তুলতে পারে, তা বিস্তারিত জানতে আমাদের এবাউট পেজটি ভিজিট করুন।
             </p>
           </div>
           <div className="shrink-0">
@@ -94,21 +98,19 @@ export default function HomePage() {
           </div>
         </div>
 
-
-        {/* Core Services Grid - ৬টি সার্ভিস নিখুঁতভাবে সাজানো */}
+        {/* Core Services Grid */}
         <div className="space-y-8 pt-4">
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-bold text-white">
               আমাদের মূল অটোমেশন সার্ভিসসমূহ
             </h2>
             <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-              আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।
+              আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।
             </p>
           </div>
 
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
-           
+            
             {/* Service 1 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
@@ -125,7 +127,6 @@ export default function HomePage() {
                 Flow: Lead → Response → Follow-up → Booking
               </div>
             </div>
-
 
             {/* Service 2 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
@@ -144,7 +145,6 @@ export default function HomePage() {
               </div>
             </div>
 
-
             {/* Service 3 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
@@ -162,13 +162,12 @@ export default function HomePage() {
               </div>
             </div>
 
-
             {/* Service 4 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
                 <h3 className="text-xl font-bold text-white mb-2">৪. Payments & Membership</h3>
-                <p className="text-slate-400 text-sm mb-4">ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।</p>
+                <p className="text-slate-400 text-sm mb-4">ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং মেম্বারশিপ রিনিউয়াল প্রক্রিয়া অটোমেট করুন।</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Auto Invoice Creation</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Secure Payment Links</li>
@@ -180,13 +179,12 @@ export default function HomePage() {
               </div>
             </div>
 
-
             {/* Service 5 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
                 <h3 className="text-xl font-bold text-white mb-2">৫. Retention & Reputation</h3>
-                <p className="text-slate-400 text-sm mb-4">একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।</p>
+                <p className="text-slate-400 text-sm mb-4">একবারের ক্রেতাকে দীর্ঘমেয়াদী অনুগত ক্রেটায় রূপান্তর করুন এবং রিভিউ বাড়ান।</p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Automated Review Requests</li>
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> Special Offer Campaigns</li>
@@ -197,7 +195,6 @@ export default function HomePage() {
                 Flow: Service → Follow-up → Review → Repeat
               </div>
             </div>
-
 
             {/* Service 6 */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition duration-300 shadow-xl">
@@ -216,10 +213,8 @@ export default function HomePage() {
               </div>
             </div>
 
-
           </div>
         </div>
-
 
         {/* Complete Customer Journey Section */}
         <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-8 shadow-xl">
@@ -227,7 +222,7 @@ export default function HomePage() {
             🔄 সম্পূর্ণ Customer Journey Automation
           </h2>
           <p className="text-center text-slate-400 mb-8 text-sm sm:text-base">প্রথম লিড থেকে শুরু করে লয়েল কাস্টমার পর্যন্ত পুরো প্রক্রিয়াটি দেখুন।</p>
-         
+          
           <div className="flex flex-wrap justify-center items-center gap-2.5 max-w-4xl mx-auto text-center">
             {[
               "Ads / Website",
@@ -255,7 +250,6 @@ export default function HomePage() {
           </div>
         </div>
 
-
         {/* Call to Action Section */}
         <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
@@ -264,7 +258,6 @@ export default function HomePage() {
           <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
             লিড হারানো এবং ম্যানুয়াল কাজের ঝামেলা চিরতরে দূর করুন। AI এবং অটোমেশনকে আপনার ব্যবসার পেছনে ২৪/৭ কাজ করতে দিন।
           </p>
-
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link
@@ -282,9 +275,7 @@ export default function HomePage() {
           </div>
         </div>
 
-
       </div>
     </div>
   );
 }
-
