@@ -31,9 +31,11 @@ export default function Footer() {
             </div>
           </a>
 
-          {/* Email */}
+          {/* Email (Updated for Laptop & Mobile Direct Web Compose) */}
           <a 
-            href="mailto:info@tae.agency" 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tae.agency" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
