@@ -20,12 +20,12 @@ export default function Footer() {
             href="https://wa.me/8801724132820" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
               <FaWhatsapp className="text-lg" />
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pointer-events-none">
               <div className="text-[11px] text-slate-400 font-medium">WhatsApp</div>
               <div className="text-white font-bold text-xs truncate">+880 1724-132820</div>
             </div>
@@ -34,12 +34,12 @@ export default function Footer() {
           {/* Email */}
           <a 
             href="mailto:info@tae.agency" 
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
               <FaEnvelope className="text-lg" />
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pointer-events-none">
               <div className="text-[11px] text-slate-400 font-medium">{t("Email Support", "ইমেইল সাপোর্ট")}</div>
               <div className="text-white font-bold text-xs truncate">info@tae.agency</div>
             </div>
@@ -50,12 +50,12 @@ export default function Footer() {
             href="https://www.instagram.com/tae.agency_official/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all group"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
               <FaInstagram className="text-lg" />
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pointer-events-none">
               <div className="text-[11px] text-slate-400 font-medium">{t("Instagram", "ইনস্টাগ্রাম")}</div>
               <div className="text-white font-bold text-xs truncate">@tae.agency_official</div>
             </div>
@@ -66,12 +66,12 @@ export default function Footer() {
             href="https://m.me/taeagency" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 transition-all group"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
               <FaFacebookMessenger className="text-lg" />
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pointer-events-none">
               <div className="text-[11px] text-slate-400 font-medium">{t("Messenger", "মেসেঞ্জার")}</div>
               <div className="text-white font-bold text-xs truncate">TAE.Agency</div>
             </div>
@@ -80,12 +80,12 @@ export default function Footer() {
           {/* Phone Call */}
           <a 
             href="tel:+8801724132820" 
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all group"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
               <FaPhoneAlt className="text-base" />
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pointer-events-none">
               <div className="text-[11px] text-slate-400 font-medium">{t("Direct Call", "সরাসরি কল")}</div>
               <div className="text-white font-bold text-xs truncate">+880 1724-132820</div>
             </div>
