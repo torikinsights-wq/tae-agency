@@ -69,7 +69,7 @@ export default function Navbar() {
             onClick={() => setLang(lang === "en" ? "bn" : "en")}
             className="px-3.5 py-1.5 rounded-lg bg-slate-900 text-cyan-400 border border-cyan-500/30 text-xs font-bold transition-all hover:bg-cyan-500/20"
           >
-            {lang === "en" ? "বাংলা" : "English"}
+            {lang === "en" ? "বাংলা" : "ইংরেজি"}
           </button>
 
           {/* Consultation Button */}
@@ -87,7 +87,7 @@ export default function Navbar() {
             onClick={() => setLang(lang === "en" ? "bn" : "en")}
             className="px-2.5 py-1 rounded-md bg-slate-900 text-cyan-400 border border-cyan-500/30 text-[11px] font-bold"
           >
-            {lang === "en" ? "বাংলা" : "English"}
+            {lang === "en" ? "বাংলা" : "ইংরেজি"}
           </button>
           
           <button
