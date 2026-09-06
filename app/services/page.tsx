@@ -45,7 +45,7 @@ export default function ServicesPage() {
 
           <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
             {isBangla 
-              ? "সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।" 
+              ? "সম্পূর্ণ AI ও অটোমেশন সিস্টেমের মাধ্যমে আপনার ব্যবসার কাস্টমার জার্নি এবং সেলস গ্রোথকে পরবর্তী স্তরে নিয়ে যান।" 
               : "Take your business customer journey and sales growth to the next level with complete AI & automation systems."}
           </p>
           
@@ -56,7 +56,7 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        {/* Goal Box (होम পেজের স্টাইলের সাথে সামঞ্জস্যপূর্ণ) */}
+        {/* Goal Box */}
         <div className="bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 opacity-10 text-cyan-400 text-9xl pointer-events-none">
             <FaBullseye />
@@ -71,7 +71,7 @@ export default function ServicesPage() {
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
               {isBangla ? (
                 <>
-                  <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
+                  <span className="text-cyan-400 font-semibold">কম ম্যানুয়াল কাজ</span>, মুহূর্তের মধ্যে <span className="text-cyan-400 font-semibold">ফাস্ট রেসপন্স</span>, নিশ্চিত <span className="text-cyan-400 font-semibold">বেশি বুকিং</span> এবং স্থায়ী কাস্টমার ধরে রাখতে <span className="text-cyan-400 font-semibold">রিপিট কাস্টমার গ্রোথ</span>—এটাই আমাদের মূল অঙ্গীকার।
                 </>
               ) : (
                 <>
@@ -89,7 +89,7 @@ export default function ServicesPage() {
               {isBangla ? "আমাদের মূল অটোমেশন সার্ভিসসমূহ" : "Our Core Automation Services"}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-              {isBangla ? "আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।" : "We bring 6 powerful modules to automate every department of your business."}
+              {isBangla ? "আপনার ব্যবসার প্রতিটি বিভাগকে স্বয়ংক্রিয় করতে আমরা নিয়ে এসেছি ৬টি শক্তিশালী মডিউল।" : "We bring 6 powerful modules to automate every department of your business."}
             </p>
           </div>
 
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                   {isBangla ? "৫. অটোমেটিক রিভিউ রিকোয়েস্ট" : "5. Auto Review Requests"}
                 </h3>
                 <p className="text-slate-400 text-sm mb-4">
-                  {isBangla ? "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।" : "Convert one-time buyers into loyal customers and boost reviews."}
+                  {isBangla ? "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।" : "Convert one-time buyers into loyal customers and boost reviews."}
                 </p>
                 <ul className="space-y-2 text-slate-300 text-xs sm:text-sm">
                   <li className="flex items-center gap-2"><FaCheckCircle className="text-cyan-400 shrink-0" /> {isBangla ? "স্বয়ংক্রিয় রিভিউ রিকোয়েস্ট পাঠানো" : "Automated review request sending"}</li>
@@ -205,7 +205,7 @@ export default function ServicesPage() {
               <div>
                 <div className="text-cyan-400 text-3xl mb-4 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaShareAlt /></div>
                 <h3 className="text-xl font-bold text-white mb-2">
-                  {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া" : "6. Local Marketing & Social Media"}
+                  {isBangla ? "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া" : "6. Local Marketing & Social Media"}
                 </h3>
                 <p className="text-slate-400 text-sm mb-4">
                   {isBangla ? "আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং সচল রাখবে।" : "Manage your core business while automation keeps marketing active."}
@@ -230,7 +230,7 @@ export default function ServicesPage() {
             {isBangla ? "আমাদের ওয়ার্কফ্লো প্রসেস" : "Our Workflow Process"}
           </h3>
           <p className="text-slate-300 text-lg font-mono">
-            Flow: Service $\rightarrow$ Follow-up $\rightarrow$ Review $\rightarrow$ Upsell $\rightarrow$ Repeat
+            Flow: Service &rarr; Follow-up &rarr; Review &rarr; Upsell &rarr; Repeat
           </p>
         </div>
 
