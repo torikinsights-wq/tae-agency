@@ -44,7 +44,6 @@ export default function ContactPage() {
           subject: `নতুন লিড (TAE.Agency): ${formData.fullName} (${finalBusinessType})`,
           from_name: "TAE Agency Contact Form",
           
-          // নতুন ফরমের জন্য ফিল্ডগুলোর সঠিক সিরিয়াল ও ম্যাপিং
           "Client Name": formData.fullName,
           "Service Type": finalBusinessType,
           "Contact Method": formData.contactMethod.toUpperCase(),
@@ -67,36 +66,36 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <div className="min-h-screen bg-slate-950 text-slate-100 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Page Header */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto pt-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold">
+        <div className="text-center space-y-3 max-w-3xl mx-auto pt-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             আমাদের সাথে যোগাযোগ করুন
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             আপনার ব্যবসা অটোমেট করতে <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">কথা বলুন আজই</span>
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-300 text-sm sm:text-base">
             নিচের ফর্মটি পূরণ করুন অথবা সরাসরি আমাদের WhatsApp, ফেসবুক, ইনস্টাগ্রাম বা ইমেইলে যোগাযোগ করুন।
           </p>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: Interactive Contact Form */}
-          <div className="lg:col-span-7 bg-gradient-to-b from-slate-900 to-slate-950 border border-cyan-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+          {/* Left: Interactive Contact Form (Made Compact) */}
+          <div className="lg:col-span-7 bg-gradient-to-b from-slate-900 to-slate-950 border border-cyan-500/30 rounded-2xl p-5 sm:p-8 shadow-2xl relative">
             
             {submitted ? (
-              <div className="text-center py-16 space-y-6">
-                <div className="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl animate-bounce">
+              <div className="text-center py-12 space-y-5">
+                <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl animate-bounce">
                   <FaCheckCircle />
                 </div>
-                <h3 className="text-2xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
-                <p className="text-slate-300 max-w-md mx-auto">
+                <h3 className="text-xl font-bold text-white">ধন্যবাদ! আপনার তথ্য সফলভাবে পাঠানো হয়েছে।</h3>
+                <p className="text-slate-300 text-sm max-w-md mx-auto">
                   আমরা আপনার রিকোয়েস্টটি পেয়েছি। খুব শীঘ্রই আপনার দেওয়া মাধ্যমে যোগাযোগ করা হবে।
                 </p>
                 <button
@@ -104,26 +103,26 @@ export default function ContactPage() {
                     setSubmitted(false);
                     setFormData({ fullName: "", businessType: "", customBusinessType: "", contactMethod: "email", contactValue: "", message: "" });
                   }}
-                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg"
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-lg text-sm"
                 >
                   আরেকটি মেসেজ পাঠান
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <h3 className="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-4 flex items-center gap-2">
-                  <FaPaperPlane className="text-cyan-400 text-lg" /> প্রজেক্ট ডিসকাশন ফর্ম
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <h3 className="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-3 flex items-center gap-2">
+                  <FaPaperPlane className="text-cyan-400 text-base" /> প্রজেক্ট ডিসকাশন ফর্ম
                 </h3>
 
                 {errorMessage && (
-                  <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm">
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs">
                     {errorMessage}
                   </div>
                 )}
 
                 {/* Full Name */}
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">পূর্ণ নাম (Full Name) *</label>
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-slate-300">পূর্ণ নাম (Full Name) *</label>
                   <input
                     type="text"
                     name="fullName"
@@ -131,19 +130,19 @@ export default function ContactPage() {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="আপনার পুরো নাম লিখুন"
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 {/* Business / Service Type */}
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">আপনার ব্যবসার ধরণ বা ক্যাটাগরি *</label>
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-slate-300">আপনার ব্যবসার ধরণ বা ক্যাটাগরি *</label>
                   <select
                     name="businessType"
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors"
                   >
                     <option value="" disabled>আপনার ব্যবসার ধরণ সিলেক্ট করুন</option>
                     <option value="রিয়েল এস্টেট 🏠">১. রিয়েল এস্টেট 🏠</option>
@@ -157,8 +156,8 @@ export default function ContactPage() {
 
                 {/* Conditional Custom Business Field */}
                 {formData.businessType === "Other" && (
-                  <div className="space-y-2 animate-fadeIn">
-                    <label className="block text-sm font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
+                  <div className="space-y-1.5 animate-fadeIn">
+                    <label className="block text-xs font-medium text-cyan-300">আপনার ব্যবসার নামটি লিখুন *</label>
                     <input
                       type="text"
                       name="customBusinessType"
@@ -166,19 +165,19 @@ export default function ContactPage() {
                       value={formData.customBusinessType}
                       onChange={handleChange}
                       placeholder="যেমন: ই-কমার্স, ল’ ফার্ম ইত্যাদি"
-                      className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                      className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
                     />
                   </div>
                 )}
 
                 {/* Contact Choice: Email or WhatsApp */}
-                <div className="space-y-3">
-                  <label className="block text-sm font-medium text-slate-300">
+                <div className="space-y-2">
+                  <label className="block text-xs font-medium text-slate-300">
                     যোগাযোগের মাধ্যম (ইমেইল অথবা WhatsApp সিলেক্ট করুন) *
                   </label>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <label className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${formData.contactMethod === 'email' ? 'bg-cyan-500/10 border-cyan-500 text-cyan-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                  <div className="grid grid-cols-2 gap-3">
+                    <label className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${formData.contactMethod === 'email' ? 'bg-cyan-500/10 border-cyan-500 text-cyan-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                       <input 
                         type="radio" 
                         name="contactMethod" 
@@ -190,7 +189,7 @@ export default function ContactPage() {
                       <FaEnvelope /> ইমেইল ঠিকানা
                     </label>
 
-                    <label className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${formData.contactMethod === 'whatsapp' ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                    <label className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${formData.contactMethod === 'whatsapp' ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                       <input 
                         type="radio" 
                         name="contactMethod" 
@@ -210,21 +209,21 @@ export default function ContactPage() {
                     required
                     value={formData.contactValue}
                     onChange={handleChange}
-                    placeholder={formData.contactMethod === 'email' ? 'torikinsights@gmail.com' : '+880 1724-132820'}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
+                    placeholder={formData.contactMethod === 'email' ? 'info@tae.agency' : '+880 1724-132820'}
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
                   />
                 </div>
 
                 {/* Additional Message */}
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300">আপনার প্রজেক্ট বা রিকোয়েস্টার সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-slate-300">আপনার প্রজেক্ট বা রিকোয়েস্টার সম্পর্কে কিছু বলুন (ঐচ্ছিক)</label>
                   <textarea
                     name="message"
-                    rows={4}
+                    rows={3}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="আপনার বর্তমান প্রজেক্ট আইডিয়া বা সমস্যা বিস্তারিত লিখুন..."
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                   ></textarea>
                 </div>
 
@@ -232,11 +231,11 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer text-sm"
                 >
                   {loading ? (
                     <>
-                      <FaSpinner className="animate-spin text-lg" /> পাঠানো হচ্ছে...
+                      <FaSpinner className="animate-spin text-base" /> পাঠানো হচ্ছে...
                     </>
                   ) : (
                     <>
@@ -245,7 +244,7 @@ export default function ContactPage() {
                   )}
                 </button>
 
-                <p className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5 pt-2">
+                <p className="text-center text-[11px] text-slate-500 flex items-center justify-center gap-1.5 pt-1">
                   <FaShieldAlt className="text-cyan-400" /> আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপনীয় রাখা হবে।
                 </p>
               </form>
@@ -253,93 +252,95 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Right: Direct Contact Cards */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Right: Direct Contact Cards (Updated with proper links & names) */}
+          <div className="lg:col-span-5 space-y-5">
             
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl space-y-6">
-              <h3 className="text-2xl font-bold text-white mb-2">সরাসরি যোগাযোগের মাধ্যম</h3>
-              <p className="text-slate-400 text-sm">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+              <h3 className="text-xl font-bold text-white mb-1">সরাসরি যোগাযোগের মাধ্যম</h3>
+              <p className="text-slate-400 text-xs">ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:</p>
 
-              <div className="space-y-4 pt-2">
+              <div className="space-y-3 pt-1">
                 {/* WhatsApp */}
                 <a 
                   href="https://wa.me/8801724132820" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg group-hover:scale-110 transition-transform">
                     <FaWhatsapp />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">WhatsApp চ্যাট</div>
-                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
+                    <div className="text-[11px] text-slate-400 font-medium">WhatsApp চ্যাট</div>
+                    <div className="text-white font-bold text-xs sm:text-sm">+880 1724-132820</div>
                   </div>
                 </a>
 
-                {/* Email */}
+                {/* Email (Updated for direct web compose) */}
                 <a 
-                  href="mailto:torikinsights@gmail.com" 
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tae.agency" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg group-hover:scale-110 transition-transform">
                     <FaEnvelope />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">ইমেইল সাপোর্ট</div>
-                    <div className="text-white font-bold text-sm sm:text-base">torikinsights@gmail.com</div>
+                    <div className="text-[11px] text-slate-400 font-medium">ইমেইল সাপোর্ট</div>
+                    <div className="text-white font-bold text-xs sm:text-sm">info@tae.agency</div>
                   </div>
                 </a>
 
                 {/* Instagram */}
                 <a 
-                  href="https://instagram.com" 
+                  href="https://www.instagram.com/tae.agency_official/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-pink-500/50 transition-all group"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-pink-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-lg group-hover:scale-110 transition-transform">
                     <FaInstagram />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">ইনস্টাগ্রাম</div>
-                    <div className="text-white font-bold text-sm sm:text-base">@tae.agency</div>
+                    <div className="text-[11px] text-slate-400 font-medium">ইনস্টাগ্রাম</div>
+                    <div className="text-white font-bold text-xs sm:text-sm">@tae.agency_official</div>
                   </div>
                 </a>
 
                 {/* Facebook Messenger */}
                 <a 
-                  href="https://m.me/your-facebook-page" 
+                  href="https://m.me/taeagency" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition-transform">
                     <FaFacebookMessenger />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">ফেসবুক মেসেঞ্জার</div>
-                    <div className="text-white font-bold text-sm sm:text-base">TAE.Agency Official</div>
+                    <div className="text-[11px] text-slate-400 font-medium">ফেসবুক মেসেঞ্জার</div>
+                    <div className="text-white font-bold text-xs sm:text-sm">TAE.Agency</div>
                   </div>
                 </a>
 
                 {/* Direct Phone Call */}
                 <a 
                   href="tel:+8801724132820" 
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-indigo-500/50 transition-all group"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-indigo-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-base group-hover:scale-110 transition-transform">
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-medium">সরাসরি কল করুন</div>
-                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
+                    <div className="text-[11px] text-slate-400 font-medium">সরাসরি কল করুন</div>
+                    <div className="text-white font-bold text-xs sm:text-sm">+880 1724-132820</div>
                   </div>
                 </a>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-2xl p-5 text-center text-sm text-cyan-300">
+            <div className="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-2xl p-4 text-center text-xs text-cyan-300">
               ⚡ সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।
             </div>
 
