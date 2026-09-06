@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="bg-[#02040a] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 space-y-12">
         
-        {/* Direct Contact Links Bar (সকল পেজের ফুটারে যুক্ত হলো) */}
+        {/* Direct Contact Links Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pb-12 border-b border-slate-800/60">
           
           {/* WhatsApp */}
@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* Email */}
           <a 
-            href="mailto:torikinsights@gmail.com" 
+            href="mailto:info@tae.agency" 
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group"
           >
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -41,13 +41,13 @@ export default function Footer() {
             </div>
             <div className="overflow-hidden">
               <div className="text-[11px] text-slate-400 font-medium">{t("Email Support", "ইমেইল সাপোর্ট")}</div>
-              <div className="text-white font-bold text-xs truncate">torikinsights@gmail.com</div>
+              <div className="text-white font-bold text-xs truncate">info@tae.agency</div>
             </div>
           </a>
 
           {/* Instagram */}
           <a 
-            href="https://instagram.com" 
+            href="https://www.instagram.com/tae.agency_official/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all group"
@@ -57,13 +57,13 @@ export default function Footer() {
             </div>
             <div className="overflow-hidden">
               <div className="text-[11px] text-slate-400 font-medium">{t("Instagram", "ইনস্টাগ্রাম")}</div>
-              <div className="text-white font-bold text-xs truncate">@tae.agency</div>
+              <div className="text-white font-bold text-xs truncate">@tae.agency_official</div>
             </div>
           </a>
 
           {/* Messenger */}
           <a 
-            href="https://m.me/your-facebook-page" 
+            href="https://m.me/taeagency" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 transition-all group"
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
             <div className="overflow-hidden">
               <div className="text-[11px] text-slate-400 font-medium">{t("Messenger", "মেসেঞ্জার")}</div>
-              <div className="text-white font-bold text-xs truncate">TAE.Agency Official</div>
+              <div className="text-white font-bold text-xs truncate">TAE.Agency</div>
             </div>
           </a>
 
@@ -96,10 +96,9 @@ export default function Footer() {
         {/* Top Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/60">
           
-          {/* Brand Column (Logo & Description - Takes 2 cols on lg) */}
+          {/* Brand Column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3.5 group">
-              {/* Footer Logo */}
               <div className="relative h-12 w-16 sm:h-14 sm:w-20 shrink-0">
                 <Image
                   src="/Logo.png"
@@ -109,7 +108,6 @@ export default function Footer() {
                 />
               </div>
 
-              {/* Brand Name */}
               <div className="flex flex-col justify-center">
                 <span className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-1 leading-none">
                   TAE<span className="text-cyan-400">.</span>Agency
@@ -157,7 +155,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources & Case Studies */}
+          {/* Resources */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-bold text-sm uppercase tracking-wider">
               {t("Resources", "রিসোর্সেস")}
