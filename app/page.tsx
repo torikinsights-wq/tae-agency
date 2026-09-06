@@ -2,10 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-// Keep the page self-contained when the shared language context is unavailable.
-const useLanguage = () => ({
-  t: (english: string, _bengali: string) => english,
-});
+import { useLanguage } from "../context/LanguageContext";
 import {
   FaBolt,
   FaRobot,
