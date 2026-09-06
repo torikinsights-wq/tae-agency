@@ -15,7 +15,6 @@ export default function Navbar() {
         
         {/* Logo & Brand Details Section */}
         <Link href="/" className="flex items-center gap-3.5 group py-2">
-          {/* Bigger Logo Image */}
           <div className="relative h-12 w-16 sm:h-14 sm:w-20 transition-transform duration-300 group-hover:scale-105 shrink-0">
             <Image
               src="/Logo.png"
@@ -26,7 +25,6 @@ export default function Navbar() {
             />
           </div>
 
-          {/* Text Section: TAE.Agency on top, Torik Automation Engineering at bottom */}
           <div className="flex flex-col justify-center">
             <span className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-1 leading-none">
               TAE<span className="text-cyan-400">.</span>Agency
@@ -64,7 +62,6 @@ export default function Navbar() {
 
         {/* Right Actions (Language Toggle & CTA Button) */}
         <div className="hidden lg:flex items-center gap-4">
-          {/* Language Switch Button */}
           <button
             onClick={() => setLang(lang === "en" ? "bn" : "en")}
             className="px-3.5 py-1.5 rounded-lg bg-slate-900 text-cyan-400 border border-cyan-500/30 text-xs font-bold transition-all hover:bg-cyan-500/20"
@@ -72,7 +69,6 @@ export default function Navbar() {
             {lang === "en" ? "বাংলা" : "ইংরেজি"}
           </button>
 
-          {/* Consultation Button */}
           <Link
             href="/contact"
             className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-sm"
