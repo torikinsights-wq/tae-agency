@@ -129,7 +129,7 @@ export default function ContactPage() {
                     setSubmitted(false);
                     setFormData({ fullName: "", businessType: "", customBusinessType: "", contactMethod: "email", contactValue: "", message: "" });
                   }}
-                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-lg text-sm"
+                  className="bg-red-500 hover:bg-red-400 text-white font-bold px-5 py-2.5 rounded-xl transition-all shadow-lg text-sm"
                 >
                   {t("Send Another Message", "আরেকটি মেসেজ পাঠান")}
                 </button>
@@ -137,7 +137,7 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <h3 className="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-3 flex items-center gap-2">
-                  <FaPaperPlane className="text-cyan-400 text-base" /> {t("Project Discussion Form", "প্রজেক্ট ডিসকাশন ফর্ম")}
+                  <FaPaperPlane className="text-red-400 text-base" /> {t("Project Discussion Form", "প্রজেক্ট ডিসকাশন ফর্ম")}
                 </h3>
 
                 {errorMessage && (
@@ -158,7 +158,7 @@ export default function ContactPage() {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder={t("Enter your full name", "আপনার পুরো নাম লিখুন")}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -172,7 +172,7 @@ export default function ContactPage() {
                     required
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none transition-colors"
                   >
                     <option value="" disabled>
                       {t("Select your business type", "আপনার ব্যবসার ধরণ সিলেক্ট করুন")}
@@ -189,7 +189,7 @@ export default function ContactPage() {
                 {/* Conditional Custom Business Field */}
                 {formData.businessType === "Other" && (
                   <div className="space-y-1.5 animate-fadeIn">
-                    <label className="block text-xs font-medium text-cyan-300">
+                    <label className="block text-xs font-medium text-red-300">
                       {t("Enter your business name *", "আপনার ব্যবসার নামটি লিখুন *")}
                     </label>
                     <input
@@ -199,7 +199,7 @@ export default function ContactPage() {
                       value={formData.customBusinessType}
                       onChange={handleChange}
                       placeholder={t("e.g. E-commerce, Law Firm, etc.", "যেমন: ই-কমার্স, ল’ ফার্ম ইত্যাদি")}
-                      className="w-full bg-slate-900/90 border border-cyan-500/50 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                      className="w-full bg-slate-900/90 border border-red-500/50 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-red-400 focus:outline-none transition-colors"
                     />
                   </div>
                 )}
@@ -211,7 +211,7 @@ export default function ContactPage() {
                   </label>
                   
                   <div className="grid grid-cols-2 gap-3">
-                    <label className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${formData.contactMethod === 'email' ? 'bg-cyan-500/10 border-cyan-500 text-cyan-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                    <label className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${formData.contactMethod === 'email' ? 'bg-red-500/10 border-red-500 text-red-300 font-semibold' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                       <input 
                         type="radio" 
                         name="contactMethod" 
@@ -244,7 +244,7 @@ export default function ContactPage() {
                     value={formData.contactValue}
                     onChange={handleChange}
                     placeholder={formData.contactMethod === 'email' ? 'info@tae.agency' : '+880 1724-132820'}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors mt-2"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none transition-colors mt-2"
                   />
                 </div>
 
@@ -259,15 +259,15 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={t("Write your current project idea or issue in detail...", "আপনার বর্তমান প্রজেক্ট আইডিয়া বা সমস্যা বিস্তারিত লিখুন...")}
-                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none transition-colors"
                   ></textarea>
                 </div>
 
-                {/* Submit Button */}
+                {/* Submit Button (Updated to Red Gradient) */}
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer text-sm"
+                  className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-red-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer text-sm"
                 >
                   {loading ? (
                     <>
@@ -281,7 +281,7 @@ export default function ContactPage() {
                 </button>
 
                 <p className="text-center text-[11px] text-slate-500 flex items-center justify-center gap-1.5 pt-1">
-                  <FaShieldAlt className="text-cyan-400" /> {t("Your information will be kept completely secure and confidential.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপনীয় রাখা হবে।")}
+                  <FaShieldAlt className="text-red-400" /> {t("Your information will be kept completely secure and confidential.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপনীয় রাখা হবে।")}
                 </p>
               </form>
             )}
@@ -355,7 +355,7 @@ export default function ContactPage() {
                   href="https://m.me/taeagency" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                  className="flex.items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition-transform">
                     <FaFacebookMessenger />
@@ -382,8 +382,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-2xl p-4 text-center text-xs text-cyan-300">
-              ⚡ {t("We usually reply within **2 hours** on working days.", "সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।")}
+            <div className="bg-gradient-to-r from-red-950/30 to-rose-950/30 border border-red-500/20 rounded-2xl p-4 text-center text-xs text-red-300">
+              ⚡ {t("We usually reply within **2 hours** on working days.", "সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।")}
             </div>
 
           </div>
