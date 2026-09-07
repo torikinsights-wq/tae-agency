@@ -30,7 +30,7 @@ export default function HomePage() {
             {t("AI-Powered Business Automation Agency", "এআই-চালিত বিজনেস অটোমেশন এজেন্সি")}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
             {t("Automate Your Business,", "আপনার ব্যবসা অটোমেট করুন,")} <br />
             <span className="text-cyan-400">
               {t("Save Time & Double Revenue", "সময় বাঁচান ও আয় দ্বিগুণ করুন")}
