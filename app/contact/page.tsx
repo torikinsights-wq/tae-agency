@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { 
   FaEnvelope, FaWhatsapp, FaFacebookMessenger, FaInstagram,
@@ -23,6 +24,21 @@ export default function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Smart Email Handler for Mobile and Desktop
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const email = "info@tae.agency";
+    
+    // Check if the user is on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = `mailto:${email}`;
+    } else {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, "_blank");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -303,12 +319,11 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                {/* Email */}
+                {/* Email (Smart Handler Applied Here) */}
                 <a 
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tae.agency" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
+                  href="#email" 
+                  onClick={handleEmailClick}
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg group-hover:scale-110 transition-transform">
                     <FaEnvelope />
