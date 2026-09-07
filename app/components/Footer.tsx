@@ -8,6 +8,23 @@ import { FaWhatsapp, FaEnvelope, FaInstagram, FaFacebookMessenger, FaPhoneAlt } 
 export default function Footer() {
   const { t } = useLanguage();
 
+  // Smart Email Handler for Mobile and Desktop
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const email = "info@tae.agency";
+    
+    // Check if the user is on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Opens mobile email app / mailto client
+      window.location.href = `mailto:${email}`;
+    } else {
+      // Opens Gmail Web Compose in a new tab for desktop users
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, "_blank");
+    }
+  };
+
   return (
     <footer className="bg-[#02040a] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 space-y-12">
@@ -31,9 +48,10 @@ export default function Footer() {
             </div>
           </a>
 
-          {/* Email (Fixed with mailto for seamless Mobile App & Desktop support) */}
+          {/* Email (Smart Handler for both Computer & Mobile) */}
           <a 
-            href="mailto:info@tae.agency" 
+            href="#email" 
+            onClick={handleEmailClick}
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
