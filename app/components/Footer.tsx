@@ -31,11 +31,9 @@ export default function Footer() {
             </div>
           </a>
 
-          {/* Email (Updated for Laptop & Mobile Direct Web Compose) */}
+          {/* Email (Fixed with mailto for seamless Mobile App & Desktop support) */}
           <a 
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tae.agency" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="mailto:info@tae.agency" 
             className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -123,7 +121,7 @@ export default function Footer() {
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm mt-2">
               {t(
                 "Empowering service-oriented businesses and real estate with AI-driven automation systems, lead generation, and custom workflows.",
-                "এআই-চালিত অটোমেশন সিস্টেম, লিড জেনারেশন এবং কাস্টম ওয়ার্কফ্লো দিয়ে সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেট ব্যবসার বৃদ্ধি ত্বরান্বিত করছি।"
+                "এআই-চালিত অটোমেশন সিস্টেম, লিড জেনারেশন এবং কাস্টম ওয়ার্কফ্লো দিয়ে সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেট ব্যবসার বৃদ্ধি ত্বরান্বিত করছি।"
               )}
             </p>
           </div>
