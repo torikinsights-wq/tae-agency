@@ -9,23 +9,19 @@ import {
   FaRobot,
   FaBullseye,
   FaEye,
-  FaCogs,
   FaNetworkWired,
   FaUserMd,
   FaCheckCircle,
   FaArrowRight,
-  FaComments,
-  FaCalendarAlt,
-  FaSyncAlt,
-  FaChartLine,
-  FaUsers,
   FaLightbulb,
   FaLayerGroup,
-  FaHeart,
+  FaChartLine,
   FaWhatsapp,
   FaClock,
   FaChevronDown,
   FaChevronUp,
+  FaUserTie,
+  FaHeart,
 } from "react-icons/fa";
 
 const teamMembers = [
@@ -147,47 +143,61 @@ const processSteps = [
   },
 ];
 
-const faqs = [
-  {
-    qBn: "ডেন্টাল প্র্যাকটিসে অটোমেশন কীভাবে কাজ করে?",
-    qEn: "How does automation work in dental practices?",
-    aBn: "অটোমেশন আপনার ওয়েবসাইটের ইনকোয়ারি, মিসড কল টেক্সট-ব্যাক, অ্যাপয়েন্টমেন্ট বুকিং এবং রিমাইন্ডারগুলো স্বয়ংক্রিয়ভাবে পরিচালনা করে, যাতে আপনার টিম রোগীর সেবায় বেশি সময় দিতে পারে।",
-    aEn: "Automation handles your website inquiries, missed call text-backs, appointment bookings, and patient reminders automatically so your team can focus entirely on patient care.",
-  },
-  {
-    qBn: "সেটআপ করতে কতদিন সময় লাগে?",
-    qEn: "How long does setup take?",
-    aBn: "সাধারণত আপনার ক্লিনিকের ওয়ার্কফ্লো এবং রিকোয়ারমেন্ট অনুযায়ী সম্পূর্ণ সিস্টেম সেটআপ ও লাইভ হতে ৩ থেকে ৭ কার্যদিবস সময় লাগে।",
-    aEn: "Typically, full system setup and deployment take between 3 to 7 business days depending on your clinic's specific workflow requirements.",
-  },
-  {
-    qBn: "এটি কি আমাদের বর্তমান সফটওয়্যারের সাথে কাজ করবে?",
-    qEn: "Will this work with our existing software?",
-    aBn: "হ্যাঁ, আমরা আপনার ব্যবহৃত জনপ্রিয় ক্যালেন্ডার, গুগল শিট, সিআরএম এবং কমিউনিকেশন টুলের সাথে এটি স্মুথলি ইন্টিগ্রেট করে দিই।",
-    aEn: "Yes, we smoothly integrate our automation systems with your existing calendars, Google Sheets, CRMs, and communication tools.",
-  },
-  {
-    qBn: "ফ্রি অডিট সেশনের জন্য কীভাবে বুক করব?",
-    qEn: "How do I book a free audit session?",
-    aBn: "আমাদের ওয়েবসাইটের যেকোনো 'Book a Free Dental Automation Audit' বাটনে ক্লিক করে ফর্ম পূরণ করলেই আমাদের টিম আপনার সাথে যোগাযোগ করবে।",
-    aEn: "Simply click any 'Book a Free Dental Automation Audit' button on our website and fill out the form to get started with our team.",
-  },
-];
-
 export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+  // FAQ Dropdown States matching Services Page format
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [openFaqItem, setOpenFaqItem] = useState<number | null>(null);
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
+  const toggleFaqItem = (index: number) => {
+    setOpenFaqItem((current) => (current === index ? null : index));
   };
+
+  const faqs = [
+    {
+      q: t("What exactly does TAE.Agency provide?", "TAE.Agency ঠিক কী প্রদান করে?"),
+      a: t(
+        "TAE.Agency designs and implements AI-powered automation systems for dental practices. Depending on the clinic's needs, this can include patient acquisition, communication, appointment workflows, treatment follow-up, recall, reactivation, reputation workflows, and marketing automation.",
+        "TAE.Agency ডেন্টাল প্র্যাকটিসের জন্য এআই-চালিত অটোমেশন সিস্টেম ডিজাইন ও ইমপ্লিমেন্ট করে। ক্লিনিকের প্রয়োজনের ওপর ভিত্তি করে এতে পেশেন্ট অ্যাকুইজিশন, কমিউনিকেশন, অ্যাপয়েন্টমেন্ট ওয়ার্কফ্লো, ট্রিটমেন্ট ফলো-আপ, রিকাল, রিয়াক্টিভেশন, রেপুটেশন এবং মার্কেটিং অটোমেশন অন্তর্ভুক্ত থাকতে পারে।"
+      ),
+    },
+    {
+      q: t("Do you only provide AI chatbots?", "আপনারা কি শুধু এআই চ্যাটবট প্রদান করেন?"),
+      a: t(
+        "No. A chatbot can be one part of an automation system, but TAE.Agency focuses on connecting the wider patient journey—from inquiry and follow-up to appointment communication, recall, and reactivation.",
+        "না। চ্যাটবট অটোমেশন সিস্টেমের একটি অংশ হতে পারে, তবে TAE.Agency বৃহত্তর পেশেন্ট জার্নি কানেক্ট করার ওপর ফোকাস করে—ইনকোয়ারি ও ফলো-আপ থেকে শুরু করে অ্যাপয়েন্টমেন্ট যোগাযোগ, রিকাল এবং রিয়াক্টিভেশন পর্যন্ত।"
+      ),
+    },
+    {
+      q: t("Can AI handle medical or dental diagnosis?", "এআই কি মেডিকেল বা ডেন্টাল ডায়াগনোসিস হ্যান্ডেল করতে পারে?"),
+      a: t(
+        "No. AI workflows are intended for routine, non-clinical communication. Diagnosis, treatment decisions, clinical advice, and patient care remain the responsibility of qualified dental professionals.",
+        "না। এআই ওয়ার্কফ্লো শুধুমাত্র রুটিন ও অ-ক্লিনিক্যাল যোগাযোগের জন্য। ডায়াগনোসিস, ট্রিটমেন্ট ডিসিশন, ক্লিনিক্যাল পরামর্শ এবং পেশেন্ট কেয়ারের দায়িত্ব সম্পূর্ণভাবে যোগ্য ডেন্টাল পেশেন্ট প্রফেশনালদের।"
+      ),
+    },
+    {
+      q: t("Can you automate appointment reminders?", "আপনারা কি অ্যাপয়েন্টমেন্ট রিমাইন্ডার অটোমেট করতে পারেন?"),
+      a: t(
+        "Yes, depending on the tools and workflow setup. Appointment confirmations, reminders, rescheduling communication, cancellation follow-up, and related communication workflows can be automated.",
+        "হ্যাঁ, টুলস ও ওয়ার্কফ্লো সেটআপ অনুযায়ী এটি করা সম্ভব। অ্যাপয়েন্টমেন্ট কনফার্মেশন, রিমাইন্ডার, রিডিউল যোগাযোগ, ক্যান্সেলেশন ফলো-আপ ইত্যাদি অটোমেট করা যায়।"
+      ),
+    },
+    {
+      q: t("Will automation replace my receptionist?", "অটোমেশন কি আমাদের রিসেপশনিস্টকে প্রতিস্থাপন করবে?"),
+      a: t(
+        "The goal is not to replace your reception team. Automation handles repetitive workflows so your staff can spend more time on patient care, complex situations, hospitality, and human communication.",
+        "এর লক্ষ্য রিসেপশন টিমকে প্রতিস্থাপন করা নয়। অটোমেশন রুটিন কাজগুলো হ্যান্ডেল করে যাতে আপনার স্টাফরা পেশেন্ট কেয়ার, জটিল পরিস্থিতি এবং মানবীয় যোগাযোগে বেশি সময় দিতে পারেন।"
+      ),
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
       
-      {/* COLORFUL & VIBRANT TOP CTA BAR */}
-      <div className="w-full bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 border-b border-cyan-500/40 py-3 px-4 sm:px-6 shadow-lg shadow-cyan-500/10">
+      {/* VIBRANT TOP CTA BAR (Matching Services Page) */}
+      <div className="w-full bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 border-b border-cyan-500/40 py-3 px-4 sm:px-6 shadow-lg shadow-cyan-500/15">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2 text-cyan-200">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -215,7 +225,6 @@ export default function AboutPage() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
           <div className="absolute top-40 right-1/4 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full" />
-          <div className="absolute bottom-0 right-10 w-64 h-64 bg-orange-500/5 blur-[120px] rounded-full" />
         </div>
 
         <div className="relative max-w-7xl mx-auto">
@@ -247,21 +256,68 @@ export default function AboutPage() {
                 {t("Book a Free Dental Automation Audit", "ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
                 <FaArrowRight />
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl border border-white/10 bg-white/[0.03] text-white font-semibold hover:bg-white/[0.06] transition"
-              >
-                {t("Explore Our Services", "আমাদের সার্ভিসগুলো দেখুন")}
-                <FaArrowRight />
-              </Link>
+      {/* FOUNDER / ABOUT ME SECTION (WITH YOUR PHOTO & DETAILS) */}
+      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.025] overflow-hidden shadow-2xl">
+            <div className="grid lg:grid-cols-[380px_1fr] items-center">
+              <div className="relative min-h-[420px] bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent flex items-end justify-center overflow-hidden">
+                <div className="absolute top-8 left-8 z-10">
+                  <span className="px-3 py-1.5 rounded-full text-xs uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">
+                    {t("Founder", "ফাউন্ডার")}
+                  </span>
+                </div>
+                <Image
+                  src="/Md Torikul Islam Ovi.png"
+                  alt="Md Torikul Islam Ovi"
+                  fill
+                  className="object-contain object-bottom"
+                />
+              </div>
+
+              <div className="p-8 md:p-12 space-y-5">
+                <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
+                  <FaUserTie /> {t("About Me", "আমার সম্পর্কে")}
+                </div>
+
+                <h3 className="text-3xl md:text-4xl font-extrabold text-white">Md Torikul Islam Ovi</h3>
+                
+                <p className="text-cyan-400 font-semibold text-base">
+                  {t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — TAE.Agency")}
+                </p>
+
+                <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
+                  <p>
+                    {t(
+                      "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial.",
+                      "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।"
+                    )}
+                  </p>
+                  <p>
+                    {t(
+                      "My core mission is to free local business and dental practices from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost.",
+                      "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও ডেন্টাল প্র্যাকটিসগুলোকে দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।"
+                    )}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* WHY WE EXIST */}
-      <section className="py-24 px-6 border-t border-white/5">
+      <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
@@ -307,7 +363,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION */}
+      {/* TEAM SECTION (Fixed Clean Proportionate Image Cards) */}
       <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
@@ -340,43 +396,86 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <section className="py-24 px-6">
+      {/* FAQ SECTION (MATCHING SERVICES PAGE EXACT FORMAT WITH MASTER ACCORDION & DETAILED INFO) */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">FAQ</p>
-            <h2 className="mt-3 text-3xl md:text-4xl font-extrabold">
-              {t("Frequently Asked Questions", "সচরাচর জিজ্ঞাসিত প্রশ্নাবলী")}
+          
+          <div className="text-center mb-10">
+            <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-mono">
+              FAQ
+            </span>
+
+            <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 mb-4">
+              {t("Questions About Our Services", "আমাদের সার্ভিসসমূহ সম্পর্কে প্রশ্ন")}
             </h2>
+
+            <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-6">
+              {t(
+                "Learn more about how our AI-powered automation systems work for dental practices and service businesses. Click below to explore our detailed answers.",
+                "আমাদের এআই-চালিত অটোমেশন সিস্টেমগুলো কীভাবে ডেন্টাল প্র্যাকটিস এবং সার্ভিস বিজনেসের জন্য কাজ করে সে সম্পর্কে আরও জানুন। বিস্তারিত উত্তর দেখতে নিচে ক্লিক করুন।"
+              )}
+            </p>
+
+            {/* Master Dropdown Toggle Button (Matching Services Page) */}
+            <button
+              type="button"
+              onClick={() => setIsFaqOpen(!isFaqOpen)}
+              className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 hover:border-cyan-400 font-bold px-7 py-3.5 rounded-2xl shadow-xl transition-all duration-300"
+            >
+              <span>{isFaqOpen ? t("Hide Questions", "প্রশ্নগুলো লুকান") : t("View All Questions", "সকল প্রশ্নগুলো দেখুন")}</span>
+              <FaChevronDown className={`transition-transform duration-300 ${isFaqOpen ? "rotate-180" : ""}`} />
+            </button>
           </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className="rounded-2xl border border-white/10 bg-[#080B11] overflow-hidden transition"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between p-6 text-left font-semibold text-lg hover:text-cyan-300 transition"
-                >
-                  <span>{isBangla ? faq.qBn : faq.qEn}</span>
-                  <span className="text-cyan-400">
-                    {openFaq === index ? <FaChevronUp /> : <FaChevronDown />}
-                  </span>
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
-                    {isBangla ? faq.aBn : faq.aEn}
+          {/* FAQ Items Container */}
+          <div className={`grid transition-all duration-500 ${isFaqOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+            <div className="overflow-hidden space-y-3 pt-2">
+              {faqs.map((faq, index) => {
+                const isOpen = openFaqItem === index;
+                return (
+                  <div
+                    key={faq.q}
+                    className="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleFaqItem(index)}
+                      className="w-full px-6 py-5 text-left flex items-center justify-between gap-5 hover:text-cyan-400 transition-colors"
+                    >
+                      <span className="text-white font-bold text-sm sm:text-base">
+                        {faq.q}
+                      </span>
+
+                      <FaChevronDown
+                        className={`text-cyan-400 flex-shrink-0 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <div
+                      className={`grid transition-all duration-300 ${
+                        isOpen
+                          ? "grid-rows-[1fr]"
+                          : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-6 pb-6 pt-1 text-slate-400 text-sm leading-relaxed border-t border-slate-800/70">
+                          {faq.a}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
+
         </div>
       </section>
 
-      {/* CTA SECTION */}
+      {/* FINAL CTA */}
       <section className="relative py-28 px-6 border-t border-white/5">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[300px] bg-cyan-500/10 blur-[140px] rounded-full" />
