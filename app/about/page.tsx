@@ -238,13 +238,13 @@ export default function AboutPage() {
           <p className="mt-7 text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
             {t(
               "TAE.Agency — Torik Automation Engineering — designs intelligent automation systems that help dental practices organize patient acquisition, communication, appointments, follow-up, recall, reactivation, and marketing workflows.",
-              "TAE.Agency — টরিক অটোমেশন ইঞ্জিনিয়ারিং — বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে রোগী অর্জন, যোগাযোগ, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকল, রিঅ্যাক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
+              "TAE.Agency — টরিক অটোমেশন ইঞ্জিনিয়ারিং — বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে রোগী অর্জন, যোগাযোগ, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকাল, রিঅ্যাক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
             )}
           </p>
         </div>
       </section>
 
-      {/* MISSION & VISION SECTION (CENTERED TEXT & RESTORED) */}
+      {/* MISSION & VISION SECTION (CENTERED TEXT) */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-8 text-center">
@@ -277,62 +277,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDER / ABOUT ME SECTION */}
-      <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-white/[0.025] overflow-hidden shadow-2xl">
-            <div className="grid lg:grid-cols-[380px_1fr] items-center">
-              <div className="relative min-h-[420px] bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent flex items-end justify-center overflow-hidden">
-                <div className="absolute top-8 left-8 z-10">
-                  <span className="px-3 py-1.5 rounded-full text-xs uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">
-                    {t("Founder", "ফাউন্ডার")}
-                  </span>
-                </div>
-                <Image
-                  src="/Md Torikul Islam Ovi.png"
-                  alt="Md Torikul Islam Ovi"
-                  fill
-                  className="object-contain object-bottom"
-                />
-              </div>
-
-              <div className="p-8 md:p-12 space-y-5">
-                <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
-                  <FaUserTie /> {t("About Me", "আমার সম্পর্কে")}
-                </div>
-
-                <h3 className="text-3xl md:text-4xl font-extrabold text-white">Md Torikul Islam Ovi</h3>
-                
-                <p className="text-cyan-400 font-semibold text-base">
-                  {t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — TAE.Agency")}
-                </p>
-
-                <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
-                  <p>
-                    {t(
-                      "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial.",
-                      "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।"
-                    )}
-                  </p>
-                  <p>
-                    {t(
-                      "My core mission is to free local business and dental practices from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost.",
-                      "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও ডেন্টাল প্র্যাকটিসগুলোকে দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।"
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY WE EXIST (CENTERED TEXT AS REQUESTED) */}
+      {/* WHY WE EXIST (CENTERED TEXT) */}
       <section className="py-20 px-6 max-w-4xl mx-auto text-center">
         <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
 
@@ -349,15 +294,22 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* OUR PROCESS */}
-      <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
+      {/* OUR PROCESS (LARGE BOLD WORKFLOW HEADINGS) */}
+      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Approach", "আমাদের কর্মপদ্ধতি")}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-mono">
+              {t("OUR APPROACH", "আমাদের কর্মপদ্ধতি")}
+            </span>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white mt-3 mb-4 leading-tight">
               {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
-              <span className="block text-gray-500">{t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}</span>
             </h2>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-cyan-400 leading-tight">
+              {t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}
+            </h2>
+            <p className="mt-5 text-gray-400 text-base sm:text-lg">
+              {t("The technology comes after we understand what your practice actually needs.", "আপনার প্র্যাকটিসের ঠিক কী প্রয়োজন তা বোঝার পরেই প্রযুক্তিগত কাজ শুরু হয়।")}
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -371,6 +323,59 @@ export default function AboutPage() {
                 <p className="mt-3 text-sm text-gray-400 leading-relaxed">{isBangla ? step.descriptionBn : step.descriptionEn}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER / ABOUT ME SECTION (PLACED RIGHT BEFORE OUR TEAM) */}
+      <section className="py-20 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
+        </div>
+
+        <div className="rounded-3xl border border-white/10 bg-white/[0.025] overflow-hidden shadow-2xl">
+          <div className="grid lg:grid-cols-[380px_1fr] items-center">
+            <div className="relative min-h-[420px] bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent flex items-end justify-center overflow-hidden">
+              <div className="absolute top-8 left-8 z-10">
+                <span className="px-3 py-1.5 rounded-full text-xs uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">
+                  {t("Founder", "ফাউন্ডার")}
+                </span>
+              </div>
+              <Image
+                src="/Md Torikul Islam Ovi.png"
+                alt="Md Torikul Islam Ovi"
+                fill
+                className="object-contain object-bottom"
+              />
+            </div>
+
+            <div className="p-8 md:p-12 space-y-5">
+              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
+                <FaUserTie /> {t("About Me", "আমার সম্পর্কে")}
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-extrabold text-white">Md Torikul Islam Ovi</h3>
+              
+              <p className="text-cyan-400 font-semibold text-base">
+                {t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — TAE.Agency")}
+              </p>
+
+              <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
+                <p>
+                  {t(
+                    "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial.",
+                    "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।"
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "My core mission is to free local business and dental practices from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost.",
+                    "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও ডেন্টাল প্র্যাকটিসগুলোকে দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।"
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -408,7 +413,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ SECTION (EXTENDED & DETAILED MATCHING SERVICES PAGE) */}
+      {/* FAQ SECTION */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           
