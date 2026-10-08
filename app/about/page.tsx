@@ -1,394 +1,494 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
-import { 
-  FaRocket, FaBullseye, FaCheckCircle, 
-  FaRobot, FaPhoneSlash, FaCalendarAlt, FaCreditCard, FaStar, FaShareAlt, FaUserTie, FaUsers 
+import {
+  FaTooth,
+  FaRobot,
+  FaBullseye,
+  FaEye,
+  FaCogs,
+  FaNetworkWired,
+  FaUserMd,
+  FaCheckCircle,
+  FaArrowRight,
+  FaComments,
+  FaCalendarAlt,
+  FaSyncAlt,
+  FaChartLine,
+  FaUsers,
+  FaLightbulb,
+  FaLayerGroup,
+  FaHeart,
+  FaRocket,
+  FaPhoneSlash,
+  FaCreditCard,
+  FaStar,
+  FaShareAlt,
+  FaUserTie,
 } from "react-icons/fa";
+
+const teamMembers = [
+  {
+    name: "Farjana",
+    role: "Automation Specialist",
+    descriptionBn: "ওয়ার্কফ্লো ডিজাইন ও ডেটা ম্যানেজমেন্ট এক্সপার্ট।",
+    descriptionEn: "Workflow design & data management expert.",
+    image: "/Farjana.png",
+  },
+  {
+    name: "Sagor",
+    role: "AI Chatbot Developer",
+    descriptionBn: "এআই চ্যাটবট ও ইনস্ট্যান্ট রেসপন্স সেটআপে দক্ষ।",
+    descriptionEn: "Skilled in AI chatbot & instant response setup.",
+    image: "/Sagor.png",
+  },
+  {
+    name: "Sakib",
+    role: "Lead Gen Specialist",
+    descriptionBn: "লিড জেনারেশন ও পাইপলাইন অপ্টিমাইজেশন।",
+    descriptionEn: "Lead generation & pipeline optimization.",
+    image: "/Sakib.png",
+  },
+  {
+    name: "Rashed",
+    role: "Marketing Strategist",
+    descriptionBn: "ডিজিটাল মার্কেটিং ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজিস্ট।",
+    descriptionEn: "Digital marketing & client growth strategist.",
+    image: "/Rashed.jpg",
+  },
+  {
+    name: "Ramich",
+    role: "Tech Integration Expert",
+    descriptionBn: "সিস্টেম ইন্টিগ্রেশন ও টেকনিক্যাল সাপোর্ট।",
+    descriptionEn: "System integration & technical support.",
+    image: "/Ramich.jpg",
+  },
+  {
+    name: "Rimu",
+    role: "Operations & Support",
+    descriptionBn: "অপারেশনস এবং ক্লায়েন্ট সাকসেস ম্যানেজমেন্ট।",
+    descriptionEn: "Operations and client success management.",
+    image: "/Rimu.jpg",
+  },
+];
+
+const principles = [
+  {
+    icon: <FaTooth />,
+    titleBn: "ডেন্টাল প্র্যাকটিসের উপযোগী সিস্টেম",
+    titleEn: "Built Around Dental Practices",
+    descriptionBn: "রোগীর অনুসন্ধান, যোগাযোগ, অ্যাপয়েন্টমেন্ট, রিকল এবং রিঅ্যাক্টিভেশনের মতো ডেন্টাল প্র্যাকটিসের রিয়েল ওয়ার্কফ্লো মাথায় রেখে আমরা অটোমেশন ডিজাইন করি।",
+    descriptionEn: "We design automation around the real workflows of dental practices — from patient inquiries and communication to appointments, follow-up, recall, and reactivation.",
+  },
+  {
+    icon: <FaRobot />,
+    titleBn: "সঠিক উদ্দেশ্যে এআই এর ব্যবহার",
+    titleEn: "AI With a Purpose",
+    descriptionBn: "রোগী সেচার মানবিক দিকটি বজায় রেখেই আমরা যোগাযোগ ও পুনরাবৃত্তিমূলক কাজগুলোকে দ্রুত ও গোছানো করতে এআই ব্যবহার করি।",
+    descriptionEn: "We use AI where it can make communication and repetitive workflows faster, more organized, and more useful — without replacing the human side of patient care.",
+  },
+  {
+    icon: <FaNetworkWired />,
+    titleBn: "সংযুক্ত ও স্মার্ট ওয়ার্কফ্লো",
+    titleEn: "Connected Workflows",
+    descriptionBn: "আরেকটি নতুন বিচ্ছিন্ন টুল যোগ করার পরিবর্তে, আমরা আপনার ক্লিনিকে ইতিমধ্যে থাকা ওয়ার্কফ্লোগুলোকে পরস্পরের সাথে যুক্ত করি।",
+    descriptionEn: "Instead of adding another disconnected tool, we connect the workflows that already exist inside your practice.",
+  },
+  {
+    icon: <FaUserMd />,
+    titleBn: "মূল যত্ন ও সেবা থাকবে মানুষের হাতেই",
+    titleEn: "Human Care Stays Human",
+    descriptionBn: "অটোমেশন শুধু যোগাযোগ ও প্রশাসনকে সহায়তা করবে, আর রোগ নির্ণয়, চিকিৎসা সংক্রান্ত সিদ্ধান্ত এবং ক্লিনিক্যাল কেয়ারের দায়িত্ব থাকবে বিশেষজ্ঞদের হাতেই।",
+    descriptionEn: "Automation can support communication and administration, while diagnosis, treatment decisions, clinical care, and complex situations remain with qualified professionals.",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    titleBn: "ডিসকভার",
+    titleEn: "Discover",
+    descriptionBn: "আমরা আপনার রোগীর জার্নি, লিড সোর্স, বুকিং প্রসেস এবং পুনরাবৃত্তিমূলক কাজগুলো গভীরভাবে বুঝি।",
+    descriptionEn: "We understand your patient journey, lead sources, booking process, communication channels, team structure, and repetitive tasks.",
+    icon: <FaLightbulb />,
+  },
+  {
+    number: "02",
+    titleBn: "ডিজাইন",
+    titleEn: "Design",
+    descriptionBn: "আপনার ডেন্টাল প্র্যাকটিস যেভাবে পরিচালিত হয়, তার সাথে মিলিয়ে আমরা অটোমেশন সুযোগ ও ওয়ার্কফ্লো ডিজাইন করি।",
+    descriptionEn: "We identify automation opportunities and design workflows around how your dental practice actually operates.",
+    icon: <FaLayerGroup />,
+  },
+  {
+    number: "03",
+    titleBn: "কানেক্ট",
+    titleEn: "Connect",
+    descriptionBn: "প্রয়োজনীয় টুলস, ফর্ম, ক্যালেন্ডার, কমিউনিকেশন চ্যানেল এবং ডেটাবেসগুলোকে একসাথে সংযুক্ত করা হয়।",
+    descriptionEn: "Relevant tools, forms, calendars, communication channels, databases, and automation systems are connected.",
+    icon: <FaNetworkWired />,
+  },
+  {
+    number: "04",
+    titleBn: "অটোমেট",
+    titleEn: "Automate",
+    descriptionBn: "আপনার ডেন্টাল টিম সম্পূর্ণ নিয়ন্ত্রণে রেখে পুনরাবৃত্তিমূলক কাজগুলো স্বয়ংক্রিয়ভাবে চলতে শুরু করে।",
+    descriptionEn: "Repetitive workflows begin running automatically while your dental team remains in control.",
+    icon: <FaRobot />,
+  },
+  {
+    number: "05",
+    titleBn: "অপ্টিমাইজ",
+    titleEn: "Optimize",
+    descriptionBn: "আপনার প্র্যাকটিস ও রোগীর জার্নির সাথে সামঞ্জস্য রেখে ওয়ার্কফ্লোর কার্যকারিতা নিয়মিত পর্যালোচনা ও উন্নত করা হয়।",
+    descriptionEn: "Workflow activity is reviewed and improved as your practice, team, and patient journey evolve.",
+    icon: <FaChartLine />,
+  },
+];
+
+const automationAreas = [
+  {
+    icon: <FaUsers />,
+    titleBn: "রোগী অর্জন (Patient Acquisition)",
+    titleEn: "Patient Acquisition",
+    items: [
+      "ওয়েবসাইট ইনকোয়ারি (Website inquiries)",
+      "সোশ্যাল মিডিয়া লিড (Social media leads)",
+      "অ্যাডভার্টাইজিং লিড (Advertising leads)",
+      "লিড ক্যাপচার (Lead capture)",
+      "লিড কোয়ালিফিকেশন (Lead qualification)",
+    ],
+  },
+  {
+    icon: <FaComments />,
+    titleBn: "রোগী যোগাযোগ (Patient Communication)",
+    titleEn: "Patient Communication",
+    items: [
+      "এআই চ্যাট (AI chat)",
+      "রুটিন এফএকিউ (Routine FAQs)",
+      "হোয়াটসঅ্যাপ ওয়ার্কফ্লো (WhatsApp workflows)",
+      "এসএমএস ওয়ার্কফ্লো (SMS workflows)",
+      "ইমেইল ওয়ার্কফ্লো (Email workflows)",
+      "অটোমেটেড ফলো-আপ (Automated follow-up)",
+    ],
+  },
+  {
+    icon: <FaCalendarAlt />,
+    titleBn: "অ্যাপয়েন্টমেন্ট ম্যানেজমেন্ট",
+    titleEn: "Appointments",
+    items: [
+      "বুকিং রিকোয়েস্ট (Booking requests)",
+      "কনফার্মেশন (Confirmations)",
+      "রিমাইন্ডার (Reminders)",
+      "পুনরায় সময় নির্ধারণ (Rescheduling)",
+      "বাতিলকরণ ফলো-আপ (Cancellation follow-up)",
+      "রেসপন্সহীন ফলো-আপ (No-response follow-up)",
+    ],
+  },
+  {
+    icon: <FaSyncAlt />,
+    titleBn: "রিটেনশন ও রিকল",
+    titleEn: "Retention & Recall",
+    items: [
+      "রিকল রিমাইন্ডার (Recall reminders)",
+      "নিষ্ক্রিয় রোগী রিঅ্যাক্টিভেশন (Inactive reactivation)",
+      "ভিজিট পরবর্তী ফলো-আপ (Post-visit follow-up)",
+      "পুনরায় আগমনকারী রোগী ক্যাম্পেইন",
+      "রিভিউ রিকোয়েস্ট (Review requests)",
+    ],
+  },
+];
 
 export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-16">
-        
-        {/* Header Section */}
-        <div className="text-center space-y-6 pt-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            {t("About TAE.Agency", "TAE.Agency সম্পর্কে")}
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            {isBangla ? (
-              <>বিজনেস অটোমেশন ও এআই সলিউশনে আপনার <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">বিশ্বস্ত পার্টনার</span></>
-            ) : (
-              <>Your Trusted Partner in <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Business Automation & AI</span></>
-            )}
-          </h1>
-
-          <p className="text-xl text-cyan-200 font-medium max-w-3xl mx-auto">
-            {t(
-              "We build AI-powered automation systems replacing manual processes for service-oriented businesses and real estate.",
-              "আমরা সার্ভিস-অরিয়েন্টেড বিজনেস এবং রিয়েল এস্টেটের জন্য ম্যানুয়াল প্রসেস বাদ দিয়ে এআই-চালিত অটোমেশন সিস্টেম তৈরি করি।"
-            )}
-          </p>
+    <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
+      
+      {/* HERO SECTION */}
+      <section className="relative pt-24 pb-24 px-6">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-1/4 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
+          <div className="absolute top-40 right-1/4 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full" />
+          <div className="absolute bottom-0 right-10 w-64 h-64 bg-orange-500/5 blur-[120px] rounded-full" />
         </div>
 
-        {/* 1. Mission & Vision Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-4 shadow-xl">
-            <div className="text-cyan-400 text-3xl p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20">
-              <FaBullseye />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300 text-xs md:text-sm tracking-[0.18em] uppercase mb-7">
+              <FaTooth />
+              {t("About TAE.Agency", "TAE.Agency সম্পর্কে")}
             </div>
-            <h3 className="text-2xl font-bold text-white">
-              {t("Our Mission", "আমাদের লক্ষ্য বা মিশন")}
-            </h3>
-            <p className="text-slate-300 leading-relaxed text-base">
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+              {t("Building Smarter", "স্মার্ট ডেন্টাল প্র্যাকটিস")}
+              <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                {t("Dental Practice Automation.", "অটোমেশন সিস্টেম তৈরি করছি।")}
+              </span>
+            </h1>
+
+            <p className="mt-7 text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
               {t(
-                "To free businesses from manual follow-up hassles. Converting every lead instantly through automated text-backs, AI chatbots, and smart pipelines.",
-                "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা।"
+                "TAE.Agency — Torik Automation Engineering — designs intelligent automation systems that help dental practices organize patient acquisition, communication, appointments, follow-up, recall, reactivation, and marketing workflows.",
+                "TAE.Agency — টরিক অটোমেশন ইঞ্জিনিয়ারিং — বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে রোগী অর্জন, যোগাযোগ, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকল, রিঅ্যাক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
+              )}
+            </p>
+
+            <div className="mt-9 flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition"
+              >
+                {t("Book a Free Dental Automation Audit", "ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
+                <FaArrowRight />
+              </Link>
+
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl border border-white/10 bg-white/[0.03] text-white font-semibold hover:bg-white/[0.06] transition"
+              >
+                {t("Explore Our Services", "আমাদের সার্ভিসগুলো দেখুন")}
+                <FaArrowRight />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-20 grid md:grid-cols-3 gap-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <FaTooth className="text-cyan-300 text-2xl mb-4" />
+              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Focus", "ফোকাস")}</p>
+              <h3 className="text-lg font-bold mt-2">{t("Dental Practice Automation", "ডেন্টাল প্র্যাকটিস অটোমেশন")}</h3>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <FaRobot className="text-cyan-300 text-2xl mb-4" />
+              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Approach", "পদ্ধতি")}</p>
+              <h3 className="text-lg font-bold mt-2">{t("AI + Connected Workflows", "এআই + সংযুক্ত ওয়ার্কফ্লো")}</h3>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <FaHeart className="text-cyan-300 text-2xl mb-4" />
+              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Philosophy", "দর্শন")}</p>
+              <h3 className="text-lg font-bold mt-2">{t("Human Care + Intelligent Automation", "মানবিক সেবা + ইন্টেলিজেন্ট অটোমেশন")}</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY WE EXIST */}
+      <section className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
+
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
+              {t("Your Dental Team Should Focus on Patients.", "আপনার ডেন্টাল টিম ফোকাস করবে রোগীর সেবায়।")}
+              <span className="block text-gray-500">{t("Not Repetitive Administrative Work.", "পুনরাবৃত্তিমূলক প্রশাসনিক কাজে নয়।")}</span>
+            </h2>
+
+            <p className="mt-6 text-gray-400 text-lg leading-relaxed">
+              {t(
+                "Dental practices manage dozens of repetitive interactions every day — inquiries, questions, appointment requests, confirmations, reminders, follow-ups, recalls, and reactivation.",
+                "ডেন্টাল প্র্যাকটিসগুলোকে প্রতিদিন অসংখ্য পুনরাবৃত্তিমূলক কাজের মুখোমুখি হতে হয়—ইনকোয়ারি, প্রশ্ন, অ্যাপয়েন্টমেন্ট রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, ফলো-আপ এবং রিকল।"
+              )}
+            </p>
+
+            <p className="mt-5 text-gray-400 text-lg leading-relaxed">
+              {t(
+                "TAE.Agency exists to turn these repetitive processes into structured, connected workflows so your team can spend more of its attention where it matters most: patient care and human relationships.",
+                "TAE.Agency এই পুনরাবৃত্তিমূলক প্রক্রিয়াগুলোকে একটি গোছানো ও সংযুক্ত ওয়ার্কফ্লোতে রূপান্তর করতে কাজ করে, যাতে আপনার টিম তাদের প্রধান মনোযোগ রোগীর যত্ন এবং মানব সম্পর্কের ওপর দিতে পারে।"
               )}
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-4 shadow-xl">
-            <div className="text-cyan-400 text-3xl p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20">
-              <FaRocket />
+          <div className="mt-14 grid md:grid-cols-2 gap-6">
+            <div className="rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-8">
+              <FaBullseye className="text-3xl text-cyan-300 mb-5" />
+              <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">{t("Our Mission", "আমাদের মিশন")}</p>
+              <h3 className="mt-3 text-2xl font-bold">{t("Make Dental Practice Automation Practical.", "ডেন্টাল অটোমেশনকে আরও বাস্তবসম্মত করা।")}</h3>
+              <p className="mt-4 text-gray-400 leading-relaxed">
+                {t(
+                  "Our mission is to help dental practices reduce repetitive manual work, respond to patient inquiries more efficiently, organize communication, and build connected workflows.",
+                  "আমাদের লক্ষ্য হলো ডেন্টাল প্র্যাকটিসগুলোর ম্যানুয়াল কাজের চাপ কমানো, রোগীর অনুসন্ধানে দ্রুত সাড়া দেওয়া এবং সংযুক্ত ওয়ার্কফ্লো তৈরি করা।"
+                )}
+              </p>
             </div>
-            <h3 className="text-2xl font-bold text-white">
-              {t("Our Vision", "আমাদের ভিশন")}
-            </h3>
-            <p className="text-slate-300 leading-relaxed text-base">
-              {t(
-                "Creating an automated digital ecosystem where every local business can exponentially scale sales and growth using cutting-edge AI technology.",
-                "একটি স্বয়ংক্রিয় ডিজিটাল ইকোসিস্টেম তৈরি করা, যেখানে এআই প্রযুক্তির সাহায্যে ছোট-বড় প্রতিটি লোকাল বিজনেস তাদের সেলস ও গ্রোথ বহুগুণ বাড়িয়ে নিতে পারে।"
-              )}
-            </p>
+
+            <div className="rounded-3xl border border-blue-400/10 bg-gradient-to-br from-blue-400/[0.08] to-transparent p-8">
+              <FaEye className="text-3xl text-blue-300 mb-5" />
+              <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{t("Our Vision", "আমাদের ভিশন")}</p>
+              <h3 className="mt-3 text-2xl font-bold">{t("A More Connected Future for Dental Practices.", "ডেন্টাল প্র্যাকটিসের জন্য একটি সংযুক্ত ভবিষ্যৎ।")}</h3>
+              <p className="mt-4 text-gray-400 leading-relaxed">
+                {t(
+                  "We envision dental practices where intelligent systems quietly handle repetitive workflows in the background while dental professionals remain focused on meaningful patient care.",
+                  "আমরা এমন একটি ভবিষ্যৎ কল্পনা করি যেখানে ইন্টেলিজেন্ট সিস্টেম ব্যাকগ্রাউন্ডে স্বয়ংক্রিয়ভাবে রুটিন কাজগুলো সামল করবে এবং প্রফেশনালরা রোগীর সেবায় মনোনিবেশ করবেন।"
+                )}
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* 2. What We Provide (6 Core Services) */}
-        <div className="bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-950 border border-cyan-500/30 rounded-2xl p-8 sm:p-10 space-y-8 shadow-xl">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl font-bold text-white">
-              {t("What Systems Do We Automate?", "আমরা ঠিক কী ধরনের অটোমেশন নিয়ে কাজ করি?")}
+      {/* WHAT WE BELIEVE */}
+      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("What We Believe", "আমাদের বিশ্বাস")}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
+              {t("Technology Should Make Your Practice", "প্রযুক্তি আপনার প্র্যাকটিসকে করবে")}
+              <span className="block text-gray-500">{t("Simpler, Not More Complicated.", "সহজতর, জটিল নয়।")}</span>
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
-              {t("Our 6 core services to fully automate your business operations and sales funnel.", "আপনার ব্যবসার সম্পূর্ণ অপারেশন ও সেলস ফানেল অটোমেটেড করতে আমাদের ৬টি কোর সার্ভিস।")}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* Service 1 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaRobot /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("1. AI Reception & Instant Chatbot", "১. এআই রিসিপশন ও ইনস্ট্যান্ট চ্যাটবট")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Provide fast and smart automated support to customers 24/7.", "গ্রাহকদের দিন-রাত ২৪ ঘণ্টা দ্রুত এবং বুদ্ধিমান অটোমেটেড সাপোর্ট প্রদান।")}
-                </p>
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {principles.map((item, index) => (
+              <div key={index} className="rounded-2xl border border-white/10 bg-[#080B11] p-6 hover:border-cyan-400/30 transition">
+                <div className="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-xl">
+                  {item.icon}
+                </div>
+                <h3 className="mt-5 text-lg font-bold">{isBangla ? item.titleBn : item.titleEn}</h3>
+                <p className="mt-3 text-gray-400 text-sm leading-relaxed">{isBangla ? item.descriptionBn : item.descriptionEn}</p>
               </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Message → AI Response → Booking
-              </div>
-            </div>
-
-            {/* Service 2 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaPhoneSlash /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("2. Missed Call Text-Back & Lead Rescue", "২. মিসড কল অটো-টেক্সট ব্যাক ও লিড রেসকিউ")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Instant text back to ensure not a single lead is ever lost.", "একটি লিডও যেন হাতছাড়া না হয় তা নিশ্চিত করতে তাত্ক্ষণিক টেক্সট ব্যাক।")}
-                </p>
-              </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Missed Call → Instant SMS → Booking
-              </div>
-            </div>
-
-            {/* Service 3 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCalendarAlt /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("3. Smart Booking & Calendar Automation", "৩. স্মার্ট বুকিং ও ক্যালেন্ডার অটোমেশন")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Make appointment booking and daily operations effortless.", "অ্যাপয়েন্টমেন্ট বুকিং এবং দৈনন্দিন অপারেশনাল কার্যক্রিম সম্পূর্ণ সহজ করুন।")}
-                </p>
-              </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Booking → Calendar → Reminder
-              </div>
-            </div>
-
-            {/* Service 4 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaCreditCard /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("4. Payment, Invoicing & Deposit", "৪. পেমেন্ট, ইনভয়েসিং ও ডিপোজিট")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Easily create invoices, collect payments, and reduce no-shows.", "ইনভয়েস তৈরি, পেমেন্ট কালেকশন এবং নো-শো কমানোর সুব্যবস্থা।")}
-                </p>
-              </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Service → Invoice → Payment Link
-              </div>
-            </div>
-
-            {/* Service 5 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaStar /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("5. Automated Review Request", "৫. অটোমেটিক রিভিউ রিকোয়েস্ট")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Turn one-time buyers into loyal customers and boost reviews.", "একবারের ক্রেতাকে অনুগত ক্রেতায় রূপান্তর করুন এবং রিভিউ বাড়ান।")}
-                </p>
-              </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Service → Follow-up → Review
-              </div>
-            </div>
-
-            {/* Service 6 */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl space-y-3 flex flex-col justify-between">
-              <div>
-                <div className="text-cyan-400 text-2xl mb-3 p-3 bg-cyan-500/10 w-fit rounded-xl border border-cyan-500/20"><FaShareAlt /></div>
-                <h4 className="text-lg font-bold text-white mb-1">
-                  {t("6. Local Marketing & Social Media", "৬. লোকাল মার্কেটিং ও সোশ্যাল মিডিয়া")}
-                </h4>
-                <p className="text-slate-300 text-sm">
-                  {t("Run your core business while automation keeps marketing active.", "আপনি মূল ব্যবসা পরিচালনা করুন, আর অটোমেশন আপনার মার্কেটিং সচল রাখবে।")}
-                </p>
-              </div>
-              <div className="text-[11px] text-cyan-400 font-mono pt-3 border-t border-slate-900">
-                Flow: Content → AI Caption → Schedule
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* 3. Why Choose Us */}
-        <div className="space-y-8">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl font-bold text-white">
-              {t("Why Choose TAE.Agency Over Others?", "কেন অন্য এজেন্সি বাদ দিয়ে আমাদের বেছে নেবেন?")}
+      {/* OUR PROCESS */}
+      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Approach", "আমাদের কর্মপদ্ধতি")}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
+              {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
+              <span className="block text-gray-500">{t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}</span>
             </h2>
-            <p className="text-slate-400 text-sm">
-              {t("Our AI-driven technical expertise sets us apart.", "আমাদের এআই-ड्रাইভেন টেকনিক্যাল এক্সপারিটজই আমাদের অনন্য করে তোলে।")}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
-              <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
-              <div>
-                <h4 className="text-lg font-bold text-white mb-1">{t("100% Customized Automation Flow", "১০০% কাস্টমাইজড অটোমেশন ফ্লো")}</h4>
-                <p className="text-slate-300 text-sm">{t("Tailored specifically to your real estate or service-oriented business model.", "আপনার ব্যবসার ধরন (রিয়েল এস্টেট বা সার্ভিস) অনুযায়ী নিখুঁতভাবে অটোমেশন সেটআপ করা হয়।")}</p>
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative rounded-2xl border border-white/10 bg-[#080B11] p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl font-black text-white/10">{step.number}</span>
+                  <span className="text-cyan-300 text-xl">{step.icon}</span>
+                </div>
+                <h3 className="mt-7 text-xl font-bold">{isBangla ? step.titleBn : step.titleEn}</h3>
+                <p className="mt-3 text-sm text-gray-400 leading-relaxed">{isBangla ? step.descriptionBn : step.descriptionEn}</p>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="flex items-start gap-4 bg-slate-900 border border-slate-800 p-6 rounded-xl">
-              <FaCheckCircle className="text-cyan-400 text-xl mt-1 shrink-0" />
-              <div>
-                <h4 className="text-lg font-bold text-white mb-1">{t("Time Savings & Maximum Conversion", "সময় সাশ্রয় ও সর্বোচ্চ কনভার্শন")}</h4>
-                <p className="text-slate-300 text-sm">{t("Eliminate manual tasks so you can focus entirely on closing deals.", "ম্যানুয়াল কাজের পেছনের সময় বাঁচিয়ে সরাসরি ক্লোজড ডিলে ফোকাস করতে সাহায্য করি।")}</p>
+      {/* FOUNDER SECTION */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.025] overflow-hidden">
+            <div className="grid lg:grid-cols-[380px_1fr]">
+              <div className="relative min-h-[420px] bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent flex items-end justify-center overflow-hidden">
+                <div className="absolute top-8 left-8 z-10">
+                  <span className="px-3 py-1.5 rounded-full text-xs uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">
+                    {t("Founder", "ফাউন্ডার")}
+                  </span>
+                </div>
+                <Image
+                  src="/Md Torikul Islam Ovi.png"
+                  alt="Md Torikul Islam Ovi"
+                  fill
+                  className="object-cover object-bottom"
+                />
+              </div>
+
+              <div className="p-8 md:p-12">
+                <p className="text-cyan-300 text-sm uppercase tracking-[0.2em] font-bold">{t("About Me", "আমার সম্পর্কে")}</p>
+                <h3 className="mt-3 text-3xl md:text-4xl font-extrabold">Md Torikul Islam Ovi</h3>
+                <p className="mt-2 text-lg text-gray-400">{t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — TAE.Agency")}</p>
+
+                <div className="mt-8 space-y-5 text-gray-400 leading-relaxed">
+                  <p>
+                    {t(
+                      "Assalamu Alaikum! I believe that modern businesses should not have to spend their valuable time repeating the same administrative tasks again and again.",
+                      "আসসালামু আলাইকুম! আমি বিশ্বাস করি আধুনিক ব্যবসায় বারবার একই প্রশাসনিক কাজগুলোর পেছনে মূল্যবান সময় নষ্ট করা উচিত নয়।"
+                    )}
+                  </p>
+                  <p>
+                    {t(
+                      "My focus through TAE.Agency is to help dental practices and service businesses identify those repetitive workflows and turn them into practical, connected automation systems.",
+                      "TAE.Agency-এর মাধ্যমে আমার মূল লক্ষ্য হলো ডেন্টাল প্র্যাকটিস এবং সার্ভিস বিজনেসগুলোকে পুনরাবৃত্তিমূলক ওয়ার্কফ্লো থেকে মুক্ত করে কার্যকর অটোমেশন সিস্টেম গড়ে দেওয়া।"
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* 4. Call to Action Section */}
-        <div className="bg-gradient-to-r from-cyan-900/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-2xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            {t("Want to Fully Automate Your Business?", "আপনার ব্যবসাকে পুরোপুরি অটোমেটেড করতে চান?")}
+      {/* TEAM SECTION */}
+      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Team", "আমাদের টিম")}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Team Behind Your Project", "আপনার প্রজেক্টের পেছনের এক্সপার্ট টিম")}</h2>
+          </div>
+
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="group rounded-3xl border border-white/10 bg-[#080B11] overflow-hidden hover:border-cyan-400/25 transition">
+                <div className="relative h-72 bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent overflow-hidden">
+                  <Image src={member.image} alt={member.name} fill className="object-cover object-bottom group-hover:scale-[1.02] transition duration-500" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold">{member.name}</h3>
+                  <p className="mt-1 text-cyan-300 text-sm font-semibold">{member.role}</p>
+                  <p className="mt-4 text-gray-400 text-sm leading-relaxed">{isBangla ? member.descriptionBn : member.descriptionEn}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="relative py-28 px-6">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[300px] bg-cyan-500/10 blur-[140px] rounded-full" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300 text-xs tracking-[0.2em] uppercase">
+            <FaTooth />
+            {t("Start With Your Workflow", "আপনার ওয়ার্কফ্লো দিয়ে শুরু করুন")}
+          </div>
+
+          <h2 className="mt-7 text-4xl md:text-6xl font-extrabold leading-tight">
+            {t("Ready to Find What Your", "আপনার ডেন্টাল প্র্যাকটিস কী অটোমেট")}
+            <span className="block bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+              {t("Dental Practice Can Automate?", "করতে পারে তা জানতে প্রস্তুত?")}
+            </span>
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
-            {t(
-              "Talk to us today and book a free automation audit for your business.",
-              "আজই আমাদের সাথে কথা বলুন এবং আপনার বিজনেসের জন্য ফ্রি অটোমেশন অডিট বুক করুন।"
-            )}
-          </p>
 
-          <div className="flex justify-center pt-4">
+          <div className="mt-9 flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/20 transition duration-300 text-center"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition"
             >
-              {t("Book Free Automation Audit", "Free Automation Audit বুক করুন")}
+              {t("Book a Free Dental Automation Audit", "ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
+              <FaArrowRight />
             </Link>
           </div>
         </div>
+      </section>
 
-        {/* 5. ABOUT ME SECTION */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Larger Image Box */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[340px] h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl bg-slate-950">
-                <Image 
-                  src="/Md Torikul Islam Ovi.png" 
-                  alt="Md Torikul Islam Ovi" 
-                  fill 
-                  className="object-cover" 
-                />
-              </div>
-            </div>
-
-            {/* Bio / Details */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">
-                <FaUserTie /> {t("About Me", "আমার সম্পর্কে")}
-              </div>
-              
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
-                Md Torikul Islam Ovi
-              </h3>
-              
-              <p className="text-cyan-400 font-semibold text-base">
-                {t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — টি এ ই ডট এজেন্সি")}
-              </p>
-
-              <div className="space-y-3 text-slate-300 text-base leading-relaxed pt-2">
-                <p>
-                  {t(
-                    "Assalamu Alaikum! I believe that to thrive in today's competitive service industry, moving beyond traditional manual methods and embracing modern technology is crucial.",
-                    "আসসালামু আলাইকুম! আমি বিশ্বাস করি বর্তমান প্রতিযোগিতায় যেকোনো সার্ভিসের ব্যবসায় টিক থাকতে হলে গতানুগতিক ম্যানুয়াল পদ্ধতির বাইরে এসে আধুনিক প্রযুক্তির ছোঁয়া নেওয়া অত্যন্ত জরুরি।"
-                  )}
-                </p>
-                <p>
-                  {t(
-                    "My core mission is to free local business and real estate entrepreneurs from daily operational hurdles and follow-up stress. We build powerful AI automation ecosystems for your business that work 24/7 like an expert digital receptionist and sales specialist—ensuring not a single lead is ever lost.",
-                    "আমার মূল লক্ষ্য হলো লোকাল বিজনেস ও রিয়েল এস্টেট উদ্যোক্তাদের দৈনন্দিন কর্মব্যস্ততা ও ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। আমরা আপনার বিজনেসে এমন এক শক্তিশালী এআই অটোমেশন ইকোসিস্টেম তৈরি করে দিই, যা একজন দক্ষ ডিজিটাল রিসিপশনিস্ট ও সেলস এক্সপার্টের মতো ২৪ ঘণ্টা কাজ করে—যাতে আপনার একটি লিডও কখনোই হাতছাড়া না হয়।"
-                  )}
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* 6. ABOUT OUR TEAM SECTION (6 Members: 3 per row) */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-              <FaUsers /> {t("Our Team", "আমাদের টিম")}
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              {t("The Expert Team Behind Your Project", "যে এক্সপার্ট টিম আপনার প্রজেক্ট নিয়ে কাজ করে")}
-            </h3>
-            <p className="text-slate-400 text-sm max-w-xl mx-auto">
-              {t("Our dedicated team members are always ready to make your automation and marketing successful.", "আমাদের ডেডিকেটেড টিম মেম্বারগণ আপনার অটোমেশন ও মার্কেটিং সফল করতে সবসময় প্রস্তুত।")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
-            
-            {/* Team Member 1: Farjana */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Farjana.png" alt="Farjana" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Farjana</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">Automation Specialist</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("Workflow design & data management expert.", "ওয়ার্কফ্লো ডিজাইন ও ডেটা ম্যানেজমেন্ট এক্সপার্ট।")}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 2: Sagor */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Sagor.png" alt="Sagor" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Sagor</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">AI Chatbot Developer</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("Skilled in AI chatbot & instant response setup.", "এআই চ্যাটবট ও ইনস্ট্যান্ট রেসপন্স সেটআপে দক্ষ।")}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 3: Sakib */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Sakib.png" alt="Sakib" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Sakib</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">Lead Gen Specialist</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("Lead generation & pipeline optimization.", "লিড জেনারেশন ও পাইপলাইন অপ্টিমাইজেশন।")}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 4: Rashed */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Rashed.jpg" alt="Rashed" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Rashed</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">Marketing Strategist</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("Digital marketing & client growth strategist.", "ডিজিটাল মার্কেটিং ও ক্লায়েন্ট গ্রোথ স্ট্র্যাটেজিস্ট।")}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 5: Ramich */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Ramich.jpg" alt="Ramich" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Ramich</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">Tech Integration Expert</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("System integration & technical support.", "সিস্টেম ইন্টিগ্রেশন ও টেকনিক্যাল সাপোর্ট।")}
-                </p>
-              </div>
-            </div>
-
-            {/* Team Member 6: Rimu */}
-            <div className="bg-slate-950/60 border border-slate-800 p-6 rounded-xl flex flex-col items-center text-center space-y-4">
-              <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md">
-                <Image src="/Rimu.jpg" alt="Rimu" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Rimu</h4>
-                <p className="text-cyan-400 text-xs font-semibold pt-1">Operations & Support</p>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {t("Operations and client success management.", "অপারেশনস এবং ক্লায়েন্ট সাকসেস ম্যানেজমেন্ট।")}
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </main>
   );
 }
