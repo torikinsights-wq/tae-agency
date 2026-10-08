@@ -28,6 +28,9 @@ import {
   FaStar,
   FaShareAlt,
   FaUserTie,
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaClock,
 } from "react-icons/fa";
 
 const teamMembers = [
@@ -149,59 +152,6 @@ const processSteps = [
   },
 ];
 
-const automationAreas = [
-  {
-    icon: <FaUsers />,
-    titleBn: "রোগী অর্জন (Patient Acquisition)",
-    titleEn: "Patient Acquisition",
-    items: [
-      "ওয়েবসাইট ইনকোয়ারি (Website inquiries)",
-      "সোশ্যাল মিডিয়া লিড (Social media leads)",
-      "অ্যাডভার্টাইজিং লিড (Advertising leads)",
-      "লিড ক্যাপচার (Lead capture)",
-      "লিড কোয়ালিফিকেশন (Lead qualification)",
-    ],
-  },
-  {
-    icon: <FaComments />,
-    titleBn: "রোগী যোগাযোগ (Patient Communication)",
-    titleEn: "Patient Communication",
-    items: [
-      "এআই চ্যাট (AI chat)",
-      "রুটিন এফএকিউ (Routine FAQs)",
-      "হোয়াটসঅ্যাপ ওয়ার্কফ্লো (WhatsApp workflows)",
-      "এসএমএস ওয়ার্কফ্লো (SMS workflows)",
-      "ইমেইল ওয়ার্কফ্লো (Email workflows)",
-      "অটোমেটেড ফলো-আপ (Automated follow-up)",
-    ],
-  },
-  {
-    icon: <FaCalendarAlt />,
-    titleBn: "অ্যাপয়েন্টমেন্ট ম্যানেজমেন্ট",
-    titleEn: "Appointments",
-    items: [
-      "বুকিং রিকোয়েস্ট (Booking requests)",
-      "কনফার্মেশন (Confirmations)",
-      "রিমাইন্ডার (Reminders)",
-      "পুনরায় সময় নির্ধারণ (Rescheduling)",
-      "বাতিলকরণ ফলো-আপ (Cancellation follow-up)",
-      "রেসপন্সহীন ফলো-আপ (No-response follow-up)",
-    ],
-  },
-  {
-    icon: <FaSyncAlt />,
-    titleBn: "রিটেনশন ও রিকল",
-    titleEn: "Retention & Recall",
-    items: [
-      "রিকল রিমাইন্ডার (Recall reminders)",
-      "নিষ্ক্রিয় রোগী রিঅ্যাক্টিভেশন (Inactive reactivation)",
-      "ভিজিট পরবর্তী ফলো-আপ (Post-visit follow-up)",
-      "পুনরায় আগমনকারী রোগী ক্যাম্পেইন",
-      "রিভিউ রিকোয়েস্ট (Review requests)",
-    ],
-  },
-];
-
 export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
@@ -209,8 +159,30 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
       
+      {/* TOP EMERGENCY & WHATSAPP BAR (Like Home Page) */}
+      <div className="w-full bg-[#080B11] border-b border-cyan-500/20 py-2.5 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+          <div className="flex items-center gap-2 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <FaClock className="text-cyan-400 ml-1" />
+            <span>{t("Emergency & Appointments: 24/7 Open (AI Powered Support)", "ইমার্জেন্সি ও অ্যাপয়েন্টমেন্ট: ২৪/৭ খোলা (এআই সাপোর্টেড)")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <a 
+              href="https://wa.me/8801724132820" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold transition"
+            >
+              <FaWhatsapp className="text-emerald-400 text-base" />
+              <span>WhatsApp Hotline: +880 1724-132820</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* HERO SECTION */}
-      <section className="relative pt-24 pb-24 px-6">
+      <section className="relative pt-20 pb-24 px-6">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
           <div className="absolute top-40 right-1/4 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full" />
@@ -404,7 +376,7 @@ export default function AboutPage() {
                   src="/Md Torikul Islam Ovi.png"
                   alt="Md Torikul Islam Ovi"
                   fill
-                  className="object-cover object-bottom"
+                  className="object-contain object-bottom"
                 />
               </div>
 
@@ -433,7 +405,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION */}
+      {/* TEAM SECTION (Fixed Image Fit & Size) */}
       <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
@@ -444,8 +416,13 @@ export default function AboutPage() {
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamMembers.map((member, index) => (
               <div key={index} className="group rounded-3xl border border-white/10 bg-[#080B11] overflow-hidden hover:border-cyan-400/25 transition">
-                <div className="relative h-72 bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent overflow-hidden">
-                  <Image src={member.image} alt={member.name} fill className="object-cover object-bottom group-hover:scale-[1.02] transition duration-500" />
+                <div className="relative h-72 bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent overflow-hidden flex items-end justify-center">
+                  <Image 
+                    src={member.image} 
+                    alt={member.name} 
+                    fill 
+                    className="object-contain object-bottom group-hover:scale-[1.02] transition duration-500" 
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold">{member.name}</h3>
