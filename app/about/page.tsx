@@ -151,7 +151,7 @@ const faqs = [
   {
     qBn: "ডেন্টাল প্র্যাকটিসে অটোমেশন কীভাবে কাজ করে?",
     qEn: "How does automation work in dental practices?",
-    aBn: "অটোমেশন আপনার ওয়েبসাইটের ইনকোয়ারি, মিসড কল টেক্সট-ব্যাক, অ্যাপয়েন্টমেন্ট বুকিং এবং রিমাইন্ডারগুলো স্বয়ংক্রিয়ভাবে পরিচালনা করে, যাতে আপনার টিম রোগীর সেবায় বেশি সময় দিতে পারে।",
+    aBn: "অটোমেশন আপনার ওয়েবসাইটের ইনকোয়ারি, মিসড কল টেক্সট-ব্যাক, অ্যাপয়েন্টমেন্ট বুকিং এবং রিমাইন্ডারগুলো স্বয়ংক্রিয়ভাবে পরিচালনা করে, যাতে আপনার টিম রোগীর সেবায় বেশি সময় দিতে পারে।",
     aEn: "Automation handles your website inquiries, missed call text-backs, appointment bookings, and patient reminders automatically so your team can focus entirely on patient care.",
   },
   {
@@ -177,16 +177,16 @@ const faqs = [
 export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const toggleFaq = (index) => {
+  const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
   return (
     <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
       
-      {/* COLORFUL & VIBRANT TOP CTA BAR (Like Services Page) */}
+      {/* COLORFUL & VIBRANT TOP CTA BAR */}
       <div className="w-full bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 border-b border-cyan-500/40 py-3 px-4 sm:px-6 shadow-lg shadow-cyan-500/10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2 text-cyan-200">
@@ -307,7 +307,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION (Fixed Image Fit & Smaller Proportional Box) */}
+      {/* TEAM SECTION */}
       <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
@@ -340,7 +340,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ SECTION (Accordion Dropdown Style like Services Page) */}
+      {/* FAQ SECTION */}
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
