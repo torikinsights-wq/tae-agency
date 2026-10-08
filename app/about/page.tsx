@@ -244,7 +244,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* MISSION & VISION SECTION (CENTERED TEXT) */}
+      {/* MISSION & VISION SECTION */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-8 text-center">
@@ -277,13 +277,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* WHY WE EXIST (CENTERED TEXT) */}
+      {/* WHY WE EXIST */}
       <section className="py-20 px-6 max-w-4xl mx-auto text-center">
         <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
 
-        <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
-          {t("Your Dental Team Should Focus on Patients.", "আপনার ডেন্টাল টিম ফোকাস করবে রোগীর সেবায়।")}
-          <span className="block text-gray-500 mt-2">{t("Not Repetitive Administrative Work.", "পুনরাবৃত্তিমূলক প্রশাসনিক কাজে নয়।")}</span>
+        <h2 className="mt-4 text-2xl sm:text-4xl font-extrabold leading-snug">
+          {t("Your Dental Team Should Focus on Patients. Not Repetitive Administrative Work.", "আপনার ডেন্টাল টিম ফোকাস করবে রোগীর সেবায়, পুনরাবৃত্তিমূলক প্রশাসনিক কাজে নয়।")}
         </h2>
 
         <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
@@ -294,17 +293,17 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* OUR PROCESS (LARGE BOLD WORKFLOW HEADINGS) */}
+      {/* OUR PROCESS (OPTIMIZED SINGLE LINE HEADINGS) */}
       <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-mono">
               {t("OUR APPROACH", "আমাদের কর্মপদ্ধতি")}
             </span>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white mt-3 mb-4 leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-3 mb-2 tracking-tight">
               {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
             </h2>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-cyan-400 leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-cyan-400 tracking-tight">
               {t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}
             </h2>
             <p className="mt-5 text-gray-400 text-base sm:text-lg">
@@ -327,7 +326,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDER / ABOUT ME SECTION (PLACED RIGHT BEFORE OUR TEAM) */}
+      {/* FOUNDER / ABOUT ME SECTION */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
@@ -380,12 +379,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION */}
+      {/* TEAM SECTION (OPTIMIZED SINGLE LINE HEADINGS) */}
       <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Team", "আমাদের টিম")}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Team Behind Your Project", "আপনার প্রজেক্টের পেছনের এক্সপার্ট টিম")}</h2>
+            <h2 className="mt-4 text-2xl sm:text-4xl font-extrabold tracking-tight">{t("The Team Behind Your Project", "আপনার প্রজেক্টের পেছনের এক্সপার্ট টিম")}</h2>
             <p className="mt-4 text-gray-400 text-base">
               {t("Dedicated professionals working to ensure your automation success.", "আপনার অটোমেশন সফল করতে নিবেদিতপ্রাণ এক্সপার্টগণ।")}
             </p>
