@@ -19,9 +19,8 @@ import {
   FaWhatsapp,
   FaClock,
   FaChevronDown,
-  FaChevronUp,
   FaUserTie,
-  FaHeart,
+  FaRocket,
 } from "react-icons/fa";
 
 const teamMembers = [
@@ -66,37 +65,6 @@ const teamMembers = [
     descriptionBn: "অপারেশনস এবং ক্লায়েন্ট সাকসেস ম্যানেজমেন্ট।",
     descriptionEn: "Operations and client success management.",
     image: "/Rimu.jpg",
-  },
-];
-
-const principles = [
-  {
-    icon: <FaTooth />,
-    titleBn: "ডেন্টাল প্র্যাকটিসের উপযোগী সিস্টেম",
-    titleEn: "Built Around Dental Practices",
-    descriptionBn: "রোগীর অনুসন্ধান, যোগাযোগ, অ্যাপয়েন্টমেন্ট, রিকল এবং রিঅ্যাক্টিভেশনের মতো ডেন্টাল প্র্যাকটিসের রিয়েল ওয়ার্কফ্লো মাথায় রেখে আমরা অটোমেশন ডিজাইন করি।",
-    descriptionEn: "We design automation around the real workflows of dental practices — from patient inquiries and communication to appointments, follow-up, recall, and reactivation.",
-  },
-  {
-    icon: <FaRobot />,
-    titleBn: "সঠিক উদ্দেশ্যে এআই এর ব্যবহার",
-    titleEn: "AI With a Purpose",
-    descriptionBn: "রোগী সেবার মানবিক দিকটি বজায় রেখেই আমরা যোগাযোগ ও পুনরাবৃত্তিমূলক কাজগুলোকে দ্রুত ও গোছানো করতে এআই ব্যবহার করি।",
-    descriptionEn: "We use AI where it can make communication and repetitive workflows faster, more organized, and more useful — without replacing the human side of patient care.",
-  },
-  {
-    icon: <FaNetworkWired />,
-    titleBn: "সংযুক্ত ও স্মার্ট ওয়ার্কফ্লো",
-    titleEn: "Connected Workflows",
-    descriptionBn: "আরেকটি নতুন বিচ্ছিন্ন টুল যোগ করার পরিবর্তে, আমরা আপনার ক্লিনিকে ইতিমধ্যে থাকা ওয়ার্কফ্লোগুলোকে পরস্পরের সাথে যুক্ত করি।",
-    descriptionEn: "Instead of adding another disconnected tool, we connect the workflows that already exist inside your practice.",
-  },
-  {
-    icon: <FaUserMd />,
-    titleBn: "মূল যত্ন ও সেবা থাকবে মানুষের হাতেই",
-    titleEn: "Human Care Stays Human",
-    descriptionBn: "অটোমেশন শুধু যোগাযোগ ও প্রশাসনকে সহায়তা করবে, আর রোগ নির্ণয়, চিকিৎসা সংক্রান্ত সিদ্ধান্ত এবং ক্লিনিক্যাল কেয়ারের দায়িত্ব থাকবে বিশেষজ্ঞদের হাতেই।",
-    descriptionEn: "Automation can support communication and administration, while diagnosis, treatment decisions, clinical care, and complex situations remain with qualified professionals.",
   },
 ];
 
@@ -147,7 +115,6 @@ export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
   
-  // FAQ Dropdown States matching Services Page format
   const [isFaqOpen, setIsFaqOpen] = useState(false);
   const [openFaqItem, setOpenFaqItem] = useState<number | null>(null);
 
@@ -185,10 +152,38 @@ export default function AboutPage() {
       ),
     },
     {
+      q: t("Can you automate WhatsApp or SMS communication?", "আপনারা কি হোয়াটসঅ্যাপ বা এসএমএস কমিউনিকেশন অটোমেট করতে পারেন?"),
+      a: t(
+        "Communication channels can be connected depending on the tools, APIs, account permissions, and workflow requirements of the practice.",
+        "প্র্যাকটিসের টুলস, এপিআই, অ্যাকাউন্ট পারমিশন এবং ওয়ার্কফ্লো রিকোয়ারমেন্ট অনুযায়ী যোগাযোগ চ্যানেলগুলো কানেক্ট করা যেতে পারে।"
+      ),
+    },
+    {
+      q: t("Can you reactivate old patients?", "আপনারা কি পুরনো রোগীদের রিয়াক্টিভেট করতে পারেন?"),
+      a: t(
+        "TAE.Agency can design structured reactivation and recall workflows for eligible inactive patients. The exact workflow depends on the clinic's patient database, consent practices, communication channels, and goals.",
+        "TAE.Agency উপযুক্ত নিষ্ক্রিয় রোগীদের জন্য স্ট্রাকচারড রিয়াক্টিভেশন এবং রিকাল ওয়ার্কফ্লো ডিজাইন করতে পারে। সঠিক ওয়ার্কফ্লো ক্লিনিকের পেশেন্ট ডেটাবেস এবং লক্ষ্যের ওপর নির্ভর করে।"
+      ),
+    },
+    {
       q: t("Will automation replace my receptionist?", "অটোমেশন কি আমাদের রিসেপশনিস্টকে প্রতিস্থাপন করবে?"),
       a: t(
         "The goal is not to replace your reception team. Automation handles repetitive workflows so your staff can spend more time on patient care, complex situations, hospitality, and human communication.",
         "এর লক্ষ্য রিসেপশন টিমকে প্রতিস্থাপন করা নয়। অটোমেশন রুটিন কাজগুলো হ্যান্ডেল করে যাতে আপনার স্টাফরা পেশেন্ট কেয়ার, জটিল পরিস্থিতি এবং মানবীয় যোগাযোগে বেশি সময় দিতে পারেন।"
+      ),
+    },
+    {
+      q: t("Is the automation system the same for every clinic?", "প্রতিটি ক্লিনিকের জন্য কি অটোমেশন সিস্টেম একই রকম হয়?"),
+      a: t(
+        "No. Each dental practice has different services, patient sources, booking processes, communication channels, team structures, and goals. TAE.Agency designs workflows around the clinic.",
+        "না। প্রতিটি ডেন্টাল প্র্যাকটিসের সার্ভিস, পেশেন্ট সোর্স, বুকিং প্রসেস, টিম স্ট্রাকচার এবং লক্ষ্য ভিন্ন। TAE.Agency ক্লিনিকের প্রয়োজন অনুযায়ী কাস্টম ওয়ার্কফ্লো ডিজাইন করে।"
+      ),
+    },
+    {
+      q: t("How do we know what should be automated?", "আমরা কীভাবে বুঝব কোন কাজগুলো অটোমেট করা উচিত?"),
+      a: t(
+        "The process starts by reviewing your existing patient journey and operational workflows. We identify repetitive tasks, communication gaps, and areas where automation could realistically improve consistency and efficiency.",
+        "প্রক্রিয়াটি আপনার বর্তমান পেশেন্ট জার্নি এবং অপারেশনাল ওয়ার্কফ্লো পর্যালোচনার মাধ্যমে শুরু হয়। আমরা রুটিন কাজ, কমিউনিকেশন গ্যাপ এবং অটোমেশনের সুযোগগুলো চিহ্নিত করি।"
       ),
     },
   ];
@@ -196,7 +191,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
       
-      {/* VIBRANT TOP CTA BAR (Matching Services Page) */}
+      {/* VIBRANT TOP CTA BAR */}
       <div className="w-full bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 border-b border-cyan-500/40 py-3 px-4 sm:px-6 shadow-lg shadow-cyan-500/15">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2 text-cyan-200">
@@ -221,50 +216,71 @@ export default function AboutPage() {
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative pt-20 pb-24 px-6">
+      <section className="relative pt-20 pb-16 px-6">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
           <div className="absolute top-40 right-1/4 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300 text-xs md:text-sm tracking-[0.18em] uppercase mb-7">
-              <FaTooth />
-              {t("About TAE.Agency", "TAE.Agency সম্পর্কে")}
+        <div className="relative max-w-7xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300 text-xs md:text-sm tracking-[0.18em] uppercase mb-7">
+            <FaTooth />
+            {t("About TAE.Agency", "TAE.Agency সম্পর্কে")}
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+            {t("Building Smarter", "স্মার্ট ডেন্টাল প্র্যাকটিস")}
+            <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              {t("Dental Practice Automation.", "অটোমেশন সিস্টেম তৈরি করছি।")}
+            </span>
+          </h1>
+
+          <p className="mt-7 text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+            {t(
+              "TAE.Agency — Torik Automation Engineering — designs intelligent automation systems that help dental practices organize patient acquisition, communication, appointments, follow-up, recall, reactivation, and marketing workflows.",
+              "TAE.Agency — টরিক অটোমেশন ইঞ্জিনিয়ারিং — বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে রোগী অর্জন, যোগাযোগ, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকল, রিঅ্যাক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
+            )}
+          </p>
+        </div>
+      </section>
+
+      {/* MISSION & VISION SECTION (CENTERED TEXT & RESTORED) */}
+      <section className="py-16 px-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-8 text-center">
+            <div className="text-cyan-400 text-3xl p-3 bg-cyan-500/10 w-fit mx-auto rounded-xl border border-cyan-500/20 mb-4">
+              <FaBullseye />
             </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-              {t("Building Smarter", "স্মার্ট ডেন্টাল প্র্যাকটিস")}
-              <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                {t("Dental Practice Automation.", "অটোমেশন সিস্টেম তৈরি করছি।")}
-              </span>
-            </h1>
-
-            <p className="mt-7 text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">{t("Our Mission", "আমাদের মিশন")}</p>
+            <h3 className="mt-3 text-2xl font-bold">{t("Make Dental Practice Automation Practical.", "ডেন্টাল অটোমেশনকে আরও বাস্তবসম্মত করা।")}</h3>
+            <p className="mt-4 text-gray-400 leading-relaxed text-sm">
               {t(
-                "TAE.Agency — Torik Automation Engineering — designs intelligent automation systems that help dental practices organize patient acquisition, communication, appointments, follow-up, recall, reactivation, and marketing workflows.",
-                "TAE.Agency — টরিক অটোমেশন ইঞ্জিনিয়ারিং — বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে রোগী অর্জন, যোগাযোগ, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকল, রিঅ্যাক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
+                "To free businesses from manual follow-up hassles. Converting every lead instantly through automated text-backs, AI chatbots, and smart pipelines.",
+                "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা।"
               )}
             </p>
+          </div>
 
-            <div className="mt-9 flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition"
-              >
-                {t("Book a Free Dental Automation Audit", "ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
-                <FaArrowRight />
-              </Link>
+          <div className="rounded-3xl border border-blue-400/10 bg-gradient-to-br from-blue-400/[0.08] to-transparent p-8 text-center">
+            <div className="text-blue-400 text-3xl p-3 bg-blue-500/10 w-fit mx-auto rounded-xl border border-blue-500/20 mb-4">
+              <FaRocket />
             </div>
+            <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{t("Our Vision", "আমাদের ভিশন")}</p>
+            <h3 className="mt-3 text-2xl font-bold">{t("A More Connected Future for Dental Practices.", "ডেন্টাল প্র্যাকটিসের জন্য একটি সংযুক্ত ভবিষ্যৎ।")}</h3>
+            <p className="mt-4 text-gray-400 leading-relaxed text-sm">
+              {t(
+                "Creating an automated digital ecosystem where every local business can exponentially scale sales and growth using cutting-edge AI technology.",
+                "একটি স্বয়ংক্রিয় ডিজিটাল ইকোসিস্টেম তৈরি করা, যেখানে এআই প্রযুক্তির সাহায্যে ছোট-বড় প্রতিটি লোকাল বিজনেস তাদের সেলস ও গ্রোথ বহুগুণ বাড়িয়ে নিতে পারে।"
+              )}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* FOUNDER / ABOUT ME SECTION (WITH YOUR PHOTO & DETAILS) */}
-      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+      {/* FOUNDER / ABOUT ME SECTION */}
+      <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
           </div>
@@ -316,31 +332,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* WHY WE EXIST */}
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
+      {/* WHY WE EXIST (CENTERED TEXT AS REQUESTED) */}
+      <section className="py-20 px-6 max-w-4xl mx-auto text-center">
+        <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Why We Exist", "আমরা কেন আছি")}</p>
 
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
-              {t("Your Dental Team Should Focus on Patients.", "আপনার ডেন্টাল টিম ফোকাস করবে রোগীর সেবায়।")}
-              <span className="block text-gray-500">{t("Not Repetitive Administrative Work.", "পুনরাবৃত্তিমূলক প্রশাসনিক কাজে নয়।")}</span>
-            </h2>
+        <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
+          {t("Your Dental Team Should Focus on Patients.", "আপনার ডেন্টাল টিম ফোকাস করবে রোগীর সেবায়।")}
+          <span className="block text-gray-500 mt-2">{t("Not Repetitive Administrative Work.", "পুনরাবৃত্তিমূলক প্রশাসনিক কাজে নয়।")}</span>
+        </h2>
 
-            <p className="mt-6 text-gray-400 text-lg leading-relaxed">
-              {t(
-                "Dental practices manage dozens of repetitive interactions every day — inquiries, questions, appointment requests, confirmations, reminders, follow-ups, recalls, and reactivation.",
-                "ডেন্টাল প্র্যাকটিসগুলোকে প্রতিদিন অসংখ্য পুনরাবৃত্তিমূলক কাজের মুখোমুখি হতে হয়—ইনকোয়ারি, প্রশ্ন, অ্যাপয়েন্টমেন্ট রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, ফলো-আপ এবং রিকল।"
-              )}
-            </p>
-          </div>
-        </div>
+        <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
+          {t(
+            "Dental practices manage dozens of repetitive interactions every day — inquiries, questions, appointment requests, confirmations, reminders, follow-ups, recalls, and reactivation.",
+            "ডেন্টাল প্র্যাকটিসগুলোকে প্রতিদিন অসংখ্য পুনরাবৃত্তিমূলক কাজের মুখোমুখি হতে হয়—ইনকোয়ারি, প্রশ্ন, অ্যাপয়েন্টমেন্ট রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, ফলো-আপ এবং রিকল।"
+          )}
+        </p>
       </section>
 
       {/* OUR PROCESS */}
-      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+      <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Approach", "আমাদের কর্মপদ্ধতি")}</p>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
               {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
@@ -348,7 +360,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {processSteps.map((step, index) => (
               <div key={index} className="relative rounded-2xl border border-white/10 bg-[#080B11] p-6">
                 <div className="flex items-center justify-between">
@@ -363,8 +375,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION (Fixed Clean Proportionate Image Cards) */}
-      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
+      {/* TEAM SECTION */}
+      <section className="py-20 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Team", "আমাদের টিম")}</p>
@@ -396,8 +408,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ SECTION (MATCHING SERVICES PAGE EXACT FORMAT WITH MASTER ACCORDION & DETAILED INFO) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      {/* FAQ SECTION (EXTENDED & DETAILED MATCHING SERVICES PAGE) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center mb-10">
@@ -416,7 +428,6 @@ export default function AboutPage() {
               )}
             </p>
 
-            {/* Master Dropdown Toggle Button (Matching Services Page) */}
             <button
               type="button"
               onClick={() => setIsFaqOpen(!isFaqOpen)}
@@ -427,7 +438,6 @@ export default function AboutPage() {
             </button>
           </div>
 
-          {/* FAQ Items Container */}
           <div className={`grid transition-all duration-500 ${isFaqOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
             <div className="overflow-hidden space-y-3 pt-2">
               {faqs.map((faq, index) => {
