@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
@@ -22,15 +22,10 @@ import {
   FaLightbulb,
   FaLayerGroup,
   FaHeart,
-  FaRocket,
-  FaPhoneSlash,
-  FaCreditCard,
-  FaStar,
-  FaShareAlt,
-  FaUserTie,
-  FaPhoneAlt,
   FaWhatsapp,
   FaClock,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 
 const teamMembers = [
@@ -90,7 +85,7 @@ const principles = [
     icon: <FaRobot />,
     titleBn: "সঠিক উদ্দেশ্যে এআই এর ব্যবহার",
     titleEn: "AI With a Purpose",
-    descriptionBn: "রোগী সেচার মানবিক দিকটি বজায় রেখেই আমরা যোগাযোগ ও পুনরাবৃত্তিমূলক কাজগুলোকে দ্রুত ও গোছানো করতে এআই ব্যবহার করি।",
+    descriptionBn: "রোগী সেবার মানবিক দিকটি বজায় রেখেই আমরা যোগাযোগ ও পুনরাবৃত্তিমূলক কাজগুলোকে দ্রুত ও গোছানো করতে এআই ব্যবহার করি।",
     descriptionEn: "We use AI where it can make communication and repetitive workflows faster, more organized, and more useful — without replacing the human side of patient care.",
   },
   {
@@ -152,27 +147,61 @@ const processSteps = [
   },
 ];
 
+const faqs = [
+  {
+    qBn: "ডেন্টাল প্র্যাকটিসে অটোমেশন কীভাবে কাজ করে?",
+    qEn: "How does automation work in dental practices?",
+    aBn: "অটোমেশন আপনার ওয়েبসাইটের ইনকোয়ারি, মিসড কল টেক্সট-ব্যাক, অ্যাপয়েন্টমেন্ট বুকিং এবং রিমাইন্ডারগুলো স্বয়ংক্রিয়ভাবে পরিচালনা করে, যাতে আপনার টিম রোগীর সেবায় বেশি সময় দিতে পারে।",
+    aEn: "Automation handles your website inquiries, missed call text-backs, appointment bookings, and patient reminders automatically so your team can focus entirely on patient care.",
+  },
+  {
+    qBn: "সেটআপ করতে কতদিন সময় লাগে?",
+    qEn: "How long does setup take?",
+    aBn: "সাধারণত আপনার ক্লিনিকের ওয়ার্কফ্লো এবং রিকোয়ারমেন্ট অনুযায়ী সম্পূর্ণ সিস্টেম সেটআপ ও লাইভ হতে ৩ থেকে ৭ কার্যদিবস সময় লাগে।",
+    aEn: "Typically, full system setup and deployment take between 3 to 7 business days depending on your clinic's specific workflow requirements.",
+  },
+  {
+    qBn: "এটি কি আমাদের বর্তমান সফটওয়্যারের সাথে কাজ করবে?",
+    qEn: "Will this work with our existing software?",
+    aBn: "হ্যাঁ, আমরা আপনার ব্যবহৃত জনপ্রিয় ক্যালেন্ডার, গুগল শিট, সিআরএম এবং কমিউনিকেশন টুলের সাথে এটি স্মুথলি ইন্টিগ্রেট করে দিই।",
+    aEn: "Yes, we smoothly integrate our automation systems with your existing calendars, Google Sheets, CRMs, and communication tools.",
+  },
+  {
+    qBn: "ফ্রি অডিট সেশনের জন্য কীভাবে বুক করব?",
+    qEn: "How do I book a free audit session?",
+    aBn: "আমাদের ওয়েবসাইটের যেকোনো 'Book a Free Dental Automation Audit' বাটনে ক্লিক করে ফর্ম পূরণ করলেই আমাদের টিম আপনার সাথে যোগাযোগ করবে।",
+    aEn: "Simply click any 'Book a Free Dental Automation Audit' button on our website and fill out the form to get started with our team.",
+  },
+];
+
 export default function AboutPage() {
   const { lang, t } = useLanguage();
   const isBangla = lang === "bn";
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
     <main className="min-h-screen bg-[#05070B] text-white overflow-hidden">
       
-      {/* TOP EMERGENCY & WHATSAPP BAR (Like Home Page) */}
-      <div className="w-full bg-[#080B11] border-b border-cyan-500/20 py-2.5 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
-          <div className="flex items-center gap-2 text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <FaClock className="text-cyan-400 ml-1" />
-            <span>{t("Emergency & Appointments: 24/7 Open (AI Powered Support)", "ইমার্জেন্সি ও অ্যাপয়েন্টমেন্ট: ২৪/৭ খোলা (এআই সাপোর্টেড)")}</span>
+      {/* COLORFUL & VIBRANT TOP CTA BAR (Like Services Page) */}
+      <div className="w-full bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 border-b border-cyan-500/40 py-3 px-4 sm:px-6 shadow-lg shadow-cyan-500/10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-medium">
+          <div className="flex items-center gap-2 text-cyan-200">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <FaClock className="text-cyan-400 ml-1 text-base" />
+            <span className="font-semibold text-white tracking-wide">
+              {t("Emergency & Appointments: 24/7 Open (AI Powered Support)", "ইমার্জেন্সি ও অ্যাপয়েন্টমেন্ট: ২৪/৭ খোলা (এআই সাপোর্টেড)")}
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <a 
               href="https://wa.me/8801724132820" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold transition"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition font-bold shadow-sm"
             >
               <FaWhatsapp className="text-emerald-400 text-base" />
               <span>WhatsApp Hotline: +880 1724-132820</span>
@@ -228,26 +257,6 @@ export default function AboutPage() {
               </Link>
             </div>
           </div>
-
-          <div className="mt-20 grid md:grid-cols-3 gap-4">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
-              <FaTooth className="text-cyan-300 text-2xl mb-4" />
-              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Focus", "ফোকাস")}</p>
-              <h3 className="text-lg font-bold mt-2">{t("Dental Practice Automation", "ডেন্টাল প্র্যাকটিস অটোমেশন")}</h3>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
-              <FaRobot className="text-cyan-300 text-2xl mb-4" />
-              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Approach", "পদ্ধতি")}</p>
-              <h3 className="text-lg font-bold mt-2">{t("AI + Connected Workflows", "এআই + সংযুক্ত ওয়ার্কফ্লো")}</h3>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-6">
-              <FaHeart className="text-cyan-300 text-2xl mb-4" />
-              <p className="text-xs uppercase tracking-widest text-gray-500">{t("Philosophy", "দর্শন")}</p>
-              <h3 className="text-lg font-bold mt-2">{t("Human Care + Intelligent Automation", "মানবিক সেবা + ইন্টেলিজেন্ট অটোমেশন")}</h3>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -268,64 +277,6 @@ export default function AboutPage() {
                 "ডেন্টাল প্র্যাকটিসগুলোকে প্রতিদিন অসংখ্য পুনরাবৃত্তিমূলক কাজের মুখোমুখি হতে হয়—ইনকোয়ারি, প্রশ্ন, অ্যাপয়েন্টমেন্ট রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, ফলো-আপ এবং রিকল।"
               )}
             </p>
-
-            <p className="mt-5 text-gray-400 text-lg leading-relaxed">
-              {t(
-                "TAE.Agency exists to turn these repetitive processes into structured, connected workflows so your team can spend more of its attention where it matters most: patient care and human relationships.",
-                "TAE.Agency এই পুনরাবৃত্তিমূলক প্রক্রিয়াগুলোকে একটি গোছানো ও সংযুক্ত ওয়ার্কফ্লোতে রূপান্তর করতে কাজ করে, যাতে আপনার টিম তাদের প্রধান মনোযোগ রোগীর যত্ন এবং মানব সম্পর্কের ওপর দিতে পারে।"
-              )}
-            </p>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-2 gap-6">
-            <div className="rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-8">
-              <FaBullseye className="text-3xl text-cyan-300 mb-5" />
-              <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">{t("Our Mission", "আমাদের মিশন")}</p>
-              <h3 className="mt-3 text-2xl font-bold">{t("Make Dental Practice Automation Practical.", "ডেন্টাল অটোমেশনকে আরও বাস্তবসম্মত করা।")}</h3>
-              <p className="mt-4 text-gray-400 leading-relaxed">
-                {t(
-                  "Our mission is to help dental practices reduce repetitive manual work, respond to patient inquiries more efficiently, organize communication, and build connected workflows.",
-                  "আমাদের লক্ষ্য হলো ডেন্টাল প্র্যাকটিসগুলোর ম্যানুয়াল কাজের চাপ কমানো, রোগীর অনুসন্ধানে দ্রুত সাড়া দেওয়া এবং সংযুক্ত ওয়ার্কফ্লো তৈরি করা।"
-                )}
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-blue-400/10 bg-gradient-to-br from-blue-400/[0.08] to-transparent p-8">
-              <FaEye className="text-3xl text-blue-300 mb-5" />
-              <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{t("Our Vision", "আমাদের ভিশন")}</p>
-              <h3 className="mt-3 text-2xl font-bold">{t("A More Connected Future for Dental Practices.", "ডেন্টাল প্র্যাকটিসের জন্য একটি সংযুক্ত ভবিষ্যৎ।")}</h3>
-              <p className="mt-4 text-gray-400 leading-relaxed">
-                {t(
-                  "We envision dental practices where intelligent systems quietly handle repetitive workflows in the background while dental professionals remain focused on meaningful patient care.",
-                  "আমরা এমন একটি ভবিষ্যৎ কল্পনা করি যেখানে ইন্টেলিজেন্ট সিস্টেম ব্যাকগ্রাউন্ডে স্বয়ংক্রিয়ভাবে রুটিন কাজগুলো সামল করবে এবং প্রফেশনালরা রোগীর সেবায় মনোনিবেশ করবেন।"
-                )}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT WE BELIEVE */}
-      <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("What We Believe", "আমাদের বিশ্বাস")}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
-              {t("Technology Should Make Your Practice", "প্রযুক্তি আপনার প্র্যাকটিসকে করবে")}
-              <span className="block text-gray-500">{t("Simpler, Not More Complicated.", "সহজতর, জটিল নয়।")}</span>
-            </h2>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {principles.map((item, index) => (
-              <div key={index} className="rounded-2xl border border-white/10 bg-[#080B11] p-6 hover:border-cyan-400/30 transition">
-                <div className="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-xl">
-                  {item.icon}
-                </div>
-                <h3 className="mt-5 text-lg font-bold">{isBangla ? item.titleBn : item.titleEn}</h3>
-                <p className="mt-3 text-gray-400 text-sm leading-relaxed">{isBangla ? item.descriptionBn : item.descriptionEn}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -356,79 +307,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDER SECTION */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Leadership", "লিডারশিপ")}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Person Behind TAE.Agency", "TAE.Agency-এর পেছনের কারিগর")}</h2>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-white/[0.025] overflow-hidden">
-            <div className="grid lg:grid-cols-[380px_1fr]">
-              <div className="relative min-h-[420px] bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent flex items-end justify-center overflow-hidden">
-                <div className="absolute top-8 left-8 z-10">
-                  <span className="px-3 py-1.5 rounded-full text-xs uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">
-                    {t("Founder", "ফাউন্ডার")}
-                  </span>
-                </div>
-                <Image
-                  src="/Md Torikul Islam Ovi.png"
-                  alt="Md Torikul Islam Ovi"
-                  fill
-                  className="object-contain object-bottom"
-                />
-              </div>
-
-              <div className="p-8 md:p-12">
-                <p className="text-cyan-300 text-sm uppercase tracking-[0.2em] font-bold">{t("About Me", "আমার সম্পর্কে")}</p>
-                <h3 className="mt-3 text-3xl md:text-4xl font-extrabold">Md Torikul Islam Ovi</h3>
-                <p className="mt-2 text-lg text-gray-400">{t("Automation Engineer & Founder — TAE.Agency", "অটোমেশন ইঞ্জিনিয়ার অ্যান্ড ফাউন্ডার — TAE.Agency")}</p>
-
-                <div className="mt-8 space-y-5 text-gray-400 leading-relaxed">
-                  <p>
-                    {t(
-                      "Assalamu Alaikum! I believe that modern businesses should not have to spend their valuable time repeating the same administrative tasks again and again.",
-                      "আসসালামু আলাইকুম! আমি বিশ্বাস করি আধুনিক ব্যবসায় বারবার একই প্রশাসনিক কাজগুলোর পেছনে মূল্যবান সময় নষ্ট করা উচিত নয়।"
-                    )}
-                  </p>
-                  <p>
-                    {t(
-                      "My focus through TAE.Agency is to help dental practices and service businesses identify those repetitive workflows and turn them into practical, connected automation systems.",
-                      "TAE.Agency-এর মাধ্যমে আমার মূল লক্ষ্য হলো ডেন্টাল প্র্যাকটিস এবং সার্ভিস বিজনেসগুলোকে পুনরাবৃত্তিমূলক ওয়ার্কফ্লো থেকে মুক্ত করে কার্যকর অটোমেশন সিস্টেম গড়ে দেওয়া।"
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM SECTION (Fixed Image Fit & Size) */}
+      {/* TEAM SECTION (Fixed Image Fit & Smaller Proportional Box) */}
       <section className="py-24 px-6 bg-white/[0.015] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">{t("Our Team", "আমাদের টিম")}</p>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">{t("The Team Behind Your Project", "আপনার প্রজেক্টের পেছনের এক্সপার্ট টিম")}</h2>
+            <p className="mt-4 text-gray-400 text-base">
+              {t("Dedicated professionals working to ensure your automation success.", "আপনার অটোমেশন সফল করতে নিবেদিতপ্রাণ এক্সপার্টগণ।")}
+            </p>
           </div>
 
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamMembers.map((member, index) => (
-              <div key={index} className="group rounded-3xl border border-white/10 bg-[#080B11] overflow-hidden hover:border-cyan-400/25 transition">
-                <div className="relative h-72 bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-transparent overflow-hidden flex items-end justify-center">
+              <div key={index} className="group rounded-2xl border border-white/10 bg-[#080B11] p-6 flex flex-col items-center text-center hover:border-cyan-400/30 transition">
+                <div className="relative w-36 h-36 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-900 shadow-md mb-5">
                   <Image 
                     src={member.image} 
                     alt={member.name} 
                     fill 
-                    className="object-contain object-bottom group-hover:scale-[1.02] transition duration-500" 
+                    className="object-cover object-bottom group-hover:scale-105 transition duration-300" 
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="mt-1 text-cyan-300 text-sm font-semibold">{member.role}</p>
-                  <p className="mt-4 text-gray-400 text-sm leading-relaxed">{isBangla ? member.descriptionBn : member.descriptionEn}</p>
-                </div>
+                <h3 className="text-lg font-bold text-white">{member.name}</h3>
+                <p className="mt-1 text-cyan-400 text-xs font-semibold">{member.role}</p>
+                <p className="mt-3 text-gray-400 text-xs leading-relaxed">
+                  {isBangla ? member.descriptionBn : member.descriptionEn}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION (Accordion Dropdown Style like Services Page) */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-cyan-300 text-sm font-bold tracking-[0.2em] uppercase">FAQ</p>
+            <h2 className="mt-3 text-3xl md:text-4xl font-extrabold">
+              {t("Frequently Asked Questions", "সচরাচর জিজ্ঞাসিত প্রশ্নাবলী")}
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className="rounded-2xl border border-white/10 bg-[#080B11] overflow-hidden transition"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex items-center justify-between p-6 text-left font-semibold text-lg hover:text-cyan-300 transition"
+                >
+                  <span>{isBangla ? faq.qBn : faq.qEn}</span>
+                  <span className="text-cyan-400">
+                    {openFaq === index ? <FaChevronUp /> : <FaChevronDown />}
+                  </span>
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                    {isBangla ? faq.aBn : faq.aEn}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -436,7 +377,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="relative py-28 px-6">
+      <section className="relative py-28 px-6 border-t border-white/5">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[300px] bg-cyan-500/10 blur-[140px] rounded-full" />
         </div>
