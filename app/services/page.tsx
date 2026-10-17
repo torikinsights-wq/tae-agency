@@ -27,6 +27,8 @@ import {
   FaShieldAlt,
   FaWhatsapp,
   FaEnvelope,
+  FaSpinner,
+  FaPaperPlane,
 } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -41,7 +43,7 @@ export default function DentalAutomationServicesPage() {
   // Service Card Dropdown State
   const [openService, setOpenService] = useState<number | null>(null);
 
-  // Contact Form State
+  // Contact Form State (Fully Connected with Web3Forms API)
   const [formData, setFormData] = useState({
     name: "",
     contactMethod: "whatsapp",
@@ -49,7 +51,9 @@ export default function DentalAutomationServicesPage() {
     businessType: "Dental Practice",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleFaqItem = (index: number) => {
     setOpenFaqItem((current) => (current === index ? null : index));
@@ -59,9 +63,41 @@ export default function DentalAutomationServicesPage() {
     setOpenService((current) => (current === index ? null : index));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "195853f8-c1a8-415e-8cce-b8dd5212d790",
+          subject: `নতুন লিড (সার্ভিস পেজ - TAE.Agency): ${formData.name} (${formData.businessType})`,
+          from_name: "TAE Agency Services Lead Form",
+          "Client Name": formData.name,
+          "Service Type": formData.businessType,
+          "Contact Method": formData.contactMethod.toUpperCase(),
+          "Contact Info": formData.contactValue,
+          "Project Details": formData.message || "সার্ভিস পেজের ফর্ম থেকে সাবমিট করা হয়েছে",
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.message || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+      }
+    } catch (error) {
+      setErrorMessage("সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const services = [
@@ -87,7 +123,7 @@ export default function DentalAutomationServicesPage() {
       icon: <FaRobot />,
       title: t("AI Dental Patient Support", "এআই ডেন্টাল পেশেন্ট সাপোর্ট"),
       subtitle: t("Give patients faster answers to routine questions.", "রোগীদের রুটিন প্রশ্নের দ্রুত উত্তর প্রদান করুন।"),
-      desc: t("Patients often ask simple questions before they decide to contact or visit a clinic. AI-powered workflows can handle routine, non-clinical communication while keeping your dental team in control of patient care.", "রোগীরা প্রায়ই ক্লিনিকে যোগাযোগ বা ভিজিট করার আগে সাধারণ প্রশ্ন করেন। এআই-চালিত ওয়ার্কফ্লো রুটিন ও অ-ক্লিনিক্যাল কমিউনিকেশন হ্যান্ডেল করে, আর পেশেন্ট কেয়ার টিম থাকে আপনার নিয়ন্ত্রণে।"),
+      desc: t("Patients often ask simple questions before they decide to contact or visit a clinic. AI-powered workflows can handle routine, non-clinical communication while keeping your dental team in control of patient care.", "রোগীরা প্রায়ই ক্লিনিকে যোগাযোগ বা ভিজিট করার আগে সাধারণ প্রশ্ন করেন। এআই-চালিত ওয়ার্কফ্লো রুটিন ও অ-ক্লিনিক্যাল কমিউনিকেশন হ্যান্ডেল করে, আর পেশেন্ট কেয়ার টিম থাকে আপনার নিয়ন্ত্রণে।"),
       features: [
         t("Clinic hours", "ক্লিনিকের সময়সূচী"),
         t("Location information", "লোকেশন তথ্য"),
@@ -105,7 +141,7 @@ export default function DentalAutomationServicesPage() {
       icon: <FaCalendarAlt />,
       title: t("Appointment Booking & Reminders", "অ্যাপয়েন্টমেন্ট বুকিং ও রিমাইন্ডার"),
       subtitle: t("Make appointment communication more organized.", "অ্যাপয়েন্টমেন্ট কমিউনিকেশন আরও সুসংগঠিত করুন।"),
-      desc: t("Appointment communication can consume a significant amount of reception time. TAE.Agency can connect booking requests, confirmations, reminders, rescheduling, and cancellation workflows.", "অ্যাপয়েন্টমেন্ট কমিউনিকেশনে রিসেপশনের অনেক সময় নষ্ট হতে পারে। TAE.Agency বুকিং রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, রিডিউল এবং ক্যান্সেলেশন ওয়ার্কফ্লো কানেক্ট করে দেয়।"),
+      desc: t("Appointment communication can consume a significant amount of reception time. TAE.Agency can connect booking requests, confirmations, reminders, rescheduling, and cancellation workflows.", "অ্যাপয়েন্টমেন্ট কমিউনিকেশনে রিসেপশনের অনেক সময় নষ্ট হতে পারে। TAE.Agency বুকিং রিকোয়েস্ট, কনফার্মেশন, রিমাইন্ডার, রিডিউল এবং ক্যান্সেলেশন ওয়ার্কফ্লো কানেক্ট করে দেয়।"),
       features: [
         t("Appointment request workflows", "অ্যাপয়েন্টমেন্ট রিকোয়েস্ট ওয়ার্কফ্লো"),
         t("Booking workflows", "বুকিং ওয়ার্কফ্লো"),
@@ -123,13 +159,13 @@ export default function DentalAutomationServicesPage() {
       icon: <FaChartLine />,
       title: t("Treatment Follow-Up Automation", "ট্রিটমেন্ট ফলো-আপ অটোমেশন"),
       subtitle: t("Keep patients moving toward their next step.", "রোগীদের পরবর্তী ধাপের দিকে এগিয়ে রাখুন।"),
-      desc: t("After a consultation or treatment discussion, patients may need additional communication before taking the next step. Structured follow-up workflows help your team maintain consistency.", "কনসালটেশন বা ট্রিটমেন্ট আলোচনার পরে রোগীরা পরবর্তী পদক্ষেপ নেওয়ার আগে অতিরিক্ত যোগাযোগের প্রয়োজন মনে করতে পারেন। স্ট্রাকচারড ফলো-আপ ওয়ার্কফ্লো আপনার টিমকে ধারাবাহিকতা বজায় রাখতে সাহায্য করে।"),
+      desc: t("After a consultation or treatment discussion, patients may need additional communication before taking the next step. Structured follow-up workflows help your team maintain consistency.", "কনসালটেশন বা ট্রিটমেন্ট আলোচনার পরে রোগীরা পরবর্তী পদক্ষেপ নেওয়ার আগে অতিরিক্ত যোগাযোগের প্রয়োজন মনে করতে পারেন। স্ট্রাকচারড ফলো-আপ ওয়ার্কফ্লো আপনার টিমকে ধারাবাহিকতা বজায় রাখতে সাহায্য করে।"),
       features: [
         t("Consultation follow-up", "কনসালটেশন ফলো-আপ"),
         t("Treatment follow-up", "ট্রিটমেন্ট ফলো-আপ"),
         t("Next-step reminders", "পরবর্তী ধাপের রিমাইন্ডার"),
         t("Appointment follow-up", "অ্যাপয়েন্টমেন্ট ফলো-আপ"),
-        t("Unresponsive patient follow-up", "উত্তের অপেক্ষায় থাকা রোগীর ফলো-আপ"),
+        t("Unresponsive patient follow-up", "উত্তের অপেক্ষায় থাকা রোগীর ফলো-আপ"),
         t("Patient response tracking", "পেশেন্ট রেসপন্স ট্র্যাকিং"),
         t("Follow-up escalation workflows", "ফলো-আপ এসকেলেশন ওয়ার্কফ্লো"),
       ],
@@ -156,8 +192,8 @@ export default function DentalAutomationServicesPage() {
       num: "06",
       icon: <FaNetworkWired />,
       title: t("Dental Marketing Automation", "ডেন্টাল মার্কেটিং অটোমেশন"),
-      subtitle: t("Turn repetitive marketing work into connected workflows.", "মার্কেটিংয়ের রুটিন কাজগুলোকে কানেক্টেড ওয়ার্কফ্লোতে রূপান্তর করুন।"),
-      desc: t("Marketing does not have to mean manually managing every repetitive task. TAE.Agency can help organize content, social media, campaign, lead tracking, and marketing workflows around your practice.", "মার্কেটিং মানেই প্রতিটি রুটিন কাজ ম্যানুয়ালি হ্যান্ডেল করা নয়। TAE.Agency আপনার প্র্যাকটিসের জন্য কন্টেন্ট, সোশ্যাল মিডিয়া, ক্যাম্পেইন এবং লিড ট্র্যাকিং ওয়ার্কফ্লো অর্গানাইজ করতে সাহায্য করে।"),
+      subtitle: t("Turn repetitive marketing work into connected workflows.", "মার্কেটিংয়ের রুটিন কাজগুলোকে কানেক্টেড ওয়ার্কফ্লোতে রূপান্তর করুন।"),
+      desc: t("Marketing does not have to mean manually managing every repetitive task. TAE.Agency can help organize content, social media, campaign, lead tracking, and marketing workflows around your practice.", "মার্কেটিং মানেই প্রতিটি রুটিন কাজ ম্যানুয়ালি হ্যান্ডেল করা নয়। TAE.Agency আপনার প্র্যাকটিসের জন্য কন্টেন্ট, সোশ্যাল মিডিয়া, ক্যাম্পেইন এবং লিড ট্র্যাকিং ওয়ার্কফ্লো অর্গানাইজ করতে সাহায্য করে।"),
       features: [
         t("Content workflows", "কন্টেন্ট ওয়ার্কফ্লো"),
         t("AI-assisted content creation", "এআই-সহায়তা পুষ্ট কন্টেন্ট তৈরি"),
@@ -190,7 +226,7 @@ export default function DentalAutomationServicesPage() {
     {
       icon: <FaStethoscope />,
       title: t("Treatment Follow-Up", "ট্রিটমেন্ট ফলো-আপ"),
-      items: [t("Consultation follow-up", "কনসালটেশন ফলো-আপ"), t("Treatment reminders", "ট্রিটমেন্ট রিমাইন্ডার"), t("Next-step communication", "পরবর্তী ধাপের যোগাযোগ"), t("Patient response tracking", "পেশেন্ট রেসপন্স ট্র্যাকিং"), t("Unresponsive patient follow-up", "উত্তের অপেক্ষায় থাকা রোগীর ফলো-আপ")],
+      items: [t("Consultation follow-up", "কনসালটেশন ফলো-আপ"), t("Treatment reminders", "ট্রিটমেন্ট রিমাইন্ডার"), t("Next-step communication", "পরবর্তী ধাপের যোগাযোগ"), t("Patient response tracking", "পেশেন্ট রেসপন্স ট্র্যাকিং"), t("Unresponsive patient follow-up", "উত্তের অপেক্ষায় থাকা রোগীর ফলো-আপ")],
     },
     {
       icon: <FaSyncAlt />,
@@ -208,19 +244,19 @@ export default function DentalAutomationServicesPage() {
     { num: "01", icon: <FaNetworkWired />, title: t("Patient Finds Your Clinic", "রোগী আপনার ক্লিনিক খুঁজে পান"), desc: t("Google, Facebook, Instagram, website, advertising, referrals, and other channels.", "গুগল, ফেসবুক, ইনস্টাগ্রাম, ওয়েবসাইট, বিজ্ঞাপন, রেফারেল এবং অন্যান্য চ্যানেল।") },
     { num: "02", icon: <FaHeadset />, title: t("Inquiry Is Captured", "ইনকোয়ারি ক্যাপচার করা হয়"), desc: t("The inquiry enters a structured workflow instead of getting lost in disconnected channels.", "ইনকোয়ারিটি বিচ্ছিন্ন চ্যানেলে হারিয়ে না গিয়ে একটি স্ট্রাকচারড ওয়ার্কফ্লোতে প্রবেশ করে।") },
     { num: "03", icon: <FaBolt />, title: t("Response & Qualification", "রেসপন্স ও কোয়ালিফিকেশন"), desc: t("Routine communication and lead qualification workflows can start automatically.", "রুটিন কমিউনিকেশন এবং লিড কোয়ালিফিকেশন ওয়ার্কফ্লো স্বয়ংক্রিয়ভাবে শুরু হতে পারে।") },
-    { num: "04", icon: <FaSyncAlt />, title: t("Follow-Up", "ফলো-আপ"), desc: t("Interested patients can receive structured follow-up based on your workflow.", "আগ্রহী রোগীরা আপনার ওয়ার্কফ্লো অনুযায়ী স্ট্রাকচারড ফলো-আপ পান।") },
+    { num: "04", icon: <FaSyncAlt />, title: t("Follow-Up", "ফলো-আপ"), desc: t("Interested patients can receive structured follow-up based on your workflow.", "আগ্রহী রোগীরা আপনার ওয়ার্কফ্লো অনুযায়ী স্ট্রাকচারড ফলো-আপ পান।") },
     { num: "05", icon: <FaCalendarAlt />, title: t("Appointment", "অ্যাপয়েন্টমেন্ট"), desc: t("The patient moves toward booking, confirmation, and appointment communication.", "রোগী বুকিং, কনফার্মেশন এবং অ্যাপয়েন্টমেন্ট যোগাযোগের দিকে এগিয়ে যান।") },
-    { num: "06", icon: <FaRegClock />, title: t("Reminder", "রিমাইন্ডার"), desc: t("Automated reminder workflows help keep appointment communication organized.", "অটোমেটেড রিমাইন্ডার ওয়ার্কফ্লো অ্যাপয়েন্টমেন্ট যোগাযোগ গুছিয়ে রাখতে সাহায্য করে।") },
-    { num: "07", icon: <FaTooth />, title: t("Patient Visit", "পেশেন্ট ভিজিট"), desc: t("Your dental team focuses on delivering patient care.", "আপনার ডেন্টাল টিম পেশেন্ট কেয়ার প্রদানে মনোনিবেশ করে।") },
-    { num: "08", icon: <FaSmile />, title: t("Retention & Recall", "রিটেনশন ও রিকাল"), desc: t("Post-visit, recall, review, and reactivation workflows can continue the relationship.", "পোস্ট-ভিজিট, রিকাল, রিভিউ এবং রিয়াক্টিভেশন ওয়ার্কফ্লো সম্পর্ক বজায় রাখে।") },
+    { num: "06", icon: <FaRegClock />, title: t("Reminder", "রিমাইন্ডার"), desc: t("Automated reminder workflows help keep appointment communication organized.", "অটোমেটেড রিমাইন্ডার ওয়ার্কফ্লো অ্যাপয়েন্টমেন্ট যোগাযোগ গুছিয়ে রাখতে সাহায্য করে।") },
+    { num: "07", icon: <FaTooth />, title: t("Patient Visit", "পেশেন্ট ভিজিট"), desc: t("Your dental team focuses on delivering patient care.", "আপনার ডেন্টাল টিম পেশেন্ট কেয়ার প্রদানে মনোনিবেশ করে।") },
+    { num: "08", icon: <FaSmile />, title: t("Retention & Recall", "রিটেনশন ও রিকাল"), desc: t("Post-visit, recall, review, and reactivation workflows can continue the relationship.", "পোস্ট-ভিজিট, রিকাল, রিভিউ এবং রিয়াক্টিভেশন ওয়ার্কফ্লো সম্পর্ক বজায় রাখে।") },
   ];
 
   const process = [
     { num: "01", title: t("DISCOVER", "বিশ্লেষণ"), icon: <FaFilter />, desc: t("We understand your patient journey, lead sources, booking process, communication channels, and repetitive tasks.", "আমরা আপনার পেশেন্ট জার্নি, লিড সোর্স, বুকিং প্রসেস, কমিউনিকেশন চ্যানেল এবং রুটিন কাজগুলো বুঝতে পারি।") },
-    { num: "02", title: t("DESIGN", "ডিজাইন"), icon: <FaProjectDiagram />, desc: t("We map the workflows that can be automated and design the system around your actual clinic operations.", "যে ওয়ার্কফ্লোগুলো অটোমেট করা যায় তা ম্যাপ করি এবং আপনার ক্লিনিকাল অপারেশনের ওপর ভিত্তি করে সিস্টেম ডিজাইন করি।") },
+    { num: "02", title: t("DESIGN", "ডিজাইন"), icon: <FaProjectDiagram />, desc: t("We map the workflows that can be automated and design the system around your actual clinic operations.", "যে ওয়ার্কফ্লোগুলো অটোমেট করা যায় তা ম্যাপ করি এবং আপনার ক্লিনিকাল অপারেশনের ওপর ভিত্তি করে সিস্টেম ডিজাইন করি।") },
     { num: "03", title: t("CONNECT", "কানেক্ট"), icon: <FaNetworkWired />, desc: t("Relevant tools, forms, calendars, communication channels, databases, and automation workflows are connected.", "সংশ্লিষ্ট টুলস, ফর্ম, ক্যালেন্ডার, কমিউনিকেশন চ্যানেল, ডেটাবেস এবং অটোমেশন ওয়ার্কফ্লো কানেক্ট করি।") },
     { num: "04", title: t("AUTOMATE", "অটোমেট"), icon: <FaRobot />, desc: t("The repetitive workflow begins running automatically while your team remains in control.", "আপনার টিম নিয়ন্ত্রণে রেখেই রুটিন ওয়ার্কফ্লো স্বয়ংক্রিয়ভাবে চলতে শুরু করে।") },
-    { num: "05", title: t("OPTIMIZE", "অপ্টিমাইজ"), icon: <FaChartLine />, desc: t("Workflow activity is reviewed so the system can be improved as your practice evolves.", "ওয়ার্কফ্লো অ্যাক্টিভিটি পর্যালোচনা করা হয় যাতে আপনার প্র্যাকটিসের সাথে সাথে সিস্টেম আরও উন্নত হয়।") },
+    { num: "05", title: t("OPTIMIZE", "অপ্টিমাইজ"), icon: <FaChartLine />, desc: t("Workflow activity is reviewed so the system can be improved as your practice evolves.", "ওয়ার্কফ্লো অ্যাক্টিভিটি পর্যালোচনা করা হয় যাতে আপনার প্র্যাকটিসের সাথে সাথে সিস্টেম আরও উন্নত হয়।") },
   ];
 
   const practiceTypes = [
@@ -233,14 +269,14 @@ export default function DentalAutomationServicesPage() {
   ];
 
   const faqs = [
-    { q: t("What exactly does TAE.Agency provide?", "TAE.Agency ঠিক কী প্রদান করে?"), a: t("TAE.Agency designs and implements AI-powered automation systems for dental practices. Depending on the clinic's needs, this can include patient acquisition, communication, appointment workflows, treatment follow-up, recall, reactivation, reputation workflows, and marketing automation.", "TAE.Agency ডেন্টাল প্র্যাকটিসের জন্য এআই-চালিত অটোমেশন সিস্টেম ডিজাইন ও ইমপ্লিমেন্ট করে। ক্লিনিকের প্রয়োজনের ওপর ভিত্তি করে এতে পেশেন্ট অ্যাকুইজিশন, কমিউনিকেশন, অ্যাপয়েন্টমেন্ট ওয়ার্কফ্লো, ট্রিটমেন্ট ফলো-আপ, রিকাল, রিয়াক্টিভেশন, রেপুটেশন এবং মার্কেটিং অটোমেশন অন্তর্ভুক্ত থাকতে পারে।") },
+    { q: t("What exactly does TAE.Agency provide?", "TAE.Agency ঠিক কী প্রদান করে?"), a: t("TAE.Agency designs and implements AI-powered automation systems for dental practices. Depending on the clinic's needs, this can include patient acquisition, communication, appointment workflows, treatment follow-up, recall, reactivation, reputation workflows, and marketing automation.", "TAE.Agency ডেন্টাল প্র্যাকটিসের জন্য এআই-চালিত অটোমেশন সিস্টেম ডিজাইন ও ইমপ্লিমেন্ট করে। ক্লিনিকের প্রয়োজনের ওপর ভিত্তি করে এতে পেশেন্ট অ্যাকুইজিশন, কমিউনিকেশন, অ্যাপয়েন্টমেন্ট ওয়ার্কফ্লো, ট্রিটমেন্ট ফলো-আপ, রিকাল, রিয়াক্টিভেশন, রেপুটেশন এবং মার্কেটিং অটোমেশন অন্তর্ভুক্ত থাকতে পারে।") },
     { q: t("Do you only provide AI chatbots?", "আপনারা কি শুধু এআই চ্যাটবট প্রদান করেন?"), a: t("No. A chatbot can be one part of an automation system, but TAE.Agency focuses on connecting the wider patient journey—from inquiry and follow-up to appointment communication, recall, and reactivation.", "না। চ্যাটবট অটোমেশন সিস্টেমের একটি অংশ হতে পারে, তবে TAE.Agency বৃহত্তর পেশেন্ট জার্নি কানেক্ট করার ওপর ফোকাস করে—ইনকোয়ারি ও ফলো-আপ থেকে শুরু করে অ্যাপয়েন্টমেন্ট যোগাযোগ, রিকাল এবং রিয়াক্টিভেশন পর্যন্ত।") },
     { q: t("Can AI handle medical or dental diagnosis?", "এআই কি মেডিকেল বা ডেন্টাল ডায়াগনোসিস হ্যান্ডেল করতে পারে?"), a: t("No. AI workflows are intended for routine, non-clinical communication. Diagnosis, treatment decisions, clinical advice, and patient care remain the responsibility of qualified dental professionals.", "না। এআই ওয়ার্কফ্লো শুধুমাত্র রুটিন ও অ-ক্লিনিক্যাল যোগাযোগের জন্য। ডায়াগনোসিস, ট্রিটমেন্ট ডিসিশন, ক্লিনিক্যাল পরামর্শ এবং পেশেন্ট কেয়ারের দায়িত্ব সম্পূর্ণভাবে যোগ্য ডেন্টাল পেশেন্ট প্রফেশনালদের।") },
-    { q: t("Can you automate appointment reminders?", "আপনারা কি অ্যাপয়েন্টমেন্ট রিমাইন্ডার অটোমেট করতে পারেন?"), a: t("Yes, depending on the tools and workflow setup. Appointment confirmations, reminders, rescheduling communication, cancellation follow-up, and related communication workflows can be automated.", "হ্যাঁ, টুলস ও ওয়ার্কফ্লো সেটআপ অনুযায়ী এটি করা সম্ভব। অ্যাপয়েন্টমেন্ট কনফার্মেশন, রিমাইন্ডার, রিডিউল যোগাযোগ, ক্যান্সেলেশন ফলো-আপ ইত্যাদি অটোমেট করা যায়।") },
-    { q: t("Can you automate WhatsApp or SMS communication?", "আপনারা কি হোয়াটসঅ্যাপ বা এসএমএস কমিউনিকেশন অটোমেট করতে পারেন?"), a: t("Communication channels can be connected depending on the tools, APIs, account permissions, and workflow requirements of the practice.", "প্র্যাকটিসের টুলস, এপিআই, অ্যাকাউন্ট পারমিশন এবং ওয়ার্কফ্লো রিকোয়ারমেন্ট অনুযায়ী যোগাযোগ চ্যানেলগুলো কানেক্ট করা যেতে পারে।") },
+    { q: t("Can you automate appointment reminders?", "আপনারা কি অ্যাপয়েন্টমেন্ট রিমাইন্ডার অটোমেট করতে পারেন?"), a: t("Yes, depending on the tools and workflow setup. Appointment confirmations, reminders, rescheduling communication, cancellation follow-up, and related communication workflows can be automated.", "হ্যাঁ, টুলস ও ওয়ার্কফ্লো সেটআপ অনুযায়ী এটি করা সম্ভব। অ্যাপয়েন্টমেন্ট কনফার্মেশন, রিমাইন্ডার, রিডিউল যোগাযোগ, ক্যান্সেলেশন ফলো-আপ ইত্যাদি অটোমেট করা যায়।") },
+    { q: t("Can you automate WhatsApp or SMS communication?", "আপনারা কি হোয়াটসঅ্যাপ বা এসএমএস কমিউনিকেশন অটোমেট করতে পারেন?"), a: t("Communication channels can be connected depending on the tools, APIs, account permissions, and workflow requirements of the practice.", "প্র্যাকটিসের টুলস, এপিআই, অ্যাকাউন্ট পারমিশন এবং ওয়ার্কফ্লো রিকোয়ারমেন্ট অনুযায়ী যোগাযোগ চ্যানেলগুলো কানেক্ট করা যেতে পারে।") },
     { q: t("Can you reactivate old patients?", "আপনারা কি পুরনো রোগীদের রিয়াক্টিভেট করতে পারেন?"), a: t("TAE.Agency can design structured reactivation and recall workflows for eligible inactive patients. The exact workflow depends on the clinic's patient database, consent practices, communication channels, and goals.", "TAE.Agency উপযুক্ত নিষ্ক্রিয় রোগীদের জন্য স্ট্রাকচারড রিয়াক্টিভেশন এবং রিকাল ওয়ার্কফ্লো ডিজাইন করতে পারে। সঠিক ওয়ার্কফ্লো ক্লিনিকের পেশেন্ট ডেটাবেস এবং লক্ষ্যের ওপর নির্ভর করে।") },
-    { q: t("Will automation replace my receptionist?", "অটোমেশন কি আমাদের রিসেপশনিস্টকে প্রতিস্থাপন করবে?"), a: t("The goal is not to replace your reception team. Automation handles repetitive workflows so your staff can spend more time on patient care, complex situations, hospitality, and human communication.", "এর লক্ষ্য রিসেপশন টিমকে প্রতিস্থাপন করা নয়। অটোমেশন রুটিন কাজগুলো হ্যান্ডেল করে যাতে আপনার স্টাফরা পেশেন্ট কেয়ার, জটিল পরিস্থিতি এবং মানবীয় যোগাযোগে বেশি সময় দিতে পারেন।") },
-    { q: t("Is the automation system the same for every clinic?", "প্রতিটি ক্লিনিকের জন্য কি অটোমেশন সিস্টেম একই রকম হয়?"), a: t("No. Each dental practice has different services, patient sources, booking processes, communication channels, team structures, and goals. TAE.Agency designs workflows around the clinic.", "না। প্রতিটি ডেন্টাল প্র্যাকটিসের সার্ভিস, পেশেন্ট সোর্স, বুকিং প্রসেস, টিম স্ট্রাকচার এবং লক্ষ্য ভিন্ন। TAE.Agency ক্লিনিকের প্রয়োজন অনুযায়ী কাস্টম ওয়ার্কফ্লো ডিজাইন করে।") },
+    { q: t("Will automation replace my receptionist?", "অটোমেশন কি আমাদের রিসেপশনিস্টকে প্রতিস্থাপন করবে?"), a: t("The goal is not to replace your reception team. Automation handles repetitive workflows so your staff can spend more time on patient care, complex situations, hospitality, and human communication.", "এর লক্ষ্য রিসেপশন টিমকে প্রতিস্থাপন করা নয়। অটোমেশন রুটিন কাজগুলো হ্যান্ডেল করে যাতে আপনার স্টাফরা পেশেন্ট কেয়ার, জটিল পরিস্থিতি এবং মানবীয় যোগাযোগে বেশি সময় দিতে পারেন।") },
+    { q: t("Is the automation system the same for every clinic?", "প্রতিটি ক্লিনিকের জন্য কি অটোমেশন সিস্টেম একই রকম হয়?"), a: t("No. Each dental practice has different services, patient sources, booking processes, communication channels, team structures, and goals. TAE.Agency designs workflows around the clinic.", "না। প্রতিটি ডেন্টাল প্র্যাকটিসের সার্ভিস, পেশেন্ট সোর্স, বুকিং প্রসেস, টিম স্ট্রাকচার এবং লক্ষ্য ভিন্ন। TAE.Agency ক্লিনিকের প্রয়োজন অনুযায়ী কাস্টম ওয়ার্কফ্লো ডিজাইন করে।") },
     { q: t("How do we know what should be automated?", "আমরা কীভাবে বুঝব কোন কাজগুলো অটোমেট করা উচিত?"), a: t("The process starts by reviewing your existing patient journey and operational workflows. We identify repetitive tasks, communication gaps, and areas where automation could realistically improve consistency and efficiency.", "প্রক্রিয়াটি আপনার বর্তমান পেশেন্ট জার্নি এবং অপারেশনাল ওয়ার্কফ্লো পর্যালোচনার মাধ্যমে শুরু হয়। আমরা রুটিন কাজ, কমিউনিকেশন গ্যাপ এবং অটোমেশনের সুযোগগুলো চিহ্নিত করি।") },
   ];
 
@@ -258,7 +294,7 @@ export default function DentalAutomationServicesPage() {
             <a 
               href="https://wa.me/8801724132820" 
               target="_blank" 
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
             >
               <FaWhatsapp className="text-base" /> {t("WhatsApp Hotline: +880 1724-132820", "হোয়াটসঅ্যাপ হটলাইন: +880 1724-132820")}
@@ -279,7 +315,7 @@ export default function DentalAutomationServicesPage() {
       <section className="relative z-10 pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Hero Text Content (Slightly reduced by ~1-2% for better proportion) */}
+          {/* Left Hero Text Content */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-semibold shadow-lg">
               <FaTooth className="text-cyan-400" />
@@ -298,12 +334,12 @@ export default function DentalAutomationServicesPage() {
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
               {t(
                 "TAE.Agency designs intelligent automation systems that help dental clinics organize patient acquisition, communication, appointments, follow-up, recall, reactivation, and marketing workflows.",
-                "TAE.Agency এমন বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে পেশেন্ট অ্যাকুইজিশন, কমিউনিকেশন, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকাল, রিয়াক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
+                "TAE.Agency এমন বুদ্ধিমান অটোমেশন সিস্টেম ডিজাইন করে যা ডেন্টাল ক্লিনিকগুলোকে পেশেন্ট অ্যাকুইজিশন, কমিউনিকেশন, অ্যাপয়েন্টমেন্ট, ফলো-আপ, রিকাল, রিয়াক্টিভেশন এবং মার্কেটিং ওয়ার্কফ্লো গুছিয়ে রাখতে সাহায্য করে।"
               )}
             </p>
           </div>
 
-          {/* Right Contact/Lead Form Card */}
+          {/* Right Contact/Lead Form Card (Connected to Web3Forms API) */}
           <div className="lg:col-span-5">
             <div className="bg-slate-900/95 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl relative">
               <div className="absolute -top-2.5 right-5 bg-cyan-500 text-slate-950 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow">
@@ -316,7 +352,7 @@ export default function DentalAutomationServicesPage() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white">{t("Quick Appointment & Project Form", "প্রজেক্ট ও অ্যাপয়েন্টমেন্ট ফর্ম")}</h3>
-                  <p className="text-slate-400 text-[11px]">{t("Fill in your details to connect instantly.", "আপনার বিবরণ দিয়ে সহজেই আমাদের সাথে যোগাযোগ করুন।")}</p>
+                  <p className="text-slate-400 text-[11px]">{t("Fill in your details to connect instantly.", "আপনার বিবরণ দিয়ে সহজেই আমাদের সাথে যোগাযোগ করুন।")}</p>
                 </div>
               </div>
 
@@ -334,6 +370,12 @@ export default function DentalAutomationServicesPage() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-3 text-left">
+                  {errorMessage && (
+                    <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Your Name *", "আপনার নাম *")}</label>
                     <input
@@ -388,11 +430,32 @@ export default function DentalAutomationServicesPage() {
                     />
                   </div>
 
+                  {/* Additional Message */}
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Project Details (Optional)", "প্রজেক্টের বিবরণ (ঐচ্ছিক)")}</label>
+                    <textarea
+                      rows={2}
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder={t("Write your project idea...", "আপনার প্রজেক্ট আইডিয়া লিখুন...")}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none transition-all"
+                    ></textarea>
+                  </div>
+
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-2.5 rounded-lg shadow-[0_0_15px_rgba(225,29,72,0.3)] transition-all text-xs mt-1 flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-2.5 rounded-lg shadow-[0_0_15px_rgba(225,29,72,0.3)] transition-all text-xs mt-1 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <FaArrowRight /> {t("Submit Request", "সাবমিট রিকোয়েস্ট")}
+                    {loading ? (
+                      <>
+                        <FaSpinner className="animate-spin text-sm" /> {t("Sending...", "পাঠানো হচ্ছে...")}
+                      </>
+                    ) : (
+                      <>
+                        <FaPaperPlane /> {t("Submit Request", "সাবমিট রিকোয়েস্ট")}
+                      </>
+                    )}
                   </button>
                   <p className="text-[9px] text-slate-400 text-center flex items-center justify-center gap-1">
                     <FaShieldAlt className="text-cyan-400 text-[10px]" /> {t("Your information is completely secure.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও গোপনীয়।")}
@@ -438,11 +501,11 @@ export default function DentalAutomationServicesPage() {
       <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-900">
         <div className="max-w-5xl mx-auto text-center">
           <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-mono">
-            {t("MORE THAN INDIVIDUAL TOOLS", "শুধু আলাদা টুলসের চেয়েও বেশি কিছু")}
+            {t("MORE THAN INDIVIDUAL TOOLS", "শুধু আলাদা টুলসের চেয়েও বেশি কিছু")}
           </span>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-2 mb-5">
-            {t("Your Dental Practice Doesn't Need", "আপনার ডেন্টাল প্র্যাকটিসের প্রয়োজন নেই")}
+            {t("Your Dental Practice Doesn't Need", "আপনার ডেন্টাল প্র্যাকটিসের প্রয়োজন নেই")}
             <br />
             <span className="text-cyan-400">
               {t("More Disconnected Tools.", "আরও বিচ্ছিন্ন সব টুলের।")}
@@ -455,7 +518,7 @@ export default function DentalAutomationServicesPage() {
             <br />
             {t(
               "TAE.Agency — Torik Automation Engineering — focuses on connecting repetitive parts of the patient journey so information can move between workflows instead of remaining trapped in separate manual processes.",
-              "TAE.Agency — তরিক অটোমেশন ইঞ্জিনিয়ারিং — পেশেন্ট জার্নির রুটিন কাজগুলো কানেক্ট করার ওপর ফোকাস করে, যাতে তথ্যগুলো আলাদা ম্যানুয়াল প্রসেসে আটকে না থেকে ওয়ার্কফ্লোর মধ্যে অবাধে প্রবাহিত হতে পারে।"
+              "TAE.Agency — তরিক অটোমেশন ইঞ্জিনিয়ারিং — পেশেন্ট জার্নির রুটিন কাজগুলো কানেক্ট করার ওপর ফোকাস করে, যাতে তথ্যগুলো আলাদা ম্যানুয়াল প্রসেসে আটকে না থেকে ওয়ার্কফ্লোর মধ্যে অবাধে প্রবাহিত হতে পারে।"
             )}
           </p>
         </div>
@@ -470,15 +533,15 @@ export default function DentalAutomationServicesPage() {
             </span>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white mt-2 mb-3">
-              {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
+              {t("We Don't Start With Software.", "আমরা সফটওয়্যার দিয়ে শুরু করি না।")}
               <br />
               <span className="text-cyan-400">
-                {t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}
+                {t("We Start With Your Workflow.", "আমরা শুরু করি আপনার ওয়ার্কফ্লো দিয়ে।")}
               </span>
             </h2>
 
             <p className="text-slate-300 text-xs sm:text-sm">
-              {t("The technology comes after we understand what your practice actually needs.", "আপনার প্র্যাকটিসের ঠিক কী প্রয়োজন তা বোঝার পরেই প্রযুক্তিগত কাজ শুরু হয়।")}
+              {t("The technology comes after we understand what your practice actually needs.", "আপনার প্র্যাকটিসের ঠিক কী প্রয়োজন তা বোঝার পরেই প্রযুক্তিগত কাজ শুরু হয়।")}
             </p>
           </div>
 
@@ -523,7 +586,7 @@ export default function DentalAutomationServicesPage() {
             </span>
 
             <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 mb-6">
-              {t("Six Automation Systems.", "ছয়টি অটোমেশন সিস্টেম।")}
+              {t("Six Automation Systems.", "ছয়টি অটোমেশন সিস্টেম।")}
               <br />
               <span className="text-cyan-400">
                 {t("One Connected Patient Journey.", "একটি সংযুক্ত পেশেন্ট জার্নি।")}
@@ -533,7 +596,7 @@ export default function DentalAutomationServicesPage() {
             <p className="text-slate-300 text-lg leading-relaxed">
               {t(
                 "Start with one workflow or build a complete automation ecosystem around your dental practice.",
-                "একটি ওয়ার্কফ্লো দিয়ে শুরু করুন অথবা আপনার ডেন্টাল প্র্যাকটিসের চারপাশে একটি সম্পূর্ণ অটোমেশন ইকোসিস্টেম গড়ে তুলুন।"
+                "একটি ওয়ার্কফ্লো দিয়ে শুরু করুন অথবা আপনার ডেন্টাল প্র্যাকটিসের চারপাশে একটি সম্পূর্ণ অটোমেশন ইকোসিস্টেম গড়ে তুলুন।"
               )}
             </p>
           </div>
@@ -572,7 +635,7 @@ export default function DentalAutomationServicesPage() {
                           <p className="text-[11px] text-cyan-300 leading-relaxed">
                             {t(
                               "AI handles routine, non-clinical communication. Diagnosis, treatment decisions, and care remain with qualified professionals.",
-                              "এআই রুটিন ও অ-ক্লিনিক্যাল কমিউনিকেশন হ্যান্ডেল করে। ডায়াগনোসিস ও ক্লিনিক্যাল যত্নের দায়িত্ব চিকিৎসকদের।"
+                              "এআই রুটিন ও অ-ক্লিনিক্যাল কমিউনিকেশন হ্যান্ডেল করে। ডায়াগনোসিস ও ক্লিনিক্যাল যত্নের দায়িত্ব চিকিৎসকদের।"
                             )}
                           </p>
                         </div>
@@ -587,7 +650,7 @@ export default function DentalAutomationServicesPage() {
                       onClick={() => toggleService(index)}
                       className="w-full flex items-center justify-between text-xs uppercase tracking-wider text-cyan-300 font-mono py-1.5 hover:text-cyan-400 transition-colors"
                     >
-                      <span>{t("WHAT CAN BE AUTOMATED", "যা অটোমেট করা যায়")}</span>
+                      <span>{t("WHAT CAN BE AUTOMATED", "যা অটোমেট করা যায়")}</span>
                       <FaChevronDown className={`transition-transform duration-300 ${isServiceOpen ? "rotate-180" : ""}`} />
                     </button>
 
@@ -639,7 +702,7 @@ export default function DentalAutomationServicesPage() {
             <p className="text-slate-300 text-lg leading-relaxed">
               {t(
                 "Our systems can connect multiple operational areas of your practice instead of automating only one isolated task.",
-                "আমাদের সিস্টেমগুলো শুধুমাত্র একটি বিচ্ছিন্ন কাজ নয়, বরং আপনার প্র্যাকটিসের একাধিক অপারেশনাল এরিয়াকে সংযুক্ত করতে পারে।"
+                "আমাদের সিস্টেমগুলো শুধুমাত্র একটি বিচ্ছিন্ন কাজ নয়, বরং আপনার প্র্যাকটিসের একাধিক অপারেশনাল এরিয়াকে সংযুক্ত করতে পারে।"
               )}
             </p>
           </div>
@@ -839,7 +902,7 @@ export default function DentalAutomationServicesPage() {
                 {t("Your Clinic Is Unique.", "আপনার ক্লিনিক অনন্য।")}
                 <br />
                 <span className="text-cyan-400">
-                  {t("Your Automation Should Be Too.", "আপনার অটোমেশনও হওয়া উচিত তেমনি।")}
+                  {t("Your Automation Should Be Too.", "আপনার অটোমেশনও হওয়া উচিত তেমনি।")}
                 </span>
               </h2>
 
@@ -884,7 +947,7 @@ export default function DentalAutomationServicesPage() {
 
           <div className="text-center mt-12">
             <p className="text-cyan-400 font-bold">
-              {t("Built Around Your Clinic. Not the Other Way Around.", "আপনার ক্লিনিকের জন্য তৈরি। অন্যভাবে নয়।")}
+              {t("Built Around Your Clinic. Not the Other Way Around.", "আপনার ক্লিনিকের জন্য তৈরি। অন্যভাবে নয়।")}
             </p>
           </div>
         </div>
@@ -948,12 +1011,12 @@ export default function DentalAutomationServicesPage() {
               {
                 icon: <FaTooth />,
                 title: t("Dental Practice Focused", "ডেন্টাল প্র্যাকটিস ফোকাসড"),
-                desc: t("Our service structure is designed around the operational needs of dental practices.", "আমাদের সার্ভিস স্ট্রাকচার ডেন্টাল প্র্যাকটিসের অপারেশনাল প্রয়োজনের কথা মাথায় রেখে ডিজাইন করা।"),
+                desc: t("Our service structure is designed around the operational needs of dental practices.", "আমাদের সার্ভিস স্ট্রাকচার ডেন্টাল প্র্যাকটিসের অপারেশনাল প্রয়োজনের কথা মাথায় রেখে ডিজাইন করা।"),
               },
               {
                 icon: <FaCogs />,
                 title: t("Customized Systems", "কাস্টমাইজড সিস্টেম"),
-                desc: t("Workflows are designed around your clinic instead of forcing your clinic into a generic template.", "ক্লিনিককে সাধারণ টেমপ্লেটে না ফেলে, আপনার ক্লিনিকের চারপাশেই ওয়ার্কফ্লো ডিজাইন করা হয়।"),
+                desc: t("Workflows are designed around your clinic instead of forcing your clinic into a generic template.", "ক্লিনিককে সাধারণ টেমপ্লেটে না ফেলে, আপনার ক্লিনিকের চারপাশেই ওয়ার্কফ্লো ডিজাইন করা হয়।"),
               },
               {
                 icon: <FaRobot />,
@@ -973,7 +1036,7 @@ export default function DentalAutomationServicesPage() {
               {
                 icon: <FaLayerGroup />,
                 title: t("Scalable Workflows", "স্কেলেবল ওয়ার্কফ্লো"),
-                desc: t("Start with the most important workflow and expand your automation system over time.", "সবচেয়ে গুরুত্বপূর্ণ ওয়ার্কফ্লো দিয়ে শুরু করুন এবং সময়ের সাথে অটোমেশন সিস্টেম প্রসারিত করুন।"),
+                desc: t("Start with the most important workflow and expand your automation system over time.", "সবচেয়ে গুরুত্বপূর্ণ ওয়ার্কফ্লো দিয়ে শুরু করুন এবং সময়ের সাথে অটোমেশন সিস্টেম প্রসারিত করুন।"),
               },
             ].map((item) => (
               <div
@@ -1079,7 +1142,7 @@ export default function DentalAutomationServicesPage() {
             <div className="relative z-10">
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cyan-400 font-mono mb-5">
                 <FaTooth />
-                {t("START WITH YOUR WORKFLOW", "আপনার ওয়ার্কফ্লো দিয়ে শুরু করুন")}
+                {t("START WITH YOUR WORKFLOW", "আপনার ওয়ার্কফ্লো দিয়ে শুরু করুন")}
               </span>
 
               <h2 className="text-3xl sm:text-5xl font-black text-white mb-6">
@@ -1116,7 +1179,7 @@ export default function DentalAutomationServicesPage() {
               </div>
 
               <p className="text-xs text-slate-500 mt-6">
-                {t("No obligation. Just a practical look at where automation may fit your dental practice.", "কোনো বাধ্যবাধকতা নেই। শুধু দেখুন অটোমেশন কীভাবে আপনার ডেন্টাল প্র্যাকটিসে মানিয়ে যেতে পারে।")}
+                {t("No obligation. Just a practical look at where automation may fit your dental practice.", "কোনো বাধ্যবাধকতা নেই। শুধু দেখুন অটোমেশন কীভাবে আপনার ডেন্টাল প্র্যাকটিসে মানিয়ে যেতে পারে।")}
               </p>
 
               <div className="mt-12">
