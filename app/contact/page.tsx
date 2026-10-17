@@ -82,49 +82,11 @@ export default function ContactPage() {
 
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         
-        {/* FREE DENTAL AUTOMATION AUDIT BANNER */}
-        <div className="bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-3xl p-6 sm:p-10 shadow-[0_0_50px_rgba(6,182,212,0.12)] text-center relative overflow-hidden">
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-            {t("Find the Automation Opportunities Inside Your Dental Practice.", "আপনার ডেন্টাল প্র্যাকটিসের ভেতরের অটোমেশন সুযোগগুলো খুঁজে বের করুন।")}
-          </h2>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
-            {t(
-              "Not sure where to start? Book a free Dental Automation Audit and discover where repetitive work, slow follow-up, and manual processes may be creating unnecessary friction.",
-              "কোথা থেকে শুরু করবেন বুঝতে পারছেন না? একটি ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন এবং দেখুন কোথায় রুটিন কাজ, স্লো ফলো-আপ এবং ম্যানুয়াল প্রসেস অপ্রয়োজনীয় বাধা তৈরি করছে।"
-            )}
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-left max-w-4xl mx-auto mb-8">
-            {[
-              { num: "01", title: t("Patient Journey Review", "পেশেন্ট জার্নি রিভিউ") },
-              { num: "02", title: t("Workflow Review", "ওয়ার্কফ্লো রিভিউ") },
-              { num: "03", title: t("Automation Opportunities", "অটোমেশন সুযোগ") },
-              { num: "04", title: t("Recommended Roadmap", "প্রস্তাবিত রোডম্যাপ") },
-            ].map((step, idx) => (
-              <div key={idx} className="bg-slate-900/90 border border-slate-800 p-3.5 rounded-xl">
-                <span className="text-cyan-400 font-mono font-bold text-xs">{step.num}</span>
-                <p className="text-white font-semibold text-xs mt-0.5">{step.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Page Header */}
-        <div className="text-center space-y-2 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            {t("Get in Touch With Us", "আমাদের সাথে যোগাযোগ করুন")}
-          </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-            {t("Let's Talk to Automate", "আপনার ব্যবসা অটোমেট করতে")} <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{t("Your Business Today", "কথা বলুন আজই")}</span>
-          </h1>
-        </div>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Main Content Grid (Form & Direct Contacts at the Top) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4">
           
           {/* Left: Compact Interactive Contact Form */}
-          <div className="lg:col-span-6 bg-slate-900/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl">
+          <div className="lg:col-span-6 bg-slate-900/90 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
             
             {submitted ? (
               <div className="text-center py-10 space-y-4">
@@ -148,20 +110,25 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5 text-left">
-                <h3 className="text-lg font-bold text-white mb-3 border-b border-slate-800 pb-2.5 flex items-center gap-2">
-                  <FaPaperPlane className="text-red-400 text-sm" /> {t("Project Discussion Form", "প্রজেক্ট ডিসকাশন ফর্ম")}
-                </h3>
+              <form onSubmit={handleSubmit} className="space-y-4 text-left">
+                <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                  <h3 className="text-xl font-extrabold text-white flex items-center gap-2">
+                    <FaPaperPlane className="text-cyan-400 text-base" /> {t("Project Discussion Form", "প্রজেক্ট ডিসকাশন ফর্ম")}
+                  </h3>
+                  <span className="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded-full uppercase font-mono">
+                    {t("Fast Response", "দ্রুত রিপ্লাই")}
+                  </span>
+                </div>
 
                 {errorMessage && (
-                  <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs">
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs">
                     {errorMessage}
                   </div>
                 )}
 
                 {/* Full Name */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Full Name *", "পূর্ণ নাম *")}</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">{t("Full Name *", "পূর্ণ নাম *")}</label>
                   <input
                     type="text"
                     name="fullName"
@@ -169,18 +136,18 @@ export default function ContactPage() {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder={t("Enter your full name", "যেমন: রাশেদ আহমেদ")}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none transition-all"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-all"
                   />
                 </div>
 
                 {/* Business Type */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Business Category *", "বিজনেস ক্যাটাগরি *")}</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">{t("Business Category *", "বিজনেস ক্যাটাগরি *")}</label>
                   <select
                     name="businessType"
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none transition-all"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-all"
                   >
                     <option value="Dental Practice">{t("Dental Practice / Clinic", "ডেন্টাল প্র্যাকটিস / ক্লিনিক")}</option>
                     <option value="Service-Oriented Business">{t("Service-Oriented Business", "সার্ভিস-অরিয়েন্টেড বিজনেস")}</option>
@@ -191,19 +158,19 @@ export default function ContactPage() {
 
                 {/* Contact Choice: Email or WhatsApp */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Contact Method (Email or WhatsApp) *", "যোগাযোগের মাধ্যম (ইমেইল বা হোয়াটসঅ্যাপ) *")}</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">{t("Contact Method (Email or WhatsApp) *", "যোগাযোগের মাধ্যম (ইমেইল বা হোয়াটসঅ্যাপ) *")}</label>
                   <div className="grid grid-cols-2 gap-2 mb-2">
                     <button
                       type="button"
                       onClick={() => setFormData({...formData, contactMethod: "email"})}
-                      className={`py-2 px-3 rounded-xl text-[11px] font-semibold border transition-all flex items-center justify-center gap-1.5 ${formData.contactMethod === "email" ? "bg-cyan-500/20 border-cyan-500 text-cyan-300" : "bg-slate-950 border-slate-800 text-slate-400"}`}
+                      className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all flex items-center justify-center gap-1.5 ${formData.contactMethod === "email" ? "bg-cyan-500/20 border-cyan-500 text-cyan-300" : "bg-slate-950 border-slate-800 text-slate-400"}`}
                     >
                       <FaEnvelope /> Email
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormData({...formData, contactMethod: "whatsapp"})}
-                      className={`py-2 px-3 rounded-xl text-[11px] font-semibold border transition-all flex items-center justify-center gap-1 ${formData.contactMethod === "whatsapp" ? "bg-emerald-500/20 border-emerald-500 text-emerald-300" : "bg-slate-950 border-slate-800 text-slate-400"}`}
+                      className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all flex items-center justify-center gap-1 ${formData.contactMethod === "whatsapp" ? "bg-emerald-500/20 border-emerald-500 text-emerald-300" : "bg-slate-950 border-slate-800 text-slate-400"}`}
                     >
                       <FaWhatsapp /> WhatsApp
                     </button>
@@ -215,20 +182,20 @@ export default function ContactPage() {
                     placeholder={formData.contactMethod === "whatsapp" ? "+880 1724-132820" : "yourname@email.com"}
                     value={formData.contactValue}
                     onChange={handleChange}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none transition-all"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-all"
                   />
                 </div>
 
                 {/* Additional Message */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">{t("Project Details (Optional)", "প্রজেক্টের বিবরণ (ঐচ্ছিক)")}</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">{t("Project Details (Optional)", "প্রজেক্টের বিবরণ (ঐচ্ছিক)")}</label>
                   <textarea
                     name="message"
-                    rows={2}
+                    rows={3}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={t("Write your project idea...", "আপনার প্রজেক্ট আইডিয়া লিখুন...")}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none transition-all"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-500 focus:outline-none transition-all"
                   ></textarea>
                 </div>
 
@@ -236,11 +203,11 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-3 rounded-xl shadow-[0_0_15px_rgba(225,29,72,0.4)] transition-all text-xs flex items-center justify-center gap-2 cursor-pointer mt-1"
+                  className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-3.5 rounded-xl shadow-[0_0_20px_rgba(225,29,72,0.4)] transition-all text-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
                 >
                   {loading ? (
                     <>
-                      <FaSpinner className="animate-spin text-sm" /> {t("Sending...", "পাঠানো হচ্ছে...")}
+                      <FaSpinner className="animate-spin text-base" /> {t("Sending...", "পাঠানো হচ্ছে...")}
                     </>
                   ) : (
                     <>
@@ -249,42 +216,44 @@ export default function ContactPage() {
                   )}
                 </button>
 
-                <p className="text-center text-[10px] text-slate-400 flex items-center justify-center gap-1 pt-1">
-                  <FaShieldAlt className="text-cyan-400 text-xs" /> {t("Your information is completely secure.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও গোপনীয়।")}
+                <p className="text-center text-xs text-slate-400 flex items-center justify-center gap-1.5 pt-2">
+                  <FaShieldAlt className="text-cyan-400" /> {t("Your information is completely secure.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও গোপনীয়।")}
                 </p>
               </form>
             )}
 
           </div>
 
-          {/* Right: Direct Contact Cards */}
+          {/* Right: Direct Contact Channels with Unique Glowing Design */}
           <div className="lg:col-span-6 space-y-4">
             
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-3">
-              <h3 className="text-lg font-bold text-white mb-1">
-                {t("Direct Contact Channels", "সরাসরি যোগাযোগের মাধ্যম")}
-              </h3>
-              <p className="text-slate-400 text-xs">
-                {t(
-                  "To avoid the hassle of filling out the form, you can contact us directly through the channels below:",
-                  "ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:"
-                )}
-              </p>
+            <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {t("Direct Contact Channels", "সরাসরি যোগাযোগের মাধ্যম")}
+                </h3>
+                <p className="text-slate-400 text-xs sm:text-sm">
+                  {t(
+                    "To avoid the hassle of filling out the form, you can contact us directly through the channels below:",
+                    "ফর্ম পূরণের ঝামেলা এড়াতে সরাসরি আমাদের সাথে নিচের মাধ্যমগুলোতে যোগাযোগ করতে পারেন:"
+                  )}
+                </p>
+              </div>
 
-              <div className="space-y-2.5 pt-1">
+              <div className="grid grid-cols-1 gap-3">
                 {/* WhatsApp */}
                 <a 
                   href="https://wa.me/8801724132820" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-emerald-500/60 hover:bg-emerald-500/[0.03] transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-base group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all shadow-lg">
                     <FaWhatsapp />
                   </div>
                   <div>
-                    <div className="text-[10px] text-slate-400">{t("WhatsApp Chat", "WhatsApp চ্যাট")}</div>
-                    <div className="text-white font-bold text-xs">+880 1724-132820</div>
+                    <div className="text-xs text-slate-400 font-medium">{t("WhatsApp Chat", "WhatsApp চ্যাট")}</div>
+                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
                   </div>
                 </a>
 
@@ -292,14 +261,14 @@ export default function ContactPage() {
                 <a 
                   href="#email" 
                   onClick={handleEmailClick}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group cursor-pointer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-cyan-500/60 hover:bg-cyan-500/[0.03] transition-all group cursor-pointer"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-base group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all shadow-lg">
                     <FaEnvelope />
                   </div>
                   <div>
-                    <div className="text-[10px] text-slate-400">{t("Email Support", "ইমেইল সাপোর্ট")}</div>
-                    <div className="text-white font-bold text-xs">info@tae.agency</div>
+                    <div className="text-xs text-slate-400 font-medium">{t("Email Support", "ইমেইল সাপোর্ট")}</div>
+                    <div className="text-white font-bold text-sm sm:text-base">info@tae.agency</div>
                   </div>
                 </a>
 
@@ -308,14 +277,14 @@ export default function ContactPage() {
                   href="https://www.instagram.com/tae.agency_official/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-pink-500/50 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-pink-500/60 hover:bg-pink-500/[0.03] transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-base group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl group-hover:scale-110 group-hover:bg-pink-500 group-hover:text-white transition-all shadow-lg">
                     <FaInstagram />
                   </div>
                   <div>
-                    <div className="text-[10px] text-slate-400">{t("Instagram", "ইনস্টাগ্রাম")}</div>
-                    <div className="text-white font-bold text-xs">@tae.agency_official</div>
+                    <div className="text-xs text-slate-400 font-medium">{t("Instagram", "ইনস্টাগ্রাম")}</div>
+                    <div className="text-white font-bold text-sm sm:text-base">@tae.agency_official</div>
                   </div>
                 </a>
 
@@ -324,39 +293,66 @@ export default function ContactPage() {
                   href="https://m.me/taeagency" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-blue-500/60 hover:bg-blue-500/[0.03] transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-base group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all shadow-lg">
                     <FaFacebookMessenger />
                   </div>
                   <div>
-                    <div className="text-[10px] text-slate-400">{t("Facebook Messenger", "ফেসবুক মেসেঞ্জার")}</div>
-                    <div className="text-white font-bold text-xs">TAE.Agency</div>
+                    <div className="text-xs text-slate-400 font-medium">{t("Facebook Messenger", "ফেসবুক মেসেঞ্জার")}</div>
+                    <div className="text-white font-bold text-sm sm:text-base">TAE.Agency</div>
                   </div>
                 </a>
 
                 {/* Direct Phone Call */}
                 <a 
                   href="tel:+8801724132820" 
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-indigo-500/50 transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-indigo-500/60 hover:bg-indigo-500/[0.03] transition-all group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-sm group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-lg group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all shadow-lg">
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <div className="text-[10px] text-slate-400">{t("Direct Call", "সরাসরি কল করুন")}</div>
-                    <div className="text-white font-bold text-xs">+880 1724-132820</div>
+                    <div className="text-xs text-slate-400 font-medium">{t("Direct Call", "সরাসরি কল করুন")}</div>
+                    <div className="text-white font-bold text-sm sm:text-base">+880 1724-132820</div>
                   </div>
                 </a>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-red-950/30 to-rose-950/30 border border-red-500/20 rounded-xl p-3.5 text-center text-xs text-red-300">
+            <div className="bg-gradient-to-r from-red-950/30 to-rose-950/30 border border-red-500/20 rounded-2xl p-4 text-center text-xs sm:text-sm text-red-300">
               ⚡ {t("We usually reply within **2 hours** on working days.", "সাধারণত কাজের দিনগুলোতে **২ ঘণ্টার মধ্যে** আমরা রিপ্লাই দিয়ে থাকি।")}
             </div>
 
           </div>
 
+        </div>
+
+        {/* FREE DENTAL AUTOMATION AUDIT BANNER (MOVED TO BOTTOM AS REQUESTED) */}
+        <div className="bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-3xl p-8 sm:p-12 shadow-[0_0_50px_rgba(6,182,212,0.12)] text-center relative overflow-hidden mt-12">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+            {t("Find the Automation Opportunities Inside Your Dental Practice.", "আপনার ডেন্টাল প্র্যাকটিসের ভেতরের অটোমেশন সুযোগগুলো খুঁজে বের করুন।")}
+          </h2>
+          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
+            {t(
+              "Not sure where to start? Book a free Dental Automation Audit and discover where repetitive work, slow follow-up, and manual processes may be creating unnecessary friction.",
+              "কোথা থেকে শুরু করবেন বুঝতে পারছেন না? একটি ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন এবং দেখুন কোথায় রুটিন কাজ, স্লো ফলো-আপ এবং ম্যানুয়াল প্রসেস অপ্রয়োজনীয় বাধা তৈরি করছে।"
+            )}
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-left max-w-4xl mx-auto">
+            {[
+              { num: "01", title: t("Patient Journey Review", "পেশেন্ট জার্নি রিভিউ") },
+              { num: "02", title: t("Workflow Review", "ওয়ার্কফ্লো রিভিউ") },
+              { num: "03", title: t("Automation Opportunities", "অটোমেশন সুযোগ") },
+              { num: "04", title: t("Recommended Roadmap", "প্রস্তাবিত রোডম্যাপ") },
+            ].map((step, idx) => (
+              <div key={idx} className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl shadow">
+                <span className="text-cyan-400 font-mono font-bold text-xs">{step.num}</span>
+                <p className="text-white font-semibold text-xs mt-1">{step.title}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
