@@ -328,30 +328,29 @@ export default function ContactPage() {
 
         </div>
 
-        {/* FREE DENTAL AUTOMATION AUDIT BANNER (MOVED TO BOTTOM AS REQUESTED) */}
+        {/* FREE DENTAL AUTOMATION AUDIT BANNER (UPDATED WITH YOUR DESIRED TEXT & NEW STYLE) */}
         <div className="bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/40 rounded-3xl p-8 sm:p-12 shadow-[0_0_50px_rgba(6,182,212,0.12)] text-center relative overflow-hidden mt-12">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-            {t("Find the Automation Opportunities Inside Your Dental Practice.", "আপনার ডেন্টাল প্র্যাকটিসের ভেতরের অটোমেশন সুযোগগুলো খুঁজে বের করুন।")}
+            {t("Every Missed Follow-Up Is an Opportunity to Improve.", "প্রতিটি মিসড ফলো-আপ হলো নিজেকে উন্নত করার একটি সুযোগ।")}
           </h2>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm max-w-3xl mx-auto mb-8 leading-relaxed">
             {t(
-              "Not sure where to start? Book a free Dental Automation Audit and discover where repetitive work, slow follow-up, and manual processes may be creating unnecessary friction.",
-              "কোথা থেকে শুরু করবেন বুঝতে পারছেন না? একটি ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন এবং দেখুন কোথায় রুটিন কাজ, স্লো ফলো-আপ এবং ম্যানুয়াল প্রসেস অপ্রয়োজনীয় বাধা তৈরি করছে।"
+              "Your dental practice works hard to attract new patients. Let intelligent automation help you make the most of every inquiry, appointment opportunity, and patient relationship. At TAE.Agency, we help dental clinics simplify patient communication, streamline appointment workflows, automate follow-ups, and reconnect with inactive patients through AI-powered automation tailored to their needs. Let's discover what your dental practice could achieve with the right automation system.",
+              "আপনার ডেন্টাল প্র্যাকটিস নতুন রোগী আকর্ষণ করতে কঠোর পরিশ্রম করে। ইন্টেলিজেন্ট অটোমেশনকে কাজে লাগিয়ে প্রতিটি ইনকোয়ারি, অ্যাপয়েন্টমেন্টের সুযোগ এবং রোগী সম্পর্ককে আরও ফলপ্রসূ করুন। TAE.Agency-তে আমরা ডেন্টাল ক্লিনিকগুলোকে এআই-চালিত অটোমেশনের মাধ্যমে রোগী যোগাযোগ সহজ করতে, অ্যাপয়েন্টমেন্ট ওয়ার্কফ্লো স্ট্রিমলাইন করতে, ফলো-আপ অটোমেট করতে এবং নিষ্ক্রিয় রোগীদের সাথে পুনরায় সংযোগ স্থাপন করতে সাহায্য করি।"
             )}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-left max-w-4xl mx-auto">
-            {[
-              { num: "01", title: t("Patient Journey Review", "পেশেন্ট জার্নি রিভিউ") },
-              { num: "02", title: t("Workflow Review", "ওয়ার্কফ্লো রিভিউ") },
-              { num: "03", title: t("Automation Opportunities", "অটোমেশন সুযোগ") },
-              { num: "04", title: t("Recommended Roadmap", "প্রস্তাবিত রোডম্যাপ") },
-            ].map((step, idx) => (
-              <div key={idx} className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl shadow">
-                <span className="text-cyan-400 font-mono font-bold text-xs">{step.num}</span>
-                <p className="text-white font-semibold text-xs mt-1">{step.title}</p>
-              </div>
-            ))}
+          <div className="inline-block">
+            <a
+              href="#top"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all hover:scale-105 text-sm sm:text-base cursor-pointer"
+            >
+              <span>{t("Start Your Automation Journey →", "আপনার অটোমেশন জার্নি শুরু করুন →")}</span>
+            </a>
           </div>
         </div>
 
