@@ -22,6 +22,8 @@ import {
   FaEnvelope,
   FaBullseye,
   FaRocket,
+  FaSpinner,
+  FaPaperPlane,
 } from "react-icons/fa";
 
 export default function DentalAutomationHomePage() {
@@ -31,23 +33,57 @@ export default function DentalAutomationHomePage() {
   // Service Card Dropdown State for Home Page
   const [openService, setOpenService] = useState<number | null>(null);
 
-  // Contact Form State
+  // Contact Form State (Fully Connected with Web3Forms API)
   const [formData, setFormData] = useState({
     name: "",
+    businessType: "Dental Practice",
     contactMethod: "whatsapp",
     contactValue: "",
-    businessType: "Dental Practice",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleService = (index: number) => {
     setOpenService((current) => (current === index ? null : index));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "195853f8-c1a8-415e-8cce-b8dd5212d790",
+          subject: `নতুন লিড (হোমপেজ - TAE.Agency): ${formData.name} (${formData.businessType})`,
+          from_name: "TAE Agency Homepage Lead Form",
+          "Client Name": formData.name,
+          "Service Type": formData.businessType,
+          "Contact Method": formData.contactMethod.toUpperCase(),
+          "Contact Info": formData.contactValue,
+          "Project Details": formData.message || "হোমপেজের কুইক ফর্ম থেকে সাবমিট করা হয়েছে",
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.message || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+      }
+    } catch (error) {
+      setErrorMessage("সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব হয়নি। আপনার ইন্টারনেট কানেকশন চেক করুন।");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const homeServices = [
@@ -258,6 +294,12 @@ export default function DentalAutomationHomePage() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4 text-left">
+                  {errorMessage && (
+                    <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-xs font-semibold text-slate-300 mb-1.5">{t("Your Name *", "আপনার নাম *")}</label>
                     <input
@@ -314,9 +356,18 @@ export default function DentalAutomationHomePage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-3.5 rounded-xl shadow-[0_0_20px_rgba(225,29,72,0.4)] transition-all duration-300 text-sm mt-2 flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold py-3.5 rounded-xl shadow-[0_0_20px_rgba(225,29,72,0.4)] transition-all duration-300 text-sm mt-2 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <FaArrowRight /> {t("Submit Request", "সাবমিট রিকোয়েস্ট")}
+                    {loading ? (
+                      <>
+                        <FaSpinner className="animate-spin text-base" /> {t("Sending...", "পাঠানো হচ্ছে...")}
+                      </>
+                    ) : (
+                      <>
+                        <FaPaperPlane /> {t("Submit Request", "সাবমিট রিকোয়েস্ট")}
+                      </>
+                    )}
                   </button>
                   <p className="text-[10px] text-slate-400 text-center mt-2 flex items-center justify-center gap-1">
                     <FaShieldAlt className="text-cyan-400" /> {t("Your information is completely secure.", "আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও গোপনীয়।")}
@@ -376,7 +427,7 @@ export default function DentalAutomationHomePage() {
             <p className="mt-4 text-gray-300 leading-relaxed text-sm">
               {t(
                 "To free businesses from manual follow-up hassles. Converting every lead instantly through automated text-backs, AI chatbots, and smart pipelines, ensuring human care remains at the heart of practice.",
-                "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা এবং মানুষের যত্নকে অগ্রাধিকার দেওয়া।"
+                "ব্যবসাগুলোকে ম্যানুয়াল ফলো-আপের ঝামেলা থেকে মুক্তি দেওয়া। ইনস্ট্যান্ট অটো-টেক্সট ব্যাক, এআই চ্যাটবট এবং স্মার্ট পাইপলাইনের মাধ্যমে প্রতিটি লিডকে দ্রুত কনভার্ট করা এবং মানুষের যত্নকে অগ্রাধিকার দেওয়া।"
               )}
             </p>
           </div>
@@ -547,7 +598,7 @@ export default function DentalAutomationHomePage() {
             >
               <FaCalendarAlt /> {t("Book Your Free Dental Automation Audit", "আপনার ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
             </Link>
-            <p className="text-xs text-slate-400">{t("No obligation. Just a clear look at where automation may help your dental practice.", "কোনো বাধ্যবাধকতা নেই। শুধু দেখুন অটোমেশন কীভাবে আপনার ডেন্টাল প্র্যাকটিসে সাহায্য করতে পারে।")}</p>
+            <p className="text-xs text-slate-400">{t("No obligation. just a clear look at where automation may help your dental practice.", "কোনো বাধ্যবাধকতা নেই। শুধু দেখুন অটোমেশন কীভাবে আপনার ডেন্টাল প্র্যাকটিসে সাহায্য করতে পারে।")}</p>
           </div>
         </div>
       </section>
@@ -564,7 +615,7 @@ export default function DentalAutomationHomePage() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="#audit"
-            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-2xl shadow-lg transition-all hover:scale-105 inline-flex items-center gap-2 text-sm sm:text-base"
+            className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-8 py-4 rounded-2xl shadow-lg transition-all hover:scale-105 inline-flex items-center gap-2 text-sm sm:text-base"
           >
             <FaCalendarAlt /> {t("Book a Free Dental Automation Audit", "ফ্রি ডেন্টাল অটোমেশন অডিট বুক করুন")}
           </Link>
